@@ -1,0 +1,33 @@
+// Created by AMIT JANGID on 26/05/20.
+
+import 'package:flutter/material.dart';
+import 'package:simple_animations/simple_animations.dart';
+
+enum _AniProps { opacity, translateY }
+
+class FadeAnimation extends StatelessWidget {
+  final double delay;
+  final Widget child;
+
+  FadeAnimation({@required this.delay, @required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    final _tween = MultiTween<_AniProps>()
+      ..add(_AniProps.opacity, Tween(begin: 0.0, end: 1.0))
+      ..add(_AniProps.translateY, Tween(begin: -30.0, end: 0.0), Duration(milliseconds: 500), Curves.easeOut);
+
+    return PlayAnimation(
+      child: child,
+      tween: _tween,
+      duration: _tween.duration,
+      delay: Duration(milliseconds: (500 * delay).round()),
+      builder: (context, _child, _value) {
+        return Opacity(
+          opacity: _value.get(_AniProps.opacity),
+          child: Transform.translate(child: _child, offset: Offset(0, _value.get(_AniProps.translateY))),
+        );
+      },
+    );
+  }
+}

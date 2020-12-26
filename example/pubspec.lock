@@ -64,8 +64,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.4"
-  device_info:
+  cupertino_icons:
     dependency: "direct main"
+    description:
+      name: cupertino_icons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
+  device_info:
+    dependency: transitive
     description:
       name: device_info
       url: "https://pub.dartlang.org"
@@ -101,7 +108,7 @@ packages:
     source: hosted
     version: "2.1.12"
   intl:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: intl
       url: "https://pub.dartlang.org"
@@ -121,6 +128,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.8"
+  multiutillib:
+    dependency: "direct main"
+    description:
+      path: ".."
+      relative: true
+    source: path
+    version: "0.0.1"
   nested:
     dependency: transitive
     description:
@@ -129,7 +143,7 @@ packages:
     source: hosted
     version: "0.0.4"
   package_info:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: package_info
       url: "https://pub.dartlang.org"
@@ -164,7 +178,7 @@ packages:
     source: hosted
     version: "1.0.3"
   progress_dialog:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: progress_dialog
       url: "https://pub.dartlang.org"
@@ -192,14 +206,14 @@ packages:
     source: hosted
     version: "1.1.2"
   shimmer:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: shimmer
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.2"
   simple_animations:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: simple_animations
       url: "https://pub.dartlang.org"
@@ -274,7 +288,7 @@ packages:
     source: hosted
     version: "1.1.6"
   url_launcher:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: url_launcher
       url: "https://pub.dartlang.org"

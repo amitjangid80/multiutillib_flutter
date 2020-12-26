@@ -1,0 +1,194 @@
+// Created by AMIT JANGID on 17/07/20.
+
+import 'package:flutter/material.dart';
+import 'package:multiutillib/animations/animations.dart';
+import 'package:multiutillib/enums/dialog_animation_type.dart';
+
+showConfirmationDialog(
+  BuildContext context, {
+  Widget transitionAnimation,
+  String negativeBtnText: 'No',
+  String positiveBtnText: 'Yes',
+  bool barrierDismissible: false,
+  Color dividerColor = Colors.blue,
+  Color positiveBtnColor = Colors.blue,
+  Color negativeBtnColor = Colors.blueAccent,
+  TextAlign descTextAlign = TextAlign.center,
+  TextAlign titleTextAlign = TextAlign.center,
+  Duration transitionDuration = const Duration(milliseconds: 400),
+  DialogAnimationType dialogAnimationType = DialogAnimationType.grow,
+  TextStyle descStyle = const TextStyle(fontSize: 16, letterSpacing: 0.27, color: Colors.black),
+  TextStyle titleStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.bold),
+  TextStyle positiveBtnStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
+  TextStyle negativeBtnStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
+  @required String title,
+  @required String description,
+  @required VoidCallback onPositivePressed,
+}) {
+  return showGeneralDialog(
+    context: context,
+    barrierLabel: '',
+    barrierDismissible: barrierDismissible,
+    transitionDuration: transitionDuration,
+    barrierColor: Colors.black.withOpacity(0.5),
+    transitionBuilder: (context, animation, secondaryAnimation, child) {
+      switch (dialogAnimationType) {
+        case DialogAnimationType.grow:
+          return Animations.grow(animation, secondaryAnimation, child);
+
+        case DialogAnimationType.fromTop:
+          return Animations.fromTop(animation, secondaryAnimation, child);
+
+        case DialogAnimationType.fromLeft:
+          return Animations.fromLeft(animation, secondaryAnimation, child);
+
+        case DialogAnimationType.fromRight:
+          return Animations.fromRight(animation, secondaryAnimation, child);
+
+        case DialogAnimationType.fromBottom:
+          return Animations.fromBottom(animation, secondaryAnimation, child);
+
+        default:
+          return Animations.grow(animation, secondaryAnimation, child);
+      }
+    },
+    pageBuilder: (BuildContext context, animation, secondaryAnimation) {
+      return _CustomConfirmDialog(
+        title: title,
+        descStyle: descStyle,
+        titleStyle: titleStyle,
+        description: description,
+        dividerColor: dividerColor,
+        descTextAlign: descTextAlign,
+        titleTextAlign: titleTextAlign,
+        positiveBtnText: positiveBtnText,
+        negativeBtnText: negativeBtnText,
+        positiveBtnColor: positiveBtnColor,
+        negativeBtnColor: negativeBtnColor,
+        positiveBtnStyle: positiveBtnStyle,
+        negativeBtnStyle: negativeBtnStyle,
+        onPositivePressed: onPositivePressed,
+      );
+    },
+  );
+}
+
+class _CustomConfirmDialog extends StatelessWidget {
+  final double _borderRadius = 20;
+  final VoidCallback onPositivePressed;
+  final TextAlign titleTextAlign, descTextAlign;
+  final Color dividerColor, positiveBtnColor, negativeBtnColor;
+  final String title, description, negativeBtnText, positiveBtnText;
+  final TextStyle titleStyle, descStyle, positiveBtnStyle, negativeBtnStyle;
+
+  _CustomConfirmDialog({
+    @required this.title,
+    @required this.descStyle,
+    @required this.titleStyle,
+    @required this.description,
+    @required this.dividerColor,
+    @required this.descTextAlign,
+    @required this.titleTextAlign,
+    @required this.negativeBtnText,
+    @required this.positiveBtnText,
+    @required this.positiveBtnColor,
+    @required this.negativeBtnColor,
+    @required this.positiveBtnStyle,
+    @required this.negativeBtnStyle,
+    @required this.onPositivePressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final double _width = MediaQuery.of(context).size.width;
+
+    return WillPopScope(
+      onWillPop: () => Future.value(false),
+      child: Dialog(
+        elevation: 0,
+        clipBehavior: Clip.antiAlias,
+        backgroundColor: Colors.transparent,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(_borderRadius)),
+        child: Stack(
+          children: <Widget>[
+            Container(
+              width: _width,
+              margin: const EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.only(top: 24, left: 20, right: 20, bottom: 80),
+              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(_borderRadius)),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(title, style: titleStyle, textAlign: titleTextAlign),
+                  Container(
+                    height: 1.5,
+                    margin: const EdgeInsets.symmetric(vertical: 20),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: List.generate(
+                        12,
+                        (index) => Container(
+                          width: 6,
+                          height: 1.5,
+                          color: dividerColor,
+                          margin: const EdgeInsets.symmetric(horizontal: 2),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 10),
+                    child: Text(description, style: descStyle, textAlign: descTextAlign),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              left: 20,
+              right: 20,
+              bottom: 0,
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: RaisedButton(
+                      elevation: 4,
+                      color: negativeBtnColor,
+                      clipBehavior: Clip.antiAlias,
+                      onPressed: () => Navigator.pop(context, ""),
+                      child: Text(negativeBtnText, style: negativeBtnStyle),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: const Radius.circular(30),
+                          bottomLeft: const Radius.circular(30),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: RaisedButton(
+                      elevation: 4,
+                      color: positiveBtnColor,
+                      onPressed: onPositivePressed,
+                      clipBehavior: Clip.antiAlias,
+                      child: Text(positiveBtnText, style: positiveBtnStyle),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: const BorderRadius.only(
+                          topRight: const Radius.circular(30),
+                          bottomRight: const Radius.circular(30),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
