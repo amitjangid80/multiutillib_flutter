@@ -1,3 +1,7 @@
+## [0.0.3] - 29-12-2020
+
+* Added formatting to documentation.
+
 ## [0.0.2] - 29-12-2020
 
 * Added new method in Utils class for formatting number in given pattern.
