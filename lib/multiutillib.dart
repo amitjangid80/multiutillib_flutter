@@ -6,10 +6,14 @@ export 'utils/date_time_utils.dart';
 //#endregion utils
 
 //#region animations
-export 'animations/animations.dart';
 export 'animations/fade_animation.dart';
 export 'animations/slide_animation.dart';
 //#endregion animations
+
+//#region enums
+export 'enums/slide_animation_type.dart';
+export 'enums/dialog_animation_type.dart';
+//#endregion enums
 
 //#region widgets
 export 'widgets/material_card.dart';

@@ -29,22 +29,22 @@ showCustomDialog(
     transitionBuilder: (context, animation, secondaryAnimation, child) {
       switch (dialogAnimationType) {
         case DialogAnimationType.grow:
-          return Animations.grow(animation, secondaryAnimation, child);
+          return Animations.grow(animation, child);
 
         case DialogAnimationType.fromTop:
-          return Animations.fromTop(animation, secondaryAnimation, child);
+          return Animations.fromTop(animation, child);
 
         case DialogAnimationType.fromLeft:
-          return Animations.fromLeft(animation, secondaryAnimation, child);
+          return Animations.fromLeft(animation, child);
 
         case DialogAnimationType.fromRight:
-          return Animations.fromRight(animation, secondaryAnimation, child);
+          return Animations.fromRight(animation, child);
 
         case DialogAnimationType.fromBottom:
-          return Animations.fromBottom(animation, secondaryAnimation, child);
+          return Animations.fromBottom(animation, child);
 
         default:
-          return Animations.grow(animation, secondaryAnimation, child);
+          return Animations.grow(animation, child);
       }
     },
     pageBuilder: (BuildContext context, animation, secondaryAnimation) {

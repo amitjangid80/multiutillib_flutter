@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:multiutillib/multiutillib.dart';
-import 'package:multiutillib/widgets/material_card.dart';
 import 'package:multiutillib/enums/dialog_animation_type.dart';
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 
@@ -28,7 +27,17 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+  AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _animationController = AnimationController(vsync: this, duration: const Duration(seconds: 1));
+    _animationController.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,5 +139,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+
+    super.dispose();
   }
 }

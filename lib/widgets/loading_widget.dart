@@ -41,7 +41,7 @@ class LoadingWidget extends StatelessWidget {
                 highlightColor: highlightColor,
                 child: Container(
                   color: baseColor,
-                  width: _width * 0.75,
+                  width: _width * 0.60,
                   padding: const EdgeInsets.all(10),
                   margin: const EdgeInsets.only(top: 10),
                 ),

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class Animations {
   // Slide animation, from right to left (SlideTransition)
-  static fromRight(Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+  static fromRight(Animation<double> animation, Widget child) {
     return SlideTransition(
       child: child,
       position: Tween<Offset>(end: Offset.zero, begin: const Offset(1.0, 0.0)).animate(animation),
@@ -12,7 +12,7 @@ class Animations {
   }
 
   // Slide animation, from left to right (SlideTransition)
-  static fromLeft(Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+  static fromLeft(Animation<double> animation, Widget child) {
     return SlideTransition(
       child: child,
       position: Tween<Offset>(end: Offset.zero, begin: const Offset(-1.0, 0.0)).animate(animation),
@@ -20,7 +20,7 @@ class Animations {
   }
 
   // Slide animation, from top to bottom (SlideTransition)
-  static fromTop(Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+  static fromTop(Animation<double> animation, Widget child) {
     return SlideTransition(
       child: child,
       position: Tween<Offset>(end: Offset.zero, begin: const Offset(0.0, -1.0)).animate(animation),
@@ -28,7 +28,7 @@ class Animations {
   }
 
   // Slide animation, from top to bottom (SlideTransition)
-  static fromBottom(Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+  static fromBottom(Animation<double> animation, Widget child) {
     return SlideTransition(
       child: child,
       position: Tween<Offset>(end: Offset.zero, begin: const Offset(0.0, 1.0)).animate(animation),
@@ -36,7 +36,7 @@ class Animations {
   }
 
   // Scale animation, from in to out (ScaleTransition)
-  static grow(Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+  static grow(Animation<double> animation, Widget child) {
     return ScaleTransition(
       child: child,
       scale: Tween<double>(end: 1.0, begin: 0.0)
@@ -45,7 +45,7 @@ class Animations {
   }
 
   // Scale animation, from out to in (ScaleTransition)
-  static shrink(Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+  static shrink(Animation<double> animation, Widget child) {
     return ScaleTransition(
       child: child,
       scale: Tween<double>(end: 1.0, begin: 1.2)

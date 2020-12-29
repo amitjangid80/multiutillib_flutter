@@ -2,6 +2,9 @@
 
 import 'dart:io';
 
+import 'package:flutter/material.dart';
+
+import 'package:intl/intl.dart';
 import 'package:device_info/device_info.dart';
 
 /*
@@ -108,4 +111,12 @@ double replaceNullWithDouble(data) {
 **/
 int replaceTrueOrFalse(data) {
   return data.toString().toLowerCase() == 'true' ? 1 : 0;
+}
+
+formatNumber({@required var numberToFormat, String customPattern = '##,###,###.##'}) {
+  if (numberToFormat == null) {
+    numberToFormat = 0;
+  }
+
+  return NumberFormat.currency(decimalDigits: 2, customPattern: customPattern).format(numberToFormat);
 }
