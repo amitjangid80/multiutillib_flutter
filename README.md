@@ -56,21 +56,24 @@ This is a utility class which will help in getting current date in format 'yyyy-
 This class will also help in formatting date in any valid format like 'dd-MM-yyyy' or 'dd/MM/yyyy' or any other you want.
 
 Example of DateTimeUtils:
+
+```dart
 debugPrint('current date is: ${getCurrentDate()}');
-debugPrint('formatting any date: ${formatDateTime('Date String to format', newDateTimeFormat: 'Date Format to format the given date'}');
+debugPrint('formatting any date: ${formatDateTime('Date to format', newDateTimeFormat: 'Date Format to format the given date'}');
+```
 
 ## Utils
 
 This is a utility class which will help in getting device name, device id, managing null values in strings.
 
 ```dart
-1. getDeviceName() - returns future string
-2. getDeviceId() - returns future string
-3. replaceNullWithEmpty(String to be replace) - returns string value or empty string
-4. replaceNullWithZero(String to be replace) - returns integer value or zero
-5. replaceNullWithDouble(String to be replace) - returns double value or zero
-6. replaceTrueOrFalse(String to be replace) - returns 1 for true value or 0 for false value
-7. formatNumber({@required var numberToFormat, String customPattern = '##,###,###.##'}) - returns formatted value
+1. getDeviceName() // - returns future string
+2. getDeviceId() // - returns future string
+3. replaceNullWithEmpty(String to be replace) // - returns string value or empty string
+4. replaceNullWithZero(String to be replace) // - returns integer value or zero
+5. replaceNullWithDouble(String to be replace) // - returns double value or zero
+6. replaceTrueOrFalse(String to be replace) // - returns 1 for true value or 0 for false value
+7. formatNumber({@required var numberToFormat, String customPattern = '##,###,###.##'}) // - returns formatted value
 ```
 
 ## ShowConfirmationDialog
@@ -145,7 +148,7 @@ await hideProgressDialog();
 ## ConnectivityLayout
 
 This is widget to show connectivity message like Internet Connection not available.
-To use this widget you need to use 'connectivity_wrapper' package and wrap your 'MaterialApp' with ConnectivityAppWrapper.
+To use this widget you need to use [connectivity_wrapper](https://pub.dev/packages/connectivity_wrapper) package and wrap your ```dart MaterialApp ``` with ```dart ConnectivityAppWrapper ```.
 
 Example:
 
