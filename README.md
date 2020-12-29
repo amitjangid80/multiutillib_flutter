@@ -4,14 +4,14 @@ A flutter package to help with utilities, animations and some pre-built widgets.
 Some widgets are with default values for direct use and you can still customize according to your needs.
 
 This package used following packages:
-1. [![intl](https://pub.dev/packages/intl)]
-2. [![shimmer](https://pub.dev/packages/shimmer)]
-3. [![device_info](https://pub.dev/packages/device_info)]
-4. [![url_launcher](https://pub.dev/packages/url_launcher)]
-5. [![package_info](https://pub.dev/packages/package_info)]
-6. [![progress_dialog](https://pub.dev/packages/progress_dialog)]
-7. [![simple_animations](https://pub.dev/packages/simple_animations)]
-8. [![connectivity_wrapper](https://pub.dev/packages/connectivity_wrapper)]
+1. [intl](https://pub.dev/packages/intl)
+2. [shimmer](https://pub.dev/packages/shimmer)
+3. [device_info](https://pub.dev/packages/device_info)
+4. [url_launcher](https://pub.dev/packages/url_launcher)
+5. [package_info](https://pub.dev/packages/package_info)
+6. [progress_dialog](https://pub.dev/packages/progress_dialog)
+7. [simple_animations](https://pub.dev/packages/simple_animations)
+8. [connectivity_wrapper](https://pub.dev/packages/connectivity_wrapper)
 
 ## Examples
 
