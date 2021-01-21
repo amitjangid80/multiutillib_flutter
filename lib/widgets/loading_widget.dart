@@ -5,6 +5,8 @@ import 'package:multiutillib/widgets/material_card.dart';
 
 import 'package:shimmer/shimmer.dart';
 
+/// [LoadingWidget] This widget will show a loading effect for showing loading of data
+/// This widget uses [Shimmer] widget from [shimmer] package
 class LoadingWidget extends StatelessWidget {
   final int itemCount;
   final Color baseColor, highlightColor;

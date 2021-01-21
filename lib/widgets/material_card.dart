@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+/// [MaterialCard] This widget will show a card view widget
 class MaterialCard extends StatelessWidget {
   final Color color;
   final Widget child;
@@ -25,7 +26,6 @@ class MaterialCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: margin,
-      width: double.infinity,
       child: InkWell(
         onTap: onTap,
         child: Material(

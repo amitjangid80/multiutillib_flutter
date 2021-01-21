@@ -23,6 +23,8 @@ class SlideAnimation extends StatefulWidget {
 }
 
 class _SlideAnimationState extends State<SlideAnimation> with SingleTickerProviderStateMixin {
+  /// Animates a widget to slide from either direction.
+  /// Using [AnimatedBuilder] for animation
   @override
   Widget build(BuildContext context) {
     var _yTranslation = 0.0, _xTranslation = 0.0;

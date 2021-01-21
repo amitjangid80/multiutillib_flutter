@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 
+/// This widget is used to show messages for network operations
+/// This widget uses [ConnectivityWidgetWrapper] from [connectivity_wrapper] package
 class ConnectivityLayout extends StatelessWidget {
   final Widget child;
   final Color bgColor;

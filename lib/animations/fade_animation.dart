@@ -11,6 +11,8 @@ class FadeAnimation extends StatelessWidget {
 
   FadeAnimation({@required this.delay, @required this.child});
 
+  /// Animates a widget to show fade transition.
+  /// [PlayAnimation] from [simple_animations] package
   @override
   Widget build(BuildContext context) {
     final _tween = MultiTween<_AniProps>()

@@ -1,3 +1,8 @@
+## [0.0.4] - 21-01-2021
+
+* Added comments for use.
+* Added new utility methods.
+
 ## [0.0.3] - 29-12-2020
 
 * Added formatting to documentation.

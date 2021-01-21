@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// [OTPTextField] this message will show OTP Fields for no of fields passed
 class OTPTextField extends StatefulWidget {
   final int noOfOtpFields;
   final double borderWidth;
@@ -72,8 +73,8 @@ class _OTPTextFieldState extends State<OTPTextField> {
         cursorColor: widget.cursorColor,
         focusNode: _focusNodesList[position],
         controller: _otpTextControllersList[position],
-        keyboardType: TextInputType.numberWithOptions(),
-        inputFormatters: [LengthLimitingTextInputFormatter(1), WhitelistingTextInputFormatter.digitsOnly],
+        keyboardType: const TextInputType.numberWithOptions(),
+        inputFormatters: [LengthLimitingTextInputFormatter(1), FilteringTextInputFormatter.allow(RegExp("[0-9]"))],
         decoration: InputDecoration(
           border: UnderlineInputBorder(borderSide: BorderSide(color: widget.borderColor, width: widget.borderWidth)),
           focusedBorder: UnderlineInputBorder(

@@ -73,7 +73,14 @@ This is a utility class which will help in getting device name, device id, manag
 4. replaceNullWithZero(String to be replace) // - returns integer value or zero
 5. replaceNullWithDouble(String to be replace) // - returns double value or zero
 6. replaceTrueOrFalse(String to be replace) // - returns 1 for true value or 0 for false value
-7. formatNumber({@required var numberToFormat, String customPattern = '##,###,###.##'}) // - returns formatted value
+7. formatNumber({numberToFormat, customPattern = '##,###,###.##'}) // - returns formatted value
+8. isNumeric(StringToCheck) // - returns true or false if string passed is numeric
+9. getSingleDigitRandomNumber() // - returns single digit randomly
+10. getRandomNumber(min: MinValue, max: MaxValue) // - returns randomly generated number between min and max value
+11. getRandomMobileNumber() // - returns randomly generated mobile number
+12. getCharFromString(stringToExtract) // - returns only characters from string passed
+13. getNumbersFromString(stringToExtract) // - returns only digits from string passed
+14. 
 ```
 
 ## ShowConfirmationDialog

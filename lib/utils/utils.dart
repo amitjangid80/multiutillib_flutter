@@ -1,18 +1,15 @@
 // Created by AMIT JANGID on 26/12/20.
 
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
 import 'package:device_info/device_info.dart';
 
-/*
- * 2020 December 23 - Saturday
- * get device name method
- *
- * this method will get device or model name of the device
-**/
+/// [getDeviceName] method
+/// this method will get device or model name of the device
 Future<String> getDeviceName() async {
   String _deviceName;
   DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
@@ -28,12 +25,8 @@ Future<String> getDeviceName() async {
   return _deviceName;
 }
 
-/*
- * 2020 December 23 - Saturday
- * get device info method
- *
- * this method will get device info like model name and device id
-**/
+/// [getDeviceId] method
+/// this method will get device info like model name and device id
 Future<String> getDeviceId() async {
   String _deviceId;
   DeviceInfoPlugin _deviceInfo = DeviceInfoPlugin();
@@ -49,12 +42,8 @@ Future<String> getDeviceId() async {
   return _deviceId;
 }
 
-/*
- * 2020 December 23 - Saturday
- * replace null with empty method
- *
- * this method will check and replace null with an empty string
-**/
+/// [replaceNullWithEmpty] method
+/// this method will check and replace null with an empty string
 String replaceNullWithEmpty(data) {
   if (data == null) {
     return '';
@@ -67,12 +56,8 @@ String replaceNullWithEmpty(data) {
   }
 }
 
-/*
- * 2020 December 23 - Saturday
- * replace null with zero method
- *
- * this method will check and replace null with an integer value
-**/
+/// [replaceNullWithZero] method
+/// this method will check and replace null with an integer value
 int replaceNullWithZero(data) {
   if (data == null) {
     return 0;
@@ -85,12 +70,8 @@ int replaceNullWithZero(data) {
   }
 }
 
-/*
- * 2020 December 23 - Saturday
- * replace null with double method
- *
- * this method will check and replace null with an double value
-**/
+/// [replaceNullWithDouble] method
+/// this method will check and replace null with an double value
 double replaceNullWithDouble(data) {
   if (data.toString() == null) {
     return 0.0;
@@ -103,20 +84,108 @@ double replaceNullWithDouble(data) {
   }
 }
 
-/*
- * 2020 December 23 - Saturday
- * replace true or false method
- *
- * this method will check and replace true/false value with integer value
-**/
+/// [replaceTrueOrFalse] method
+/// this method will check and replace true/false value with integer value
 int replaceTrueOrFalse(data) {
   return data.toString().toLowerCase() == 'true' ? 1 : 0;
 }
 
+/// [formatNumber] method
+/// this method will format the number in default pattern or custom pattern
 formatNumber({@required var numberToFormat, String customPattern = '##,###,###.##'}) {
   if (numberToFormat == null) {
     numberToFormat = 0;
   }
 
   return NumberFormat.currency(decimalDigits: 2, customPattern: customPattern).format(numberToFormat);
+}
+
+/// [isNumeric] method
+/// this method will check if passed string is numeric or not
+bool isNumeric(String s) {
+  if (s == null) {
+    return false;
+  }
+
+  return double.tryParse(s) != null;
+}
+
+/// [getSingleDigitRandomNumber] method
+/// this method will return a single digit random number
+String getSingleDigitRandomNumber() {
+  var _min = 1, _max = 9;
+  var _rnd = Random.secure();
+
+  var _number = _min + _rnd.nextInt(_max - _min);
+  debugPrint('generated random single digit number is: $_number');
+
+  return _number.toString();
+}
+
+/// [getRandomNumber] method
+/// this method will return a random number between min and max number passed
+String getRandomNumber({@required int min, @required int max}) {
+  if (min == null || max == null) {
+    return 'min or max value is null';
+  }
+
+  if (min < 0 || max < 0) {
+    return 'min or max value cannot be less than zero';
+  }
+
+  if (max < min) {
+    return 'min value cannot be greater than max value';
+  }
+
+  var _rnd = Random.secure();
+  var _number = min + _rnd.nextInt(max - min);
+  debugPrint('generated random number between $min & $max is: $_number');
+
+  return _number.toString();
+}
+
+/// [getRandomMobileNumber] method
+/// this method will return randomly generated mobile number
+String getRandomMobileNumber() {
+  var _rnd = Random.secure();
+  var _min = 700000000, _max = 999999999;
+
+  var _code = _min + _rnd.nextInt(_max - _min);
+  debugPrint('random generated mobile no is: $_code');
+
+  return _code.toString();
+}
+
+/// [getCharFromString] method
+/// this method will return characters from string passed
+getCharFromString({@required String stringToExtract}) {
+  if (stringToExtract == null) {
+    return 'String passed cannot be null';
+  }
+
+  if (stringToExtract.isEmpty) {
+    return 'String cannot be empty';
+  }
+
+  Pattern _pattern = r'[^A-Za-z]';
+  RegExp _regex = new RegExp(_pattern);
+
+  return stringToExtract.replaceAll(_regex, ' ');
+}
+
+/// [getNumbersFromString] method
+/// this method will return all the digits from string passed
+getNumbersFromString({String stringToExtract}) {
+  if (stringToExtract == null) {
+    return 'String passed cannot be null';
+  }
+
+  if (stringToExtract.isEmpty) {
+    return 'String cannot be empty';
+  }
+
+  Pattern _pattern = r'\d+';
+  RegExp _regex = new RegExp(_pattern);
+
+  return _regex.stringMatch(stringToExtract);
 }

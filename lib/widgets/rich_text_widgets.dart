@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+/// [RichTextWidget] This widget will show text in single or new line in caption description format
+/// This widget uses [RichText] widget
 class RichTextWidget extends StatelessWidget {
   final bool isDescNewLine;
   final String caption, description;

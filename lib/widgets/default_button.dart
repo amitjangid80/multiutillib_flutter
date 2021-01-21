@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+/// This widget will build a custom shaped Button
 class DefaultButton extends StatelessWidget {
   final String text;
   final Function onPressed;
@@ -13,7 +14,7 @@ class DefaultButton extends StatelessWidget {
     this.isEnabled = true,
     this.borderRadius = 24,
     this.isUpperCase = true,
-    this.margin = const EdgeInsets.only(top: 20),
+    this.margin = const EdgeInsets.only(top: 10),
     @required this.text,
     @required this.onPressed,
   });

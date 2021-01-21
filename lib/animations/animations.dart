@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 
 class Animations {
-  // Slide animation, from right to left (SlideTransition)
+  /// [fromRight] Slide animation, from right to left
+  /// This method uses [SlideTransition] widget
   static fromRight(Animation<double> animation, Widget child) {
     return SlideTransition(
       child: child,
@@ -11,7 +12,8 @@ class Animations {
     );
   }
 
-  // Slide animation, from left to right (SlideTransition)
+  /// [fromLeft] Slide animation, from left to right
+  /// This method uses [SlideTransition] widget
   static fromLeft(Animation<double> animation, Widget child) {
     return SlideTransition(
       child: child,
@@ -19,7 +21,8 @@ class Animations {
     );
   }
 
-  // Slide animation, from top to bottom (SlideTransition)
+  /// [fromTop] Slide animation, from top to bottom
+  /// This method uses [SlideTransition] widget
   static fromTop(Animation<double> animation, Widget child) {
     return SlideTransition(
       child: child,
@@ -27,7 +30,8 @@ class Animations {
     );
   }
 
-  // Slide animation, from top to bottom (SlideTransition)
+  /// [fromBottom] Slide animation, from top to bottom
+  /// This method uses [SlideTransition] widget
   static fromBottom(Animation<double> animation, Widget child) {
     return SlideTransition(
       child: child,
@@ -35,21 +39,13 @@ class Animations {
     );
   }
 
-  // Scale animation, from in to out (ScaleTransition)
+  /// [grow] Scale animation, from in to out
+  /// This method uses [ScaleTransition] widget
   static grow(Animation<double> animation, Widget child) {
     return ScaleTransition(
       child: child,
       scale: Tween<double>(end: 1.0, begin: 0.0)
           .animate(CurvedAnimation(parent: animation, curve: const Interval(0.00, 0.50, curve: Curves.linear))),
-    );
-  }
-
-  // Scale animation, from out to in (ScaleTransition)
-  static shrink(Animation<double> animation, Widget child) {
-    return ScaleTransition(
-      child: child,
-      scale: Tween<double>(end: 1.0, begin: 1.2)
-          .animate(CurvedAnimation(parent: animation, curve: const Interval(0.50, 1.00, curve: Curves.linear))),
     );
   }
 }

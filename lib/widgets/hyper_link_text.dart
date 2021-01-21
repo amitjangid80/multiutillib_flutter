@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
+/// This widget will display a text in hyper link format
+/// This widget uses [launch] method from [url_launcher] package
 class HyperLinkText extends StatelessWidget {
   final String url, text;
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:multiutillib/animations/animations.dart';
 import 'package:multiutillib/enums/dialog_animation_type.dart';
 
+/// This method will show a dialog box with custom UI and animation
 showCustomDialog(
   BuildContext context, {
   String btnText = 'OK',

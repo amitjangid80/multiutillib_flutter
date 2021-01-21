@@ -1,9 +1,11 @@
 // Created by AMIT JANGID on 17/07/20.
 
 import 'package:flutter/material.dart';
+
 import 'package:multiutillib/animations/animations.dart';
 import 'package:multiutillib/enums/dialog_animation_type.dart';
 
+/// This method will show a dialog box with custom UI and animation
 showConfirmationDialog(
   BuildContext context, {
   Widget transitionAnimation,
