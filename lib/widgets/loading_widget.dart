@@ -19,8 +19,6 @@ class LoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _width = MediaQuery.of(context).size.width;
-
     return ListView.builder(
       shrinkWrap: true,
       itemCount: itemCount,
@@ -33,29 +31,38 @@ class LoadingWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Shimmer.fromColors(
-                baseColor: baseColor,
-                highlightColor: highlightColor,
-                child: Container(color: baseColor, width: _width * 0.50, padding: const EdgeInsets.all(10)),
-              ),
-              Shimmer.fromColors(
-                baseColor: baseColor,
-                highlightColor: highlightColor,
-                child: Container(
-                  color: baseColor,
-                  width: _width * 0.60,
-                  padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.only(top: 10),
-                ),
-              ),
-              Shimmer.fromColors(
-                baseColor: baseColor,
-                highlightColor: highlightColor,
-                child: Container(
-                  color: baseColor,
-                  padding: EdgeInsets.all(10),
-                  margin: const EdgeInsets.only(top: 10),
-                ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Shimmer.fromColors(
+                    baseColor: baseColor,
+                    highlightColor: highlightColor,
+                    child: Container(width: 50, height: 50, color: baseColor, padding: const EdgeInsets.all(10)),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Shimmer.fromColors(
+                          baseColor: baseColor,
+                          highlightColor: highlightColor,
+                          child: Container(color: baseColor, padding: const EdgeInsets.all(10)),
+                        ),
+                        const SizedBox(height: 10),
+                        Shimmer.fromColors(
+                          baseColor: baseColor,
+                          highlightColor: highlightColor,
+                          child: Container(color: baseColor, padding: const EdgeInsets.all(10)),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
               Shimmer.fromColors(
                 baseColor: baseColor,
