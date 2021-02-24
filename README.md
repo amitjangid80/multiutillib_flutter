@@ -80,6 +80,7 @@ This is a utility class which will help in getting device name, device id, manag
 11. getRandomMobileNumber() // - returns randomly generated mobile number
 12. getCharFromString(stringToExtract) // - returns only characters from string passed
 13. getNumbersFromString(stringToExtract) // - returns only digits from string passed
+14. getAppVersion() // - return current version of the app
 ```
 
 ## ShowConfirmationDialog
