@@ -7,6 +7,14 @@ import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
 import 'package:device_info/device_info.dart';
+import 'package:package_info/package_info.dart';
+
+/// [getAppVersion] method
+/// this method will return the current version of the app
+Future<String> getAppVersion() async {
+  PackageInfo _packageInfo = await PackageInfo.fromPlatform();
+  return _packageInfo.version;
+}
 
 /// [getDeviceName] method
 /// this method will get device or model name of the device

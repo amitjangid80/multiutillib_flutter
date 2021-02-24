@@ -1,3 +1,7 @@
+## [0.0.5] - 24-02-2021
+* Added new method for getting current app version
+* Updated dependent package version.
+
 ## [0.0.4] - 21-01-2021
 
 * Added comments for use.
