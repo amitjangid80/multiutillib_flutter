@@ -240,6 +240,7 @@ Example:
 ```dart
 OTPTextField(
     @required int noOfOtpFields,
+    @required ValueChanged<String> onCompleted,
     borderWidth = 2,
     isEnabled = true,
     autoFocus = true,

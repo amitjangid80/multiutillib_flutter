@@ -125,7 +125,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 ),
                 const SizedBox(height: 10),
                 LoadingWidget(itemCount: 1),
-                OTPTextField(noOfOtpFields: 6),
+                OTPTextField(
+                  noOfOtpFields: 6,
+                  onCompleted: (_enteredOtp) => debugPrint('entered otp is: $_enteredOtp'),
+                ),
                 const SizedBox(height: 10),
                 RichTextWidget(
                   caption: 'Rich',

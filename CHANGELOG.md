@@ -1,3 +1,7 @@
+## [0.0.6] - 25-02-2021
+* Fixed bug in [OTPTextField] widget where entered otp was not available
+* Updated [DefaultButton] to use [ElevatedButton]
+
 ## [0.0.5] - 24-02-2021
 * Added new method for getting current app version
 * Updated dependent package version.
