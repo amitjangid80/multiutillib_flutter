@@ -26,6 +26,9 @@ class OTPTextField extends StatefulWidget {
   /// border color for otp text field
   final Color borderColor;
 
+  /// to set auto focus of the value entered in otp text field
+  final bool autoFocus;
+
   /// to set auto correction of the value entered in otp text field
   final bool autoCorrect;
 
@@ -39,6 +42,7 @@ class OTPTextField extends StatefulWidget {
     @required this.noOfOtpFields,
     @required this.onCompleted,
     this.borderWidth = 2,
+    this.autoFocus = true,
     this.autoCorrect = false,
     this.borderColor = Colors.blue,
     this.cursorColor = Colors.blue,
@@ -94,6 +98,7 @@ class _OTPTextFieldState extends State<OTPTextField> {
       child: TextField(
         style: widget.textStyle,
         textAlign: widget.textAlign,
+        autofocus: widget.autoFocus,
         autocorrect: widget.autoCorrect,
         cursorColor: widget.cursorColor,
         focusNode: _focusNodesList[position],
