@@ -59,6 +59,24 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 const SizedBox(height: 10),
                 Text(getCurrentDate(newDateTimeFormat: kFullDateDisplayFormat)),
                 const SizedBox(height: 10),
+                Text(convertTimeOfDay(TimeOfDay.now())),
+                const SizedBox(height: 10),
+                Text(1.isNumeric.toString()),
+                const SizedBox(height: 10),
+                Text('01:01:01'.toDuration.toString()),
+                const SizedBox(height: 10),
+                // [DecimalInputFormatter] will allow only entered decimal range for the string in text field
+                TextFormField(
+                  inputFormatters: [DecimalInputFormatter(decimalRange: 2)],
+                  decoration: InputDecoration(labelText: 'Enter Decimal values'),
+                ),
+                const SizedBox(height: 10),
+                TextFormField(
+                  // this method will validate for email id
+                  validator: emailValidator,
+                  decoration: InputDecoration(labelText: 'Enter Email Id'),
+                ),
+                const SizedBox(height: 10),
                 FutureBuilder(
                   future: getDeviceName(),
                   builder: (context, snapshot) {

@@ -94,13 +94,11 @@ double replaceNullWithDouble(data) {
 
 /// [replaceTrueOrFalse] method
 /// this method will check and replace true/false value with integer value
-int replaceTrueOrFalse(data) {
-  return data.toString().toLowerCase() == 'true' ? 1 : 0;
-}
+int replaceTrueOrFalse(data) => data.toString().toLowerCase() == 'true' ? 1 : 0;
 
 /// [formatNumber] method
 /// this method will format the number in default pattern or custom pattern
-formatNumber({@required var numberToFormat, String customPattern = '##,###,###.##'}) {
+String formatNumber({@required var numberToFormat, String customPattern = '##,###,###.##'}) {
   if (numberToFormat == null) {
     numberToFormat = 0;
   }
@@ -137,8 +135,8 @@ String getRandomNumber({@required int min, @required int max}) {
     return 'min or max value is null';
   }
 
-  if (min < 0 || max < 0) {
-    return 'min or max value cannot be less than zero';
+  if (min <= 0 || max <= 0) {
+    return 'min or max value cannot be less than or equal to zero';
   }
 
   if (max < min) {
@@ -155,24 +153,21 @@ String getRandomNumber({@required int min, @required int max}) {
 /// [getRandomMobileNumber] method
 /// this method will return randomly generated mobile number
 String getRandomMobileNumber() {
-  var _rnd = Random.secure();
   var _min = 700000000, _max = 999999999;
 
-  var _code = _min + _rnd.nextInt(_max - _min);
-  debugPrint('random generated mobile no is: $_code');
-
-  return _code.toString();
+  /// calling get random number method
+  return getRandomNumber(min: _min, max: _max);
 }
 
 /// [getCharFromString] method
 /// this method will return characters from string passed
-getCharFromString({@required String stringToExtract}) {
+String getCharFromString({@required String stringToExtract}) {
   if (stringToExtract == null) {
     return 'String passed cannot be null';
   }
 
   if (stringToExtract.isEmpty) {
-    return 'String cannot be empty';
+    return 'String passed cannot be empty';
   }
 
   Pattern _pattern = r'[^A-Za-z]';
@@ -183,17 +178,21 @@ getCharFromString({@required String stringToExtract}) {
 
 /// [getNumbersFromString] method
 /// this method will return all the digits from string passed
-getNumbersFromString({String stringToExtract}) {
+String getNumbersFromString({String stringToExtract}) {
   if (stringToExtract == null) {
     return 'String passed cannot be null';
   }
 
   if (stringToExtract.isEmpty) {
-    return 'String cannot be empty';
+    return 'String passed cannot be empty';
   }
 
   Pattern _pattern = r'\d+';
   RegExp _regex = new RegExp(_pattern);
 
   return _regex.stringMatch(stringToExtract);
+}
+
+extension IsNumeric<T extends dynamic> on T {
+  bool get isNumeric => double.tryParse(this?.toString() ?? '') != null;
 }

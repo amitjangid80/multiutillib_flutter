@@ -62,6 +62,14 @@ debugPrint('current date is: ${getCurrentDate()}');
 debugPrint('formatting any date: ${formatDateTime('Date to format', newDateTimeFormat: 'Date Format to format the given date'}');
 ```
 
+There is an extension method [toDuration] which can be used to convert a string into duration:
+
+Example:
+
+```dart
+Text('01:01:01'.toDuration.toString()),
+```
+
 ## Utils
 
 This is a utility class which will help in getting device name, device id, managing null values in strings.
@@ -81,6 +89,14 @@ This is a utility class which will help in getting device name, device id, manag
 12. getCharFromString(stringToExtract) // - returns only characters from string passed
 13. getNumbersFromString(stringToExtract) // - returns only digits from string passed
 14. getAppVersion() // - return current version of the app
+
+You can use [isNumeric] as an extension to check if the value is numeric or not.
+Returns: true or false
+
+Example: 
+1. 123.isNumeric => returns true
+2. '123'.isNumeric => returns true
+3. 'String'.isNumeric => returns false
 ```
 
 ## ShowConfirmationDialog
@@ -170,7 +186,7 @@ ConnectivityLayout(
 ),
 ```
 
-### DefaultButton
+## DefaultButton
 
 This is a button widget. See example for using this widget
 
@@ -187,7 +203,7 @@ DefaultButton(
 ),
 ```
 
-### HyperLinkText
+## HyperLinkText
 
 This is a widget to show a text and launch an url on click of the text.
 
@@ -197,7 +213,7 @@ Example:
 HyperLinkText(url: 'http://www.google.com', text: 'Open Google'),
 ```
 
-### LoadingWidget
+## LoadingWidget
 
 This widget will show a loading shimmer effect.
 
@@ -211,7 +227,7 @@ LoadingWidget(
 ),
 ```
 
-### MaterialCard
+## MaterialCard
 
 This widget is useful in showing card view. You can use it directly or customize according to your needs.
 You can pass either borderRadius parameter value or borderRadiusGeometry parameter value.
@@ -231,7 +247,7 @@ MaterialCard(
 ),
 ```
 
-### OTPTextField
+## OTPTextField
 
 This widget is useful to take input for OTP while using OTP based login.
 
@@ -253,7 +269,7 @@ OTPTextField(
 ),
 ```
 
-### RichTextWidget
+## RichTextWidget
 
 This widget is helpful in showing caption and description value in single line or caption on top and description in new line.
 
@@ -266,5 +282,34 @@ RichTextWidget(
     isDescNewLine = false,
     captionStyle = const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.normal),
     descriptionStyle = const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.normal),
+),
+```
+
+## DecimalInputFormatter
+
+This is an [TextInputFormatter] for [TextField] for allowing to enter only allowed decimal range
+
+Example:
+```dart
+// [DecimalInputFormatter] will allow only entered decimal range for the string in text field
+TextFormField(
+  inputFormatters: [DecimalInputFormatter(decimalRange: 2)],
+  decoration: InputDecoration(labelText: 'Enter Decimal values'),
+),
+```
+
+## Validators
+
+This class has validation method for validating string
+
+1. Email Validator - This will check and validate if the entered string is a valid email id
+
+Example:
+
+```dart
+TextFormField(
+  // this method will validate for email id
+  validator: emailValidator,
+  decoration: InputDecoration(labelText: 'Enter Email Id'),
 ),
 ```
