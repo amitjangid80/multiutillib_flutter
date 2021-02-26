@@ -59,15 +59,41 @@ Example of DateTimeUtils:
 
 ```dart
 debugPrint('current date is: ${getCurrentDate()}');
-debugPrint('formatting any date: ${formatDateTime('Date to format', newDateTimeFormat: 'Date Format to format the given date'}');
 ```
 
-There is an extension method [toDuration] which can be used to convert a string into duration:
+There is extension methods which can be used to display date, time in provided or default format
 
 Example:
 
 ```dart
-Text('01:01:01'.toDuration.toString()),
+// Convert time String to Duration Object
+'01:01:01'.toDuration;
+
+// Convert Date String to Date Time Object
+'20210226'.toDateTime;
+'2021-02-26'.toDateTime;
+'20210226 140652.55'.toDateTime
+'2021-02-26 14:06:52.55'.toDateTime
+
+// Convert Date Time to Date Time String for display
+DateTime.now().toDisplayDate(newDateTimeFormat: 'dd-MM-yyyy hh:mm a');
+
+// Convert Date Time String to Date Time String for display
+// getCurrentDate() returns date time string
+DateTime.now().toDisplayTime();
+getCurrentDate().toDisplayDate(newDateTimeFormat: 'dd-MM-yyyy');
+
+// Convert Time of Day to Time String for display
+TimeOfDay.now().toDisplayTime();
+
+// Convert Time of Day String to Time String for display
+'14:39'.toDisplayTime();
+
+// Convert Time String to Time Of Day Object
+'14:39'.toTimeOfDay
+
+// Convert Date Time to Time of Day Object
+DateTime.now().toTimeOfDay
 ```
 
 ## Utils
@@ -97,6 +123,21 @@ Example:
 1. 123.isNumeric => returns true
 2. '123'.isNumeric => returns true
 3. 'String'.isNumeric => returns false
+```
+
+## String Extension
+
+Some of the Utils method can now be used as extensions.
+
+Example:
+
+```dart
+Text('Is Numeric: ' + 1.isNumeric.toString()),
+Text('Format Number: ' + 1010.869.formatNumber()),
+Text('Replace Null With Empty: ' + null.replaceNullWithEmpty)
+Text('Replace True or False: ' + true.replaceTrueOrFalse.toString()),
+Text('Replace Null With Zero: ' + null.replaceNullWithZero.toString()),
+Text('Replace Null with Double: ' + null.replaceNullWithDouble.toString()),
 ```
 
 ## ShowConfirmationDialog
