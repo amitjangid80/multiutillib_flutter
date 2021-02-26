@@ -52,6 +52,7 @@ Future<String> getDeviceId() async {
 
 /// [replaceNullWithEmpty] method
 /// this method will check and replace null with an empty string
+@Deprecated('You can use .replaceNullWithEmpty extension.')
 String replaceNullWithEmpty(data) {
   if (data == null) {
     return '';
@@ -66,6 +67,7 @@ String replaceNullWithEmpty(data) {
 
 /// [replaceNullWithZero] method
 /// this method will check and replace null with an integer value
+@Deprecated('You can use .replaceNullWithZero extension.')
 int replaceNullWithZero(data) {
   if (data == null) {
     return 0;
@@ -80,6 +82,7 @@ int replaceNullWithZero(data) {
 
 /// [replaceNullWithDouble] method
 /// this method will check and replace null with an double value
+@Deprecated('You can use .replaceNullWithDouble extension.')
 double replaceNullWithDouble(data) {
   if (data.toString() == null) {
     return 0.0;
@@ -94,10 +97,12 @@ double replaceNullWithDouble(data) {
 
 /// [replaceTrueOrFalse] method
 /// this method will check and replace true/false value with integer value
+@Deprecated('You can use .replaceTrueOrFalse extension.')
 int replaceTrueOrFalse(data) => data.toString().toLowerCase() == 'true' ? 1 : 0;
 
 /// [formatNumber] method
 /// this method will format the number in default pattern or custom pattern
+@Deprecated('You can use .formatNumber extension method.')
 String formatNumber({@required var numberToFormat, String customPattern = '##,###,###.##'}) {
   if (numberToFormat == null) {
     numberToFormat = 0;
@@ -108,6 +113,7 @@ String formatNumber({@required var numberToFormat, String customPattern = '##,##
 
 /// [isNumeric] method
 /// this method will check if passed string is numeric or not
+@Deprecated('You can use .isNumeric extension.')
 bool isNumeric(String s) {
   if (s == null) {
     return false;
@@ -191,8 +197,4 @@ String getNumbersFromString({String stringToExtract}) {
   RegExp _regex = new RegExp(_pattern);
 
   return _regex.stringMatch(stringToExtract);
-}
-
-extension IsNumeric<T extends dynamic> on T {
-  bool get isNumeric => double.tryParse(this?.toString() ?? '') != null;
 }

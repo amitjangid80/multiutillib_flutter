@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return ConnectivityAppWrapper(
       app: MaterialApp(
         home: MyHomePage(),
-        title: 'multiutillib Demo',
+        title: 'multiutillib Example',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.blue, visualDensity: VisualDensity.adaptivePlatformDensity),
       ),
@@ -29,6 +29,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
   AnimationController _animationController;
+  TextEditingController _textEditingController = TextEditingController();
+
+  String _isValid = '* Email Id is required.';
 
   @override
   void initState() {
@@ -36,6 +39,14 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
 
     _animationController = AnimationController(vsync: this, duration: const Duration(seconds: 1));
     _animationController.forward();
+
+    _textEditingController.addListener(() {
+      final _isEmailValid = emailValidator(_textEditingController.value.text);
+
+      if (_isEmailValid != _isValid) {
+        setState(() => _isValid = _isEmailValid);
+      }
+    });
   }
 
   @override
@@ -51,19 +62,53 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             child: Column(
               children: <Widget>[
                 const SizedBox(height: 10),
-                Text(getCurrentDate()),
+                Text('Get Current Date: ' + getCurrentDate()),
                 const SizedBox(height: 10),
-                Text(getCurrentDate(newDateTimeFormat: kDateDisplayFormat)),
+                Text(
+                  'Get Current Date in $kDateDisplayFormat Format: \n' +
+                      getCurrentDate(newDateTimeFormat: kDateDisplayFormat),
+                  textAlign: TextAlign.center,
+                ),
                 const SizedBox(height: 10),
-                Text(getCurrentDate(newDateTimeFormat: kFullMonthYearFormat)),
+                Text(
+                  'Get Current Date in $kFullMonthYearFormat Format: \n' +
+                      getCurrentDate(newDateTimeFormat: kFullMonthYearFormat),
+                  textAlign: TextAlign.center,
+                ),
                 const SizedBox(height: 10),
-                Text(getCurrentDate(newDateTimeFormat: kFullDateDisplayFormat)),
+                Text(
+                  'Get Current Date in $kFullDateDisplayFormat Format: \n' +
+                      getCurrentDate(newDateTimeFormat: kFullDateDisplayFormat),
+                  textAlign: TextAlign.center,
+                ),
                 const SizedBox(height: 10),
-                Text(convertTimeOfDay(TimeOfDay.now())),
+                Text(
+                  'Format Date Time in dd-MM-yyyy format: \n' +
+                      getCurrentDate().toDisplayDate(newDateTimeFormat: 'dd-MM-yyyy'),
+                  textAlign: TextAlign.center,
+                ),
                 const SizedBox(height: 10),
-                Text(1.isNumeric.toString()),
+                Text(
+                  'Formatting Date Time Object in dd-MM-yyyy format: \n' +
+                      DateTime.now().toDisplayDate(newDateTimeFormat: 'dd-MM-yyyy HH:mm'),
+                  textAlign: TextAlign.center,
+                ),
                 const SizedBox(height: 10),
-                Text('01:01:01'.toDuration.toString()),
+                Text('Convert Time of Day: ' + TimeOfDay.now().toDisplayTime()),
+                const SizedBox(height: 10),
+                Text('Replace Null With Empty: ' + null.replaceNullWithEmpty.toString()),
+                const SizedBox(height: 10),
+                Text('Replace Null With Zero: ' + null.replaceNullWithZero.toString()),
+                const SizedBox(height: 10),
+                Text('Replace True or False: ' + true.replaceTrueOrFalse.toString()),
+                const SizedBox(height: 10),
+                Text('Replace Null with Double: ' + null.replaceNullWithDouble.toString()),
+                const SizedBox(height: 10),
+                Text('Format Number: ' + 1010.869.formatNumber()),
+                const SizedBox(height: 10),
+                Text('Is Numeric: ' + 1.isNumeric.toString()),
+                const SizedBox(height: 10),
+                Text('To Duration: ' + '01:01:01'.toDuration.toString()),
                 const SizedBox(height: 10),
                 // [DecimalInputFormatter] will allow only entered decimal range for the string in text field
                 TextFormField(
@@ -74,7 +119,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 TextFormField(
                   // this method will validate for email id
                   validator: emailValidator,
-                  decoration: InputDecoration(labelText: 'Enter Email Id'),
+                  controller: _textEditingController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(errorText: _isValid, labelText: 'Enter Email Id'),
                 ),
                 const SizedBox(height: 10),
                 FutureBuilder(
@@ -144,6 +191,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 const SizedBox(height: 10),
                 LoadingWidget(itemCount: 1),
                 OTPTextField(
+                  autoFocus: false,
                   noOfOtpFields: 6,
                   onCompleted: (_enteredOtp) => debugPrint('entered otp is: $_enteredOtp'),
                 ),
@@ -165,6 +213,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   @override
   void dispose() {
     _animationController.dispose();
+    _textEditingController.dispose();
 
     super.dispose();
   }

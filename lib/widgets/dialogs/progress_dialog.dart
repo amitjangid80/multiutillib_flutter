@@ -6,7 +6,6 @@ import 'package:progress_dialog/progress_dialog.dart';
 
 ProgressDialog _progressDialog;
 
-/// 2020 September 17 - Thursday
 /// show progress dialog method
 ///
 /// this method will show progress dialog
@@ -18,12 +17,10 @@ showProgressDialog(BuildContext context, {String message = 'Please wait...', Wid
   await _progressDialog.show();
 }
 
-/*
- * 2020 September 17 - Thursday
- * hide progress dialog method
- *
- * this method will hide progress dialog
-**/
+/// hide progress dialog method
+///
+/// this method will hide progress dialog
+/// Uses [ProgressDialog] from [progress_dialog] package
 hideProgressDialog() async {
   if (_progressDialog != null) {
     await _progressDialog.hide();

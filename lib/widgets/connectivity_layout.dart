@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+import 'package:multiutillib/constants.dart';
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 
 /// This widget is used to show messages for network operations
@@ -18,8 +19,8 @@ class ConnectivityLayout extends StatelessWidget {
     @required this.child,
     this.bgColor = Colors.red,
     this.disableInteraction = false,
+    this.message = kInternetNotAvailable,
     this.alignment = Alignment.bottomCenter,
-    this.message = 'Internet Connection not Available.',
     this.messageStyle = const TextStyle(color: Colors.white),
   });
 

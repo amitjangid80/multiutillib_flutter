@@ -2,15 +2,14 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:multiutillib/animations/animations.dart';
-import 'package:multiutillib/enums/dialog_animation_type.dart';
+import 'package:multiutillib/multiutillib.dart';
 
 /// This method will show a dialog box with custom UI and animation
 showConfirmationDialog(
   BuildContext context, {
   Widget transitionAnimation,
-  String negativeBtnText: 'No',
-  String positiveBtnText: 'Yes',
+  String negativeBtnText: kNo,
+  String positiveBtnText: kYes,
   bool barrierDismissible: false,
   Color dividerColor = Colors.blue,
   Color positiveBtnColor = Colors.blue,
