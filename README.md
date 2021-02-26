@@ -76,18 +76,19 @@ Example:
 '2021-02-26 14:06:52.55'.toDateTime
 
 // Convert Date Time to Date Time String for display
-DateTime.now().toDisplayDate(newDateTimeFormat: 'dd-MM-yyyy hh:mm a');
+DateTime.now().formatDateTime(newDateTimeFormat: 'dd-MM-yyyy hh:mm a');
 
 // Convert Date Time String to Date Time String for display
+DateTime.now().formatDateTime();
+
 // getCurrentDate() returns date time string
-DateTime.now().toDisplayTime();
-getCurrentDate().toDisplayDate(newDateTimeFormat: 'dd-MM-yyyy');
+getCurrentDate().formatDateTime(newDateTimeFormat: 'dd-MM-yyyy');
 
 // Convert Time of Day to Time String for display
-TimeOfDay.now().toDisplayTime();
+TimeOfDay.now().formatTime();
 
 // Convert Time of Day String to Time String for display
-'14:39'.toDisplayTime();
+'14:39'.formatTime();
 
 // Convert Time String to Time Of Day Object
 '14:39'.toTimeOfDay
@@ -115,24 +116,20 @@ This is a utility class which will help in getting device name, device id, manag
 12. getCharFromString(stringToExtract) // - returns only characters from string passed
 13. getNumbersFromString(stringToExtract) // - returns only digits from string passed
 14. getAppVersion() // - return current version of the app
-
-You can use [isNumeric] as an extension to check if the value is numeric or not.
-Returns: true or false
-
-Example: 
-1. 123.isNumeric => returns true
-2. '123'.isNumeric => returns true
-3. 'String'.isNumeric => returns false
 ```
 
-## String Extension
+## Extensions
 
 Some of the Utils method can now be used as extensions.
 
 Example:
 
 ```dart
-Text('Is Numeric: ' + 1.isNumeric.toString()),
+// Checking if a string or int or double value is numeric or not
+123.isNumeric => returns true
+'123'.isNumeric => returns true
+'String'.isNumeric => returns false
+
 Text('Format Number: ' + 1010.869.formatNumber()),
 Text('Replace Null With Empty: ' + null.replaceNullWithEmpty)
 Text('Replace True or False: ' + true.replaceTrueOrFalse.toString()),

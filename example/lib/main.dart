@@ -84,13 +84,13 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 const SizedBox(height: 10),
                 Text(
                   'Format Date Time in dd-MM-yyyy format: \n' +
-                      getCurrentDate().toDisplayDate(newDateTimeFormat: 'dd-MM-yyyy'),
+                      getCurrentDate().formatDateTime(newDateTimeFormat: 'dd-MM-yyyy'),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 10),
                 Text(
                   'Formatting Date Time Object in dd-MM-yyyy format: \n' +
-                      DateTime.now().toDisplayDate(newDateTimeFormat: 'dd-MM-yyyy HH:mm'),
+                      DateTime.now().formatDateTime(newDateTimeFormat: 'dd-MM-yyyy HH:mm'),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 10),
@@ -100,12 +100,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Convert Time of Day to String: \n' + TimeOfDay.now().toDisplayTime(),
+                  'Convert Time of Day to String: \n' + TimeOfDay.now().formatTime(),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Convert Time of Day String to String: \n' + '14:39'.toDisplayTime(),
+                  'Convert Time of Day String to String: \n' + '14:39'.formatTime(),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 10),
@@ -120,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Convert DateTime to String: \n' + DateTime.now().toDisplayTime(),
+                  'Convert DateTime to String: \n' + DateTime.now().formatDateTime(),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 10),
