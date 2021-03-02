@@ -62,6 +62,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             child: Column(
               children: <Widget>[
                 const SizedBox(height: 10),
+                OffsetAnimation(
+                  end: 20,
+                  animationController: _animationController,
+                  widget: Container(height: 100, color: Colors.black12, width: double.infinity),
+                ),
+                const SizedBox(height: 10),
                 Text('Get Current Date: ' + getCurrentDate()),
                 const SizedBox(height: 10),
                 Text(

@@ -50,6 +50,20 @@ SlideAnimation(
 ),
 ```
 
+## OffsetAnimation
+
+This widget will help a child widget to perform offset animation
+
+Example of OffsetAnimation:
+
+```dart
+OffsetAnimation(
+  end: 20, // the end parameter is optional
+  animationController: _animationController, // required parameter
+  widget: YourChildWidget, // required parameter
+),
+```
+
 ## DateTimeUtils
 
 This is a utility class which will help in getting current date in format 'yyyy-MM-dd HH:mm:ss' or date format passed.

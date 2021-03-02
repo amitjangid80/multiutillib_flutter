@@ -40,11 +40,11 @@ extension NumberExtension<T extends dynamic> on dynamic {
   bool get isNumeric => double.tryParse(this?.toString() ?? '') != null;
 }
 
-/// [replaceTrueOrFalse] method
+/// [_replaceTrueOrFalse] method
 /// this method will check and replace true/false value with integer value
 int _replaceTrueOrFalse(data) => data?.toString()?.toLowerCase() == 'true' ? 1 : 0;
 
-/// [replaceNullWithEmpty] method
+/// [_replaceNullWithEmpty] method
 /// this method will check and replace null with an empty string
 String _replaceNullWithEmpty(data) {
   if (data == null) {
@@ -58,7 +58,7 @@ String _replaceNullWithEmpty(data) {
   }
 }
 
-/// [replaceNullWithZero] method
+/// [_replaceNullWithZero] method
 /// this method will check and replace null with an integer value
 int _replaceNullWithZero(data) {
   if (data == null) {
@@ -72,7 +72,7 @@ int _replaceNullWithZero(data) {
   }
 }
 
-/// [replaceNullWithDouble] method
+/// [_replaceNullWithDouble] method
 /// this method will check and replace null with an double value
 double _replaceNullWithDouble(data) {
   if (data.toString() == null) {
@@ -86,7 +86,7 @@ double _replaceNullWithDouble(data) {
   }
 }
 
-/// [formatNumber] method
+/// [_formatNumber] method
 /// this method will format the number in default pattern or custom pattern
 String _formatNumber({@required var numberToFormat, String customPattern}) {
   if (numberToFormat == null) numberToFormat = 0;

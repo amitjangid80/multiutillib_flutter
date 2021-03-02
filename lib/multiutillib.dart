@@ -11,6 +11,7 @@ export 'utils/date_time_utils.dart';
 export 'animations/animations.dart';
 export 'animations/fade_animation.dart';
 export 'animations/slide_animation.dart';
+export 'animations/offset_animation.dart';
 //#endregion animations
 
 //#region enums
