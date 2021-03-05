@@ -144,11 +144,23 @@ Example:
 '123'.isNumeric => returns true
 'String'.isNumeric => returns false
 
+// Converting a string to two digits
+Text('To Two Digit: ${9.toTwoDigits}'),
+Text('To Two Digit: ${'9'.toTwoDigits}'),
+
+// Converting a string to three digits
+Text('To Three Digit: ${9.toThreeDigits}'),
+Text('To Three Digit: ${'9'.toThreeDigits}'),
+
+// Converting a string to a fixed length
+Text('To Length of String: ${'9'.toLengthOfString(5)}'),
+
 Text('Format Number: ' + 1010.869.formatNumber()),
 Text('Replace Null With Empty: ' + null.replaceNullWithEmpty)
 Text('Replace True or False: ' + true.replaceTrueOrFalse.toString()),
 Text('Replace Null With Zero: ' + null.replaceNullWithZero.toString()),
 Text('Replace Null with Double: ' + null.replaceNullWithDouble.toString()),
+Text('Convert Duration to Time String: ' + '16:35:34'.toDuration.toTimeString(newTimeString: 'mm:ss')),
 ```
 
 ## ShowConfirmationDialog

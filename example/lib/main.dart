@@ -144,6 +144,18 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 const SizedBox(height: 10),
                 Text('To Duration: ' + '01:01:01'.toDuration.toString()),
                 const SizedBox(height: 10),
+                Text('From Duration: ' + '16:35:34'.toDuration.toTimeString(newTimeString: 'mm:ss')),
+                const SizedBox(height: 10),
+                Text('To Two Digit: ${9.toTwoDigits}'),
+                const SizedBox(height: 10),
+                Text('To Two Digit: ${'9'.toTwoDigits}'),
+                const SizedBox(height: 10),
+                Text('To Three Digit: ${9.toThreeDigits}'),
+                const SizedBox(height: 10),
+                Text('To Three Digit: ${'9'.toThreeDigits}'),
+                const SizedBox(height: 10),
+                Text('To Length of String: ${'9'.toLengthOfString(5)}'),
+                const SizedBox(height: 10),
                 // [DecimalInputFormatter] will allow only entered decimal range for the string in text field
                 TextFormField(
                   inputFormatters: [DecimalInputFormatter(decimalRange: 2)],

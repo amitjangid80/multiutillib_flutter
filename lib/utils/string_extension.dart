@@ -5,21 +5,27 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 extension StringExtension<T extends dynamic> on dynamic {
-  /// [toInt] extension method
+  /// [toInt] extension
   /// this method can be used on string as an extension to convert a string into integer
   int get toInt => int.tryParse(this);
 
-  /// [toDouble] extension method
+  /// [toDouble] extension
   /// this method can be used on string as an extension to convert a string into double
   double get toDouble => double.tryParse(this);
 
-  /// [replaceTrueOrFalse] method
+  /// [replaceTrueOrFalse] extension
   /// this method will check and replace true/false value with integer value
   int get replaceTrueOrFalse => _replaceTrueOrFalse(this);
 
-  /// [replaceNullWithZero] method
+  /// [replaceNullWithZero] extension
   /// this method will check and replace null with an integer value
   int get replaceNullWithZero => _replaceNullWithZero(this);
+
+  String get toTwoDigits => _digitsString(this, lengthOfString: 2);
+
+  String get toThreeDigits => _digitsString(this, lengthOfString: 3);
+
+  String toLengthOfString(lengthOfString) => _digitsString(this, lengthOfString: lengthOfString);
 
   /// [replaceNullWithEmpty] method
   /// this method will check and replace null with an empty string
@@ -95,3 +101,5 @@ String _formatNumber({@required var numberToFormat, String customPattern}) {
   return NumberFormat.currency(decimalDigits: 2, customPattern: customPattern ?? '##,###,###.##')
       .format(_numberToFormat);
 }
+
+String _digitsString(dynamic n, {int lengthOfString}) => n.toString().padLeft(lengthOfString ?? 2, "0");

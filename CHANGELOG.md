@@ -1,3 +1,9 @@
+## [1.0.2] - 05-03-2021
+* Added new extensions for ease of use for converting.
+
+## [1.0.1] - 26-02-2021
+* Added extensions for ease of use for converting.
+
 ## [1.0.0] - 26-02-2021
 * Major Changes in package.
 * Deprecated related methods used in extension.
