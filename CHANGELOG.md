@@ -1,3 +1,6 @@
+## [1.0.4] - 
+* Added Custom Toggle Button.
+
 ## [1.0.3] - 12-03-2021
 * Added shadow color option for MaterialCard widget.
 * Code modification and removal of unwanted codes.

@@ -349,6 +349,20 @@ RichTextWidget(
 ),
 ```
 
+## CustomToggleButton
+
+This widget will display toggle switch with text.
+
+Example:
+
+```dart
+CustomToggleButton(
+  textOn: 'On',
+  textOff: 'Off',
+  onChanged: (_value) => debugPrint('selected toggle value is: $_value'),
+),
+```
+
 ## DecimalInputFormatter
 
 This is an [TextInputFormatter] for [TextField] for allowing to enter only allowed decimal range
