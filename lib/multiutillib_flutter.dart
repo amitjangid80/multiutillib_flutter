@@ -1,6 +1,6 @@
 library multiutillib_flutter;
 
-export 'constants.dart';
+export 'utils/constants.dart';
 
 //#region utils
 export 'utils/utils.dart';

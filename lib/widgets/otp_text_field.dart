@@ -63,9 +63,9 @@ class _OTPTextFieldState extends State<OTPTextField> {
   void initState() {
     super.initState();
 
-    _focusNodesList = List<FocusNode>(widget.noOfOtpFields);
+    _focusNodesList = List.filled(widget.noOfOtpFields, null);
     _otpList = List.generate(widget.noOfOtpFields, (int i) => '');
-    _otpTextControllersList = List<TextEditingController>(widget.noOfOtpFields);
+    _otpTextControllersList = List.filled(widget.noOfOtpFields, null);
 
     _underlineInputBorder = UnderlineInputBorder(
       borderSide: BorderSide(color: widget.borderColor, width: widget.borderWidth),

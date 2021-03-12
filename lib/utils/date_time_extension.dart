@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:multiutillib/multiutillib.dart';
 
-extension DurationExtension<T extends String> on String {
+extension DurationExtension on String {
   /// [toDuration] extension
   /// this extension will convert a string into [Duration] object
   Duration get toDuration => _parseDuration(this);
@@ -27,7 +27,7 @@ extension DurationExtension<T extends String> on String {
   String formatTime({String newTimeFormat}) => _convertTimeString(this, newTimeFormat: newTimeFormat);
 }
 
-extension DateTimeExtension<T extends DateTime> on DateTime {
+extension DateTimeExtension on DateTime {
   /// [toTimeOfDay] extension
   /// this extension will convert a string into [TimeOfDay] object
   TimeOfDay get toTimeOfDay => TimeOfDay.fromDateTime(this);
@@ -38,13 +38,13 @@ extension DateTimeExtension<T extends DateTime> on DateTime {
       _formatDateTime(this.toString(), newDateTimeFormat: newDateTimeFormat);
 }
 
-extension FromDurationExtension<T extends Duration> on Duration {
+extension FromDurationExtension on Duration {
   /// [toTimeString] extension method
   /// this method will convert the provided duration into default time String
   String toTimeString({String newTimeString}) => _convertToTimeString(this, newTimeString: newTimeString);
 }
 
-extension TimeOfDayExtension<T extends TimeOfDay> on TimeOfDay {
+extension TimeOfDayExtension on TimeOfDay {
   /// [formatTime] extension method
   /// this extension method will convert a time of day into provided or default time format string
   String formatTime({String newTimeFormat}) => _convertTimeOfDay(this, newTimeFormat: newTimeFormat);

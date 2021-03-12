@@ -155,12 +155,11 @@ class _CustomConfirmDialog extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: RaisedButton(
-                      elevation: 4,
-                      color: negativeBtnColor,
-                      clipBehavior: Clip.antiAlias,
+                    child: DefaultButton(
+                      text: negativeBtnText,
+                      btnColor: negativeBtnColor,
+                      btnTextStyle: negativeBtnStyle,
                       onPressed: () => Navigator.pop(context, ""),
-                      child: Text(negativeBtnText, style: negativeBtnStyle),
                       shape: const RoundedRectangleBorder(
                         borderRadius: const BorderRadius.only(
                           topLeft: const Radius.circular(30),
@@ -170,12 +169,11 @@ class _CustomConfirmDialog extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    child: RaisedButton(
-                      elevation: 4,
-                      color: positiveBtnColor,
+                    child: DefaultButton(
+                      text: positiveBtnText,
+                      btnColor: positiveBtnColor,
                       onPressed: onPositivePressed,
-                      clipBehavior: Clip.antiAlias,
-                      child: Text(positiveBtnText, style: positiveBtnStyle),
+                      btnTextStyle: positiveBtnStyle,
                       shape: const RoundedRectangleBorder(
                         borderRadius: const BorderRadius.only(
                           topRight: const Radius.circular(30),

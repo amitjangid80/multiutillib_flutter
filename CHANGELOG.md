@@ -1,3 +1,7 @@
+## [1.0.3] - 12-03-2021
+* Added shadow color option for MaterialCard widget.
+* Code modification and removal of unwanted codes.
+
 ## [1.0.2] - 05-03-2021
 * Added new extensions for ease of use for converting.
 

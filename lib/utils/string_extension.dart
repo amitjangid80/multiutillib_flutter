@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
 
-extension StringExtension<T extends dynamic> on dynamic {
+extension StringExtension on dynamic {
   /// [toInt] extension
   /// this method can be used on string as an extension to convert a string into integer
   int get toInt => int.tryParse(this);
@@ -21,10 +21,16 @@ extension StringExtension<T extends dynamic> on dynamic {
   /// this method will check and replace null with an integer value
   int get replaceNullWithZero => _replaceNullWithZero(this);
 
+  /// [toTwoDigits] extension
+  /// this extension will convert a string to two digits
   String get toTwoDigits => _digitsString(this, lengthOfString: 2);
 
+  /// [toThreeDigits] extension
+  /// this extension will convert a string to three digits
   String get toThreeDigits => _digitsString(this, lengthOfString: 3);
 
+  /// [toLengthOfString] extension
+  /// this extension will convert a string to the length specified
   String toLengthOfString(lengthOfString) => _digitsString(this, lengthOfString: lengthOfString);
 
   /// [replaceNullWithEmpty] method

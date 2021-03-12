@@ -6,18 +6,20 @@ import 'package:flutter/material.dart';
 class DefaultButton extends StatelessWidget {
   final String text;
   final Color btnColor;
+  final double elevation;
   final Function onPressed;
-  final double borderRadius;
+  final OutlinedBorder shape;
   final TextStyle btnTextStyle;
   final EdgeInsetsGeometry margin;
   final bool isEnabled, isUpperCase;
 
   DefaultButton({
     this.btnColor,
+    this.elevation = 4,
     this.isEnabled = true,
-    this.borderRadius = 24,
     this.isUpperCase = true,
     this.margin = const EdgeInsets.only(top: 10),
+    this.shape = const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
     this.btnTextStyle = const TextStyle(
       fontSize: 16,
       letterSpacing: 0.27,
@@ -30,18 +32,15 @@ class DefaultButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: margin,
-      width: double.infinity,
-      child: ElevatedButton(
-        clipBehavior: Clip.antiAlias,
-        child: Text(text, style: btnTextStyle),
-        onPressed: isEnabled ? onPressed : null,
-        style: ElevatedButton.styleFrom(
-          primary: btnColor,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius)),
-        ),
+    return ElevatedButton(
+      clipBehavior: Clip.antiAlias,
+      child: Text(text, style: btnTextStyle),
+      onPressed: isEnabled ? onPressed : null,
+      style: ElevatedButton.styleFrom(
+        shape: shape,
+        primary: btnColor,
+        elevation: elevation,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
     );
   }

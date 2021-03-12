@@ -138,13 +138,11 @@ class _CustomDialog extends StatelessWidget {
               left: 20,
               right: 20,
               bottom: 0,
-              child: RaisedButton(
-                elevation: 4,
-                color: btnColor,
-                clipBehavior: Clip.antiAlias,
-                child: Text(btnText, style: btnStyle),
+              child: DefaultButton(
+                text: btnText,
+                btnColor: btnColor,
+                btnTextStyle: btnStyle,
                 onPressed: () => Navigator.pop(context),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
               ),
             ),
           ],

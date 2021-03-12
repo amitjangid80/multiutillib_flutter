@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:intl/intl.dart';
 import 'package:device_info/device_info.dart';
@@ -25,7 +26,7 @@ Future<String> getDeviceName() async {
   if (Platform.isAndroid) {
     AndroidDeviceInfo _androidDeviceInfo = await _deviceInfoPlugin.androidInfo;
     _deviceName = _androidDeviceInfo.model;
-  } else {
+  } else if (Platform.isIOS) {
     IosDeviceInfo _iosDeviceInfo = await _deviceInfoPlugin.iosInfo;
     _deviceName = _iosDeviceInfo.name;
   }
