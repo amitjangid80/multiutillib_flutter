@@ -218,6 +218,65 @@ showCustomDialog(
 );
 ```
 
+## CustomDateRangePicker
+
+This class wil help display custom date range picker dialog.
+
+Example: 
+
+```dart
+showCustomDateRangePicker({
+  @required BuildContext context,
+  @required Function onCancelClick,
+  String applyButtonText = 'Apply',
+  String cancelButtonText = 'Cancel',
+  Color leftArrowColor = Colors.blue,
+  Color rightArrowColor = Colors.blue,
+  Color applyButtonColor = Colors.blue,
+  Color cancelButtonColor = Colors.red,
+  Color weekDaysTextColor = Colors.blue,
+  Color selectedRangeColor = Colors.blue,
+  Color monthYearTextColor = Colors.black,
+  @required Function(DateTime startDate, DateTime endDate) onApplyClick,
+  TextStyle applyButtonTextStyle = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+  TextStyle cancelButtonTextStyle = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+  DateTime minimumDate,
+  DateTime maximumDate,
+  DateTime initialEndDate,
+  DateTime initialStartDate,
+  bool barrierDismissible = false,
+});
+```
+
+## CustomDatePicker
+
+This class wil help display custom date picker dialog.
+
+Example: 
+
+```dart
+showCustomDatePicker({
+  @required BuildContext context,
+  @required Function onCancelClick,
+  String applyButtonText = 'Apply',
+  String cancelButtonText = 'Cancel',
+  Color leftArrowColor = Colors.blue,
+  Color rightArrowColor = Colors.blue,
+  Color applyButtonColor = Colors.blue,
+  Color cancelButtonColor = Colors.red,
+  Color weekDaysTextColor = Colors.blue,
+  Color selectedDateColor = Colors.blue,
+  Color monthYearTextColor = Colors.black,
+  @required Function(DateTime dateTime) onApplyClick,
+  TextStyle applyButtonTextStyle = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+  TextStyle cancelButtonTextStyle = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+  DateTime minimumDate,
+  DateTime maximumDate,
+  DateTime initialStartDate,
+  bool barrierDismissible = false,
+});
+```
+
 ## ProgressDialog
 
 This class will help in showing and hiding progress dialog with custom loading widget.
@@ -356,11 +415,19 @@ This widget will display toggle switch with text.
 Example:
 
 ```dart
-CustomToggleButton(
-  textOn: 'On',
-  textOff: 'Off',
-  onChanged: (_value) => debugPrint('selected toggle value is: $_value'),
-),
+CustomToggleButton({
+    @required this.textOn,
+    @required this.textOff,
+    @required this.onChanged,
+    this.width = 200,
+    this.height = 45,
+    this.borderRadius = 50,
+    this.transitionTime = 300,
+    this.activeTextColor = Colors.black,
+    this.activeSwitchColor = Colors.white,
+    this.inactiveTextColor = Colors.white,
+    this.inactiveSwitchColor = Colors.blue,
+});
 ```
 
 ## DecimalInputFormatter

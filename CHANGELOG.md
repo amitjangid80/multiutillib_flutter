@@ -1,5 +1,7 @@
-## [1.0.4] - 
+## [1.0.4] - 15-03-2021
 * Added Custom Toggle Button.
+* Added Custom Date Picker Dialog.
+* Added Custom Date Range Picker Dialog.
 
 ## [1.0.3] - 12-03-2021
 * Added shadow color option for MaterialCard widget.

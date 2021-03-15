@@ -53,9 +53,9 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
 
     return MaterialCard(
       elevation: 2,
-      borderRadius: 50,
       margin: const EdgeInsets.all(0),
       padding: const EdgeInsets.all(0),
+      borderRadius: widget.borderRadius,
       child: Container(
         width: widget.width,
         height: widget.height,

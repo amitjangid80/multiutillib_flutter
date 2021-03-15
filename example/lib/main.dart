@@ -62,6 +62,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             child: Column(
               children: <Widget>[
                 const SizedBox(height: 10),
+                CustomToggleButton(textOn: 'On', textOff: 'Off', onChanged: (_value) => debugPrint('$_value')),
+                const SizedBox(height: 10),
                 OffsetAnimation(
                   end: 20,
                   animationController: _animationController,
@@ -189,6 +191,28 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 ),
                 const SizedBox(height: 10),
                 HyperLinkText(url: 'http://www.google.com', text: 'Open Google'),
+                DefaultButton(
+                  text: 'Show Date Range Picker',
+                  margin: const EdgeInsets.only(top: 10),
+                  onPressed: () {
+                    showCustomDateRangePicker(
+                      context: context,
+                      onCancelClick: () {},
+                      onApplyClick: (startDate, enDate) {},
+                    );
+                  },
+                ),
+                DefaultButton(
+                  text: 'Show Date Picker',
+                  margin: const EdgeInsets.only(top: 10),
+                  onPressed: () {
+                    showCustomDatePicker(
+                      context: context,
+                      onCancelClick: () {},
+                      onApplyClick: (selectedDate) {},
+                    );
+                  },
+                ),
                 DefaultButton(
                   text: 'Show Custom Dialog',
                   margin: const EdgeInsets.only(top: 10),
