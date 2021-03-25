@@ -1,3 +1,6 @@
+## [1.0.5] - 25-03-2021
+* Updated supporting packages version.
+
 ## [1.0.4] - 15-03-2021
 * Added Custom Toggle Button.
 * Added Custom Date Picker Dialog.

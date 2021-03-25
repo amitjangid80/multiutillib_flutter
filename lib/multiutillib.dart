@@ -43,5 +43,4 @@ export 'widgets/dialogs/progress_dialog.dart';
 export 'widgets/dialogs/custom_confirm_dialog.dart';
 export 'widgets/custom_date_picker/date_picker_popup_view.dart';
 export 'widgets/custom_date_range_picker/date_range_picker_popup_view.dart';
-
 //#endregion widgets
