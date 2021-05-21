@@ -15,7 +15,7 @@ showProgressDialog(BuildContext context, {String message = 'Please wait...', Wid
 
   _progressDialog.style(
     message: message,
-    progressWidget: progressWidget ?? Padding(child: progressWidget, padding: const EdgeInsets.all(10)),
+    progressWidget: progressWidget != null ? Padding(child: progressWidget, padding: const EdgeInsets.all(10)) : null,
   );
 
   await _progressDialog.show();

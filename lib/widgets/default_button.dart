@@ -18,14 +18,14 @@ class DefaultButton extends StatelessWidget {
     this.height = 50,
     this.elevation = 4,
     this.isEnabled = true,
-    this.isUpperCase = true,
+    this.isUpperCase = false,
     this.margin = const EdgeInsets.only(top: 10),
-    this.shape = const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+    this.shape = const RoundedRectangleBorder(borderRadius: const BorderRadius.all(const Radius.circular(30))),
     this.btnTextStyle = const TextStyle(
       fontSize: 16,
       letterSpacing: 0.27,
       color: Colors.white,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w700,
     ),
     @required this.text,
     @required this.onPressed,
@@ -38,8 +38,8 @@ class DefaultButton extends StatelessWidget {
       margin: margin,
       child: ElevatedButton(
         clipBehavior: Clip.antiAlias,
-        child: Text(text, style: btnTextStyle),
         onPressed: isEnabled ? onPressed : null,
+        child: Text(isUpperCase ? text.toUpperCase() : text, style: btnTextStyle),
         style: ElevatedButton.styleFrom(
           shape: shape,
           primary: btnColor,

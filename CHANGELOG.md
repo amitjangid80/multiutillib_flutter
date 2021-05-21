@@ -1,3 +1,7 @@
+## [1.0.6] - 21-05-2021
+* Fixed bug where margin was not applied to Default Button.
+* 2. Added parameter to increase height of Default Button.
+
 ## [1.0.5] - 25-03-2021
 * Updated supporting packages version.
 
