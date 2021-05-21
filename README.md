@@ -9,9 +9,8 @@ This package used following packages:
 3. [device_info](https://pub.dev/packages/device_info)
 4. [url_launcher](https://pub.dev/packages/url_launcher)
 5. [package_info](https://pub.dev/packages/package_info)
-6. [progress_dialog](https://pub.dev/packages/progress_dialog)
-7. [simple_animations](https://pub.dev/packages/simple_animations)
-8. [connectivity_wrapper](https://pub.dev/packages/connectivity_wrapper)
+6. [simple_animations](https://pub.dev/packages/simple_animations)
+7. [connectivity_wrapper](https://pub.dev/packages/connectivity_wrapper)
 
 ## Examples
 

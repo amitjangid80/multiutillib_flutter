@@ -9,7 +9,7 @@ enum ProgressDialogType { Normal, Download }
 /// show progress dialog method
 ///
 /// this method will show progress dialog
-/// Uses [_ProgressDialog] from [progress_dialog] package
+/// Uses [_ProgressDialog] class
 showProgressDialog(BuildContext context, {String message = 'Please wait...', Widget progressWidget}) async {
   _progressDialog = _ProgressDialog(context, isDismissible: false, type: ProgressDialogType.Normal);
 
