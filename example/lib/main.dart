@@ -247,7 +247,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   margin: const EdgeInsets.only(top: 10),
                   onPressed: () async {
                     // calling show progress dialog method
-                    await showProgressDialog(context, progressWidget: CircularProgressIndicator());
+                    await showProgressDialog(context, /*progressWidget: const CircularProgressIndicator()*/);
 
                     await Future.delayed(const Duration(seconds: 3));
 
