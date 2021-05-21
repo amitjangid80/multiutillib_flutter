@@ -6,15 +6,16 @@ import 'package:flutter/material.dart';
 class DefaultButton extends StatelessWidget {
   final String text;
   final Color btnColor;
-  final double elevation;
   final Function onPressed;
   final OutlinedBorder shape;
   final TextStyle btnTextStyle;
+  final double height, elevation;
   final EdgeInsetsGeometry margin;
   final bool isEnabled, isUpperCase;
 
   DefaultButton({
     this.btnColor,
+    this.height = 50,
     this.elevation = 4,
     this.isEnabled = true,
     this.isUpperCase = true,
@@ -32,15 +33,19 @@ class DefaultButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      clipBehavior: Clip.antiAlias,
-      child: Text(text, style: btnTextStyle),
-      onPressed: isEnabled ? onPressed : null,
-      style: ElevatedButton.styleFrom(
-        shape: shape,
-        primary: btnColor,
-        elevation: elevation,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return Container(
+      height: height,
+      margin: margin,
+      child: ElevatedButton(
+        clipBehavior: Clip.antiAlias,
+        child: Text(text, style: btnTextStyle),
+        onPressed: isEnabled ? onPressed : null,
+        style: ElevatedButton.styleFrom(
+          shape: shape,
+          primary: btnColor,
+          elevation: elevation,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
       ),
     );
   }

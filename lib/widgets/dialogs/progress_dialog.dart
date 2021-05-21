@@ -12,7 +12,11 @@ ProgressDialog _progressDialog;
 /// Uses [ProgressDialog] from [progress_dialog] package
 showProgressDialog(BuildContext context, {String message = 'Please wait...', Widget progressWidget}) async {
   _progressDialog = ProgressDialog(context, isDismissible: false, type: ProgressDialogType.Normal);
-  _progressDialog.style(progressWidget: progressWidget, message: message);
+
+  _progressDialog.style(
+    message: message,
+    progressWidget: progressWidget ?? Padding(child: progressWidget, padding: const EdgeInsets.all(10)),
+  );
 
   await _progressDialog.show();
 }

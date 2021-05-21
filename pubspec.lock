@@ -49,7 +49,7 @@ packages:
       name: connectivity_wrapper
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.5"
+    version: "1.0.6"
   device_info:
     dependency: "direct main"
     description:
@@ -169,14 +169,14 @@ packages:
       name: shimmer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.2"
+    version: "2.0.0"
   simple_animations:
     dependency: "direct main"
     description:
       name: simple_animations
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.3"
+    version: "3.1.1"
   sky_engine:
     dependency: transitive
     description: flutter
