@@ -117,18 +117,12 @@ This is a utility class which will help in getting device name, device id, manag
 ```dart
 1. getDeviceName() // - returns future string
 2. getDeviceId() // - returns future string
-3. replaceNullWithEmpty(String to be replace) // - returns string value or empty string
-4. replaceNullWithZero(String to be replace) // - returns integer value or zero
-5. replaceNullWithDouble(String to be replace) // - returns double value or zero
-6. replaceTrueOrFalse(String to be replace) // - returns 1 for true value or 0 for false value
-7. formatNumber({numberToFormat, customPattern = '##,###,###.##'}) // - returns formatted value
-8. isNumeric(StringToCheck) // - returns true or false if string passed is numeric
-9. getSingleDigitRandomNumber() // - returns single digit randomly
-10. getRandomNumber(min: MinValue, max: MaxValue) // - returns randomly generated number between min and max value
-11. getRandomMobileNumber() // - returns randomly generated mobile number
-12. getCharFromString(stringToExtract) // - returns only characters from string passed
-13. getNumbersFromString(stringToExtract) // - returns only digits from string passed
-14. getAppVersion() // - return current version of the app
+3. getSingleDigitRandomNumber() // - returns single digit randomly
+4. getRandomNumber(min: MinValue, max: MaxValue) // - returns randomly generated number between min and max value
+5. getRandomMobileNumber() // - returns randomly generated mobile number
+6. getCharFromString(stringToExtract) // - returns only characters from string passed
+7. getNumbersFromString(stringToExtract) // - returns only digits from string passed
+8. getAppVersion() // - return current version of the app
 ```
 
 ## Extensions
@@ -154,8 +148,11 @@ Text('To Three Digit: ${'9'.toThreeDigits}'),
 // Converting a string to a fixed length
 Text('To Length of String: ${'9'.toLengthOfString(5)}'),
 
+// Formatting numbers with extensions
 Text('Format Number: ' + 1010.869.formatNumber()),
-Text('Replace Null With Empty: ' + null.replaceNullWithEmpty)
+Text('Format Number to Compact: ' + '88944444'.formatNumberToCompact), // return 1K, 2k, 2M
+
+Text('Replace Null With Empty: ' + null.replaceNullWithEmpty),
 Text('Replace True or False: ' + true.replaceTrueOrFalse.toString()),
 Text('Replace Null With Zero: ' + null.replaceNullWithZero.toString()),
 Text('Replace Null with Double: ' + null.replaceNullWithDouble.toString()),

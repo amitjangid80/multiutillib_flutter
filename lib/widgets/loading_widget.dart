@@ -9,12 +9,14 @@ import 'package:shimmer/shimmer.dart';
 /// This widget uses [Shimmer] widget from [shimmer] package
 class LoadingWidget extends StatelessWidget {
   final int itemCount;
+  final EdgeInsetsGeometry margin;
   final Color baseColor, highlightColor;
 
   LoadingWidget({
     this.itemCount = 6,
     this.highlightColor = Colors.white,
     this.baseColor = const Color(0xFFE0E0E0),
+    this.margin = const EdgeInsets.symmetric(horizontal: 12),
   });
 
   @override
@@ -22,10 +24,11 @@ class LoadingWidget extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       itemCount: itemCount,
+      padding: const EdgeInsets.all(0),
       physics: const NeverScrollableScrollPhysics(),
-      padding: const EdgeInsets.only(left: 5, right: 5),
       itemBuilder: (context, _position) {
         return MaterialCard(
+          margin: margin,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,

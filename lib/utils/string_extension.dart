@@ -43,6 +43,10 @@ extension StringExtension on dynamic {
 }
 
 extension NumberExtension<T extends dynamic> on dynamic {
+  /// [formatNumberToCompact] method
+  /// this method will format the number in compact view i.e. 1K, 2K etc
+  String get formatNumberToCompact => _formatNumberToCompact(numberToFormat: this);
+
   /// [formatNumber] method
   /// this method will format the number in default pattern or custom pattern
   String formatNumber({String customPattern}) => _formatNumber(numberToFormat: this, customPattern: customPattern);
@@ -96,6 +100,13 @@ double _replaceNullWithDouble(data) {
   } else {
     return double.parse(data.toString());
   }
+}
+
+_formatNumberToCompact({numberToFormat}) {
+  if (numberToFormat == null) numberToFormat = 0;
+  var _numberToFormat = double.parse(numberToFormat.toString());
+
+  return NumberFormat.compactCurrency(symbol: '', decimalDigits: 2).format(_numberToFormat);
 }
 
 /// [_formatNumber] method

@@ -142,6 +142,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 const SizedBox(height: 10),
                 Text('Format Number: ' + 1010.869.formatNumber()),
                 const SizedBox(height: 10),
+                Text('Format Number to Compact: ' + '88944444'.formatNumberToCompact),
+                const SizedBox(height: 10),
                 Text('Is Numeric: ' + 1.isNumeric.toString()),
                 const SizedBox(height: 10),
                 Text('To Duration: ' + '01:01:01'.toDuration.toString()),

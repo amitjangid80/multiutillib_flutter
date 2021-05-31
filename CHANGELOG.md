@@ -1,4 +1,7 @@
-## [1.0.6] - 21-05-2021
+## [1.0.7] 31-05-2021
+* Added new extension for formatting number in compact view
+
+## [1.0.6] - 22-05-2021
 * Fixed bug where margin was not applied to Default Button.
 * 2. Added parameter to increase height of Default Button.
 
@@ -34,19 +37,15 @@
 * Updated dependent package version.
 
 ## [0.0.4] - 21-01-2021
-
 * Added comments for use.
 * Added new utility methods.
 
 ## [0.0.3] - 29-12-2020
-
 * Added formatting to documentation.
 
 ## [0.0.2] - 29-12-2020
-
 * Added new method in Utils class for formatting number in given pattern.
 * Added documentation for showing how to use the widgets and utilities.
 
 ## [0.0.1] - 26-12-2020
-
 * Initial Release

@@ -1,6 +1,6 @@
 name: multiutillib
 description: A new Flutter package with multiple utilities to use on the go and ease in development process.
-version: 1.0.6
+version: 1.0.7
 authors:
   - Amit Jangid<amitjangid80@yahoo.in>
 homepage: https://github.com/amitjangid80/multiutillib_flutter.git
@@ -14,9 +14,9 @@ dependencies:
 
   intl: ^0.17.0
   shimmer: ^2.0.0
-  device_info: ^2.0.0
-  url_launcher: ^6.0.2
-  package_info: ^2.0.0
+  device_info: ^2.0.1
+  url_launcher: ^6.0.4
+  package_info: ^2.0.1
   simple_animations: ^3.1.1
   connectivity_wrapper: ^1.0.6
 
