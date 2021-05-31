@@ -1,7 +1,5 @@
 // Created by AMIT JANGID on 26/02/21.
 
-import 'package:flutter/material.dart';
-
 import 'package:intl/intl.dart';
 
 extension StringExtension on dynamic {
@@ -58,7 +56,7 @@ extension NumberExtension<T extends dynamic> on dynamic {
 
 /// [_replaceTrueOrFalse] method
 /// this method will check and replace true/false value with integer value
-int _replaceTrueOrFalse(data) => data?.toString()?.toLowerCase() == 'true' ? 1 : 0;
+int _replaceTrueOrFalse(data) => data?.toString().toLowerCase() == 'true' ? 1 : 0;
 
 /// [_replaceNullWithEmpty] method
 /// this method will check and replace null with an empty string
@@ -91,7 +89,7 @@ int _replaceNullWithZero(data) {
 /// [_replaceNullWithDouble] method
 /// this method will check and replace null with an double value
 double _replaceNullWithDouble(data) {
-  if (data.toString() == null) {
+  if (data == null) {
     return 0.0;
   } else if (data.toString().toLowerCase() == 'null') {
     return 0.0;

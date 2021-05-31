@@ -127,7 +127,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.0.7"
+    version: "1.1.0"
   nested:
     dependency: transitive
     description:

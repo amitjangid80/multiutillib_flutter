@@ -85,7 +85,7 @@ int replaceNullWithZero(data) {
 /// this method will check and replace null with an double value
 @Deprecated('You can use .replaceNullWithDouble extension.')
 double replaceNullWithDouble(data) {
-  if (data.toString() == null) {
+  if (data == null) {
     return 0.0;
   } else if (data.toString().toLowerCase() == 'null') {
     return 0.0;
@@ -116,10 +116,6 @@ String formatNumber({required var numberToFormat, String customPattern = '##,###
 /// this method will check if passed string is numeric or not
 @Deprecated('You can use .isNumeric extension.')
 bool isNumeric(String s) {
-  if (s == null) {
-    return false;
-  }
-
   return double.tryParse(s) != null;
 }
 
@@ -138,10 +134,6 @@ String getSingleDigitRandomNumber() {
 /// [getRandomNumber] method
 /// this method will return a random number between min and max number passed
 String getRandomNumber({required int min, required int max}) {
-  if (min == null || max == null) {
-    return 'min or max value is null';
-  }
-
   if (min <= 0 || max <= 0) {
     return 'min or max value cannot be less than or equal to zero';
   }
@@ -169,10 +161,6 @@ String getRandomMobileNumber() {
 /// [getCharFromString] method
 /// this method will return characters from string passed
 String getCharFromString({required String stringToExtract}) {
-  if (stringToExtract == null) {
-    return 'String passed cannot be null';
-  }
-
   if (stringToExtract.isEmpty) {
     return 'String passed cannot be empty';
   }
