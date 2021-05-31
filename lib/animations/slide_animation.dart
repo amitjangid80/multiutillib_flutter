@@ -11,10 +11,10 @@ class SlideAnimation extends StatefulWidget {
   final AnimationController animationController;
 
   SlideAnimation({
-    @required this.position,
-    @required this.itemCount,
-    @required this.animationController,
-    @required this.child,
+    required this.position,
+    required this.itemCount,
+    required this.animationController,
+    required this.child,
     this.slideDirection = SlideDirection.fromRight,
   });
 

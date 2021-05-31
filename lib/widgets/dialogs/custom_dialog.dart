@@ -18,8 +18,8 @@ showCustomDialog(
   TextStyle descStyle = const TextStyle(fontSize: 16, letterSpacing: 0.27, color: Colors.black),
   TextStyle btnStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
   TextStyle titleStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.bold),
-  @required String title,
-  @required String description,
+  required String title,
+  required String description,
 }) {
   return showGeneralDialog(
     context: context,
@@ -73,16 +73,16 @@ class _CustomDialog extends StatelessWidget {
   final TextStyle btnStyle, titleStyle, descStyle;
 
   _CustomDialog({
-    @required this.title,
-    @required this.btnText,
-    @required this.btnColor,
-    @required this.btnStyle,
-    @required this.descStyle,
-    @required this.titleStyle,
-    @required this.description,
-    @required this.dividerColor,
-    @required this.descTextAlign,
-    @required this.titleTextAlign,
+    required this.title,
+    required this.btnText,
+    required this.btnColor,
+    required this.btnStyle,
+    required this.descStyle,
+    required this.titleStyle,
+    required this.description,
+    required this.dividerColor,
+    required this.descTextAlign,
+    required this.titleTextAlign,
   });
 
   @override

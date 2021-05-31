@@ -9,7 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 class HyperLinkText extends StatelessWidget {
   final String url, text;
 
-  HyperLinkText({@required this.url, @required this.text});
+  HyperLinkText({required this.url, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class HyperLinkText extends StatelessWidget {
       onTap: _launchUrl,
       child: Text(
         text,
-        style: Theme.of(context).textTheme.headline6.copyWith(color: Colors.blue, decoration: TextDecoration.underline),
+        style: Theme.of(context).textTheme.headline6!.copyWith(color: Colors.blue, decoration: TextDecoration.underline),
       ),
     );
   }

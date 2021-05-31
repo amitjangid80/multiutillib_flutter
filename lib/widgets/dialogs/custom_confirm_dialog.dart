@@ -7,7 +7,7 @@ import 'package:multiutillib/multiutillib.dart';
 /// This method will show a dialog box with custom UI and animation
 showConfirmationDialog(
   BuildContext context, {
-  Widget transitionAnimation,
+  Widget? transitionAnimation,
   String negativeBtnText: kNo,
   String positiveBtnText: kYes,
   bool barrierDismissible: false,
@@ -22,9 +22,9 @@ showConfirmationDialog(
   TextStyle titleStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.bold),
   TextStyle positiveBtnStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
   TextStyle negativeBtnStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
-  @required String title,
-  @required String description,
-  @required VoidCallback onPositivePressed,
+  required String title,
+  required String description,
+  required VoidCallback onPositivePressed,
 }) {
   return showGeneralDialog(
     context: context,
@@ -83,20 +83,20 @@ class _CustomConfirmDialog extends StatelessWidget {
   final TextStyle titleStyle, descStyle, positiveBtnStyle, negativeBtnStyle;
 
   _CustomConfirmDialog({
-    @required this.title,
-    @required this.descStyle,
-    @required this.titleStyle,
-    @required this.description,
-    @required this.dividerColor,
-    @required this.descTextAlign,
-    @required this.titleTextAlign,
-    @required this.negativeBtnText,
-    @required this.positiveBtnText,
-    @required this.positiveBtnColor,
-    @required this.negativeBtnColor,
-    @required this.positiveBtnStyle,
-    @required this.negativeBtnStyle,
-    @required this.onPositivePressed,
+    required this.title,
+    required this.descStyle,
+    required this.titleStyle,
+    required this.description,
+    required this.dividerColor,
+    required this.descTextAlign,
+    required this.titleTextAlign,
+    required this.negativeBtnText,
+    required this.positiveBtnText,
+    required this.positiveBtnColor,
+    required this.negativeBtnColor,
+    required this.positiveBtnStyle,
+    required this.negativeBtnStyle,
+    required this.onPositivePressed,
   });
 
   @override

@@ -19,8 +19,8 @@ Future<String> getAppVersion() async {
 
 /// [getDeviceName] method
 /// this method will get device or model name of the device
-Future<String> getDeviceName() async {
-  String _deviceName;
+Future<String?> getDeviceName() async {
+  String? _deviceName;
   DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
 
   if (Platform.isAndroid) {
@@ -104,7 +104,7 @@ int replaceTrueOrFalse(data) => data.toString().toLowerCase() == 'true' ? 1 : 0;
 /// [formatNumber] method
 /// this method will format the number in default pattern or custom pattern
 @Deprecated('You can use .formatNumber extension method.')
-String formatNumber({@required var numberToFormat, String customPattern = '##,###,###.##'}) {
+String formatNumber({required var numberToFormat, String customPattern = '##,###,###.##'}) {
   if (numberToFormat == null) {
     numberToFormat = 0;
   }
@@ -137,7 +137,7 @@ String getSingleDigitRandomNumber() {
 
 /// [getRandomNumber] method
 /// this method will return a random number between min and max number passed
-String getRandomNumber({@required int min, @required int max}) {
+String getRandomNumber({required int min, required int max}) {
   if (min == null || max == null) {
     return 'min or max value is null';
   }
@@ -168,7 +168,7 @@ String getRandomMobileNumber() {
 
 /// [getCharFromString] method
 /// this method will return characters from string passed
-String getCharFromString({@required String stringToExtract}) {
+String getCharFromString({required String stringToExtract}) {
   if (stringToExtract == null) {
     return 'String passed cannot be null';
   }
@@ -178,14 +178,14 @@ String getCharFromString({@required String stringToExtract}) {
   }
 
   Pattern _pattern = r'[^A-Za-z]';
-  RegExp _regex = new RegExp(_pattern);
+  RegExp _regex = new RegExp(_pattern as String);
 
   return stringToExtract.replaceAll(_regex, ' ');
 }
 
 /// [getNumbersFromString] method
 /// this method will return all the digits from string passed
-String getNumbersFromString({String stringToExtract}) {
+String? getNumbersFromString({String? stringToExtract}) {
   if (stringToExtract == null) {
     return 'String passed cannot be null';
   }
@@ -195,7 +195,7 @@ String getNumbersFromString({String stringToExtract}) {
   }
 
   Pattern _pattern = r'\d+';
-  RegExp _regex = new RegExp(_pattern);
+  RegExp _regex = new RegExp(_pattern as String);
 
   return _regex.stringMatch(stringToExtract);
 }

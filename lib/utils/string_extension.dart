@@ -7,11 +7,11 @@ import 'package:intl/intl.dart';
 extension StringExtension on dynamic {
   /// [toInt] extension
   /// this method can be used on string as an extension to convert a string into integer
-  int get toInt => int.tryParse(this);
+  int? get toInt => int.tryParse(this);
 
   /// [toDouble] extension
   /// this method can be used on string as an extension to convert a string into double
-  double get toDouble => double.tryParse(this);
+  double? get toDouble => double.tryParse(this);
 
   /// [replaceTrueOrFalse] extension
   /// this method will check and replace true/false value with integer value
@@ -49,7 +49,7 @@ extension NumberExtension<T extends dynamic> on dynamic {
 
   /// [formatNumber] method
   /// this method will format the number in default pattern or custom pattern
-  String formatNumber({String customPattern}) => _formatNumber(numberToFormat: this, customPattern: customPattern);
+  String formatNumber({String? customPattern}) => _formatNumber(numberToFormat: this, customPattern: customPattern);
 
   /// [isNumeric] extension
   /// this extension will check if passed string is numeric or not
@@ -111,7 +111,7 @@ _formatNumberToCompact({numberToFormat}) {
 
 /// [_formatNumber] method
 /// this method will format the number in default pattern or custom pattern
-String _formatNumber({@required var numberToFormat, String customPattern}) {
+String _formatNumber({required var numberToFormat, String? customPattern}) {
   if (numberToFormat == null) numberToFormat = 0;
   var _numberToFormat = double.parse(numberToFormat.toString());
 
@@ -119,4 +119,4 @@ String _formatNumber({@required var numberToFormat, String customPattern}) {
       .format(_numberToFormat);
 }
 
-String _digitsString(dynamic n, {int lengthOfString}) => n.toString().padLeft(lengthOfString ?? 2, "0");
+String _digitsString(dynamic n, {int? lengthOfString}) => n.toString().padLeft(lengthOfString ?? 2, "0");

@@ -7,7 +7,7 @@ import 'package:multiutillib/multiutillib.dart';
 
 /// [getCurrentDate] method
 /// this method will get current date in format provided.
-String getCurrentDate({String newDateTimeFormat}) {
+String getCurrentDate({String? newDateTimeFormat}) {
   if (newDateTimeFormat != null && newDateTimeFormat.isNotEmpty) {
     return DateFormat('$newDateTimeFormat').format(DateTime.now());
   } else {
@@ -18,7 +18,7 @@ String getCurrentDate({String newDateTimeFormat}) {
 /// [formatDateTime] method
 /// this method will format a date string in default or format provided.
 @Deprecated('Use .toDisplayDate extension instead.')
-String formatDateTime(dateTime, {String newDateTimeFormat}) {
+String formatDateTime(dateTime, {String? newDateTimeFormat}) {
   // dateTime = replaceNullWithEmpty(dateTime);
   dateTime = dateTime.toString().replaceNullWithEmpty;
 
@@ -33,7 +33,7 @@ String formatDateTime(dateTime, {String newDateTimeFormat}) {
 /// [convertTimeOfDay] method
 /// this method will convert time of day to date time format
 @Deprecated('Use .toDisplayTime extension instead.')
-String convertTimeOfDay(TimeOfDay timeOfDay, {String timeFormat}) {
+String convertTimeOfDay(TimeOfDay timeOfDay, {String? timeFormat}) {
   final now = new DateTime.now();
   DateTime _dateTime = DateTime(now.year, now.month, now.day, timeOfDay.hour, timeOfDay.minute);
 

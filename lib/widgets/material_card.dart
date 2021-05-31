@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 class MaterialCard extends StatelessWidget {
   final Color color;
   final Widget child;
-  final Function onTap;
-  final Color shadowColor;
-  final double elevation, borderRadius;
+  final Function? onTap;
+  final Color? shadowColor;
+  final double? elevation, borderRadius;
   final EdgeInsetsGeometry margin, padding;
-  final BorderRadiusGeometry borderRadiusGeometry;
+  final BorderRadiusGeometry? borderRadiusGeometry;
 
   MaterialCard({
-    @required this.child,
+    required this.child,
     this.onTap,
     this.shadowColor,
     this.borderRadius,
@@ -29,15 +29,15 @@ class MaterialCard extends StatelessWidget {
     return Container(
       margin: margin,
       child: InkWell(
-        onTap: onTap,
+        onTap: onTap as void Function()?,
         child: Material(
           color: color,
-          elevation: elevation,
+          elevation: elevation!,
           type: MaterialType.card,
           clipBehavior: Clip.antiAlias,
           shadowColor: shadowColor ?? Colors.grey[200],
           child: Container(child: child, padding: padding),
-          borderRadius: borderRadius == null ? borderRadiusGeometry : BorderRadius.circular(borderRadius),
+          borderRadius: borderRadius == null ? borderRadiusGeometry : BorderRadius.circular(borderRadius!),
         ),
       ),
     );

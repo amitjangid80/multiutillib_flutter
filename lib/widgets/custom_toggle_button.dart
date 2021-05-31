@@ -12,9 +12,9 @@ class CustomToggleButton extends StatefulWidget {
   final Color activeSwitchColor, inactiveSwitchColor, activeTextColor, inactiveTextColor;
 
   CustomToggleButton({
-    @required this.textOn,
-    @required this.textOff,
-    @required this.onChanged,
+    required this.textOn,
+    required this.textOff,
+    required this.onChanged,
     this.width = 200,
     this.height = 45,
     this.borderRadius = 50,
@@ -34,8 +34,8 @@ const double _textOffAlign = 1;
 
 class _CustomToggleButtonState extends State<CustomToggleButton>
     with AutomaticKeepAliveClientMixin<CustomToggleButton> {
-  double _xAlign;
-  String _selectedValue;
+  late double _xAlign;
+  String? _selectedValue;
 
   @override
   void initState() {

@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 /// This widget will build a custom shaped Button
 class DefaultButton extends StatelessWidget {
-  final String text;
-  final Color btnColor;
+  final String? text;
+  final Color? btnColor;
   final Function onPressed;
   final OutlinedBorder shape;
-  final TextStyle btnTextStyle;
+  final TextStyle? btnTextStyle;
   final double height, elevation;
   final EdgeInsetsGeometry margin;
   final bool isEnabled, isUpperCase;
@@ -27,8 +27,8 @@ class DefaultButton extends StatelessWidget {
       color: Colors.white,
       fontWeight: FontWeight.w700,
     ),
-    @required this.text,
-    @required this.onPressed,
+    required this.text,
+    required this.onPressed,
   });
 
   @override
@@ -38,8 +38,8 @@ class DefaultButton extends StatelessWidget {
       margin: margin,
       child: ElevatedButton(
         clipBehavior: Clip.antiAlias,
-        onPressed: isEnabled ? onPressed : null,
-        child: Text(isUpperCase ? text.toUpperCase() : text, style: btnTextStyle),
+        onPressed: isEnabled ? onPressed as void Function()? : null,
+        child: Text(isUpperCase ? text!.toUpperCase() : text!, style: btnTextStyle),
         style: ElevatedButton.styleFrom(
           shape: shape,
           primary: btnColor,

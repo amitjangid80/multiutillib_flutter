@@ -11,8 +11,8 @@ class RichTextWidget extends StatelessWidget {
   final TextStyle captionStyle, descriptionStyle;
 
   RichTextWidget({
-    @required this.caption,
-    @required this.description,
+    required this.caption,
+    required this.description,
     this.showColon = true,
     this.isDescNewLine = false,
     this.textAlign = TextAlign.start,

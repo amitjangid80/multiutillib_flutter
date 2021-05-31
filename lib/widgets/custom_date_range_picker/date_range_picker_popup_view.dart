@@ -1,13 +1,14 @@
 import 'dart:ui';
 
-import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+
+import 'package:intl/intl.dart';
 import 'package:multiutillib/multiutillib.dart';
 import 'package:multiutillib/widgets/custom_date_range_picker/date_range_picker_calendar_view.dart';
 
 showCustomDateRangePicker({
-  @required BuildContext context,
-  @required Function onCancelClick,
+  required BuildContext context,
+  required Function onCancelClick,
   String applyButtonText = 'Apply',
   String cancelButtonText = 'Cancel',
   Color leftArrowColor = Colors.blue,
@@ -17,13 +18,13 @@ showCustomDateRangePicker({
   Color weekDaysTextColor = Colors.blue,
   Color selectedRangeColor = Colors.blue,
   Color monthYearTextColor = Colors.black,
-  @required Function(DateTime startDate, DateTime endDate) onApplyClick,
+  required Function(DateTime? startDate, DateTime? endDate)? onApplyClick,
   TextStyle applyButtonTextStyle = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
   TextStyle cancelButtonTextStyle = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
-  DateTime minimumDate,
-  DateTime maximumDate,
-  DateTime initialEndDate,
-  DateTime initialStartDate,
+  DateTime? minimumDate,
+  DateTime? maximumDate,
+  DateTime? initialEndDate,
+  DateTime? initialStartDate,
   bool barrierDismissible = false,
 }) {
   showDialog(
@@ -52,27 +53,27 @@ showCustomDateRangePicker({
 }
 
 class _CalendarPopupView extends StatefulWidget {
-  final DateTime minimumDate;
-  final DateTime maximumDate;
-  final bool barrierDismissible;
-  final DateTime initialStartDate;
-  final DateTime initialEndDate;
-  final Function(DateTime, DateTime) onApplyClick;
-  final Function onCancelClick;
-  final String applyButtonText;
-  final String cancelButtonText;
-  final Color applyButtonColor;
-  final Color cancelButtonColor;
-  final TextStyle applyButtonTextStyle;
-  final TextStyle cancelButtonTextStyle;
-  final Color weekDaysTextColor;
-  final Color monthYearTextColor;
-  final Color leftArrowColor;
-  final Color rightArrowColor;
-  final Color selectedRangeColor;
+  final DateTime? minimumDate;
+  final DateTime? maximumDate;
+  final bool? barrierDismissible;
+  final DateTime? initialStartDate;
+  final DateTime? initialEndDate;
+  final Function(DateTime?, DateTime?)? onApplyClick;
+  final Function? onCancelClick;
+  final String? applyButtonText;
+  final String? cancelButtonText;
+  final Color? applyButtonColor;
+  final Color? cancelButtonColor;
+  final TextStyle? applyButtonTextStyle;
+  final TextStyle? cancelButtonTextStyle;
+  final Color? weekDaysTextColor;
+  final Color? monthYearTextColor;
+  final Color? leftArrowColor;
+  final Color? rightArrowColor;
+  final Color? selectedRangeColor;
 
   const _CalendarPopupView({
-    Key key,
+    Key? key,
     this.minimumDate,
     this.maximumDate,
     this.onApplyClick,
@@ -98,9 +99,9 @@ class _CalendarPopupView extends StatefulWidget {
 }
 
 class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProviderStateMixin {
-  AnimationController animationController;
-  DateTime startDate;
-  DateTime endDate;
+  late AnimationController animationController;
+  DateTime? startDate;
+  DateTime? endDate;
 
   @override
   void initState() {
@@ -132,7 +133,7 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
         backgroundColor: Colors.transparent,
         body: AnimatedBuilder(
           animation: animationController,
-          builder: (BuildContext context, Widget child) {
+          builder: (BuildContext context, Widget? child) {
             return AnimatedOpacity(
               duration: Duration(milliseconds: 100),
               opacity: animationController.value,
@@ -142,7 +143,7 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                 splashColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () {
-                  if (widget.barrierDismissible) Navigator.pop(context);
+                  if (widget.barrierDismissible!) Navigator.pop(context);
                 },
                 child: Center(
                   child: Padding(
@@ -177,13 +178,13 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                                       ),
                                       SizedBox(height: 4),
                                       Text(
-                                        startDate != null ? DateFormat("EEE, dd MMM").format(startDate) : "--/-- ",
+                                        startDate != null ? DateFormat("EEE, dd MMM").format(startDate!) : "--/-- ",
                                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                                       ),
                                     ],
                                   ),
                                 ),
-                                Container(width: 1, height: 74, color: Colors.grey[500].withOpacity(0.5)),
+                                Container(width: 1, height: 74, color: Colors.grey[500]!.withOpacity(0.5)),
                                 Expanded(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -195,7 +196,7 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                                       ),
                                       SizedBox(height: 4),
                                       Text(
-                                        endDate != null ? DateFormat("EEE, dd MMM").format(endDate) : "--/-- ",
+                                        endDate != null ? DateFormat("EEE, dd MMM").format(endDate!) : "--/-- ",
                                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                                       ),
                                     ],
@@ -214,7 +215,7 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                               weekDaysTextColor: widget.weekDaysTextColor,
                               monthYearTextColor: widget.monthYearTextColor,
                               selectedRangeColor: widget.selectedRangeColor,
-                              startEndDateChange: (DateTime startDateData, DateTime endDateData) {
+                              startEndDateChange: (DateTime? startDateData, DateTime? endDateData) {
                                 setState(() {
                                   endDate = endDateData;
                                   startDate = startDateData;
@@ -236,7 +237,7 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                                       btnTextStyle: widget.cancelButtonTextStyle,
                                       onPressed: () {
                                         try {
-                                          widget.onCancelClick();
+                                          widget.onCancelClick!();
                                           Navigator.pop(context);
                                         } catch (e) {}
                                       },
@@ -251,7 +252,7 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                                       btnTextStyle: widget.applyButtonTextStyle,
                                       onPressed: () {
                                         try {
-                                          widget.onApplyClick(startDate, endDate);
+                                          widget.onApplyClick!(startDate, endDate);
                                           Navigator.pop(context);
                                         } catch (e) {}
                                       },

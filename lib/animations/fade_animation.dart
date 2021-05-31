@@ -9,7 +9,7 @@ class FadeAnimation extends StatelessWidget {
   final double delay;
   final Widget child;
 
-  FadeAnimation({@required this.delay, @required this.child});
+  FadeAnimation({required this.delay, required this.child});
 
   /// Animates a widget to show fade transition.
   /// [PlayAnimation] from [simple_animations] package
@@ -24,7 +24,7 @@ class FadeAnimation extends StatelessWidget {
       tween: _tween,
       duration: _tween.duration,
       delay: Duration(milliseconds: (500 * delay).round()),
-      builder: (context, _child, _value) {
+      builder: (context, _child, dynamic _value) {
         return Opacity(
           opacity: _value.get(_AniProps.opacity),
           child: Transform.translate(child: _child, offset: Offset(0, _value.get(_AniProps.translateY))),

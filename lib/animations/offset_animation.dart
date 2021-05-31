@@ -17,8 +17,8 @@ class OffsetAnimation extends AnimatedWidget {
 
   OffsetAnimation({
     this.end = 15.0,
-    @required this.animationController,
-    @required this.widget,
+    required this.animationController,
+    required this.widget,
   }) : super(
           listenable:
               Tween(begin: 0.0, end: end).chain(CurveTween(curve: Curves.elasticIn)).animate(animationController)
@@ -33,7 +33,7 @@ class OffsetAnimation extends AnimatedWidget {
 
   @override
   Widget build(BuildContext context) {
-    Animation<double> _animation = listenable;
+    Animation<double> _animation = listenable as Animation<double>;
 
     return AnimatedBuilder(
       animation: _animation,

@@ -39,8 +39,8 @@ class OTPTextField extends StatefulWidget {
   _OTPTextFieldState createState() => _OTPTextFieldState();
 
   OTPTextField({
-    @required this.noOfOtpFields,
-    @required this.onCompleted,
+    required this.noOfOtpFields,
+    required this.onCompleted,
     this.borderWidth = 2,
     this.autoFocus = true,
     this.autoCorrect = false,
@@ -53,9 +53,9 @@ class OTPTextField extends StatefulWidget {
 }
 
 class _OTPTextFieldState extends State<OTPTextField> {
-  List<String> _otpList;
-  List<FocusNode> _focusNodesList;
-  List<TextEditingController> _otpTextControllersList;
+  late List<String> _otpList;
+  late List<FocusNode?> _focusNodesList;
+  late List<TextEditingController?> _otpTextControllersList;
 
   var _underlineInputBorder;
 
@@ -92,7 +92,7 @@ class _OTPTextFieldState extends State<OTPTextField> {
 
   /// [_otpTextFields] method
   /// this method generates no of text fields for otp
-  _otpTextFields({@required int position, @required BuildContext context}) {
+  _otpTextFields({required int position, required BuildContext context}) {
     return Container(
       margin: const EdgeInsets.all(10),
       child: TextField(
@@ -131,7 +131,7 @@ class _OTPTextFieldState extends State<OTPTextField> {
 
   /// [_addFocusNodeToEachTextField] method
   /// this method adds focus nodes to otp text fields
-  void _addFocusNodeToEachTextField({@required int position}) {
+  void _addFocusNodeToEachTextField({required int position}) {
     if (_focusNodesList[position] == null) {
       _focusNodesList[position] = FocusNode();
     }
@@ -139,7 +139,7 @@ class _OTPTextFieldState extends State<OTPTextField> {
 
   /// [_addTextEditingControllerToEachTextField] method
   /// this method adds text editing controller to otp text fields
-  void _addTextEditingControllerToEachTextField({@required int position}) {
+  void _addTextEditingControllerToEachTextField({required int position}) {
     if (_otpTextControllersList[position] == null) {
       _otpTextControllersList[position] = TextEditingController();
     }
@@ -147,17 +147,17 @@ class _OTPTextFieldState extends State<OTPTextField> {
 
   /// [_changeFocusToPreviousNodeWhenValueIsEmpty] method
   /// this method will manage changing of focus to otp text field when value is entered
-  void _changeFocusToPreviousNodeWhenValueIsEmpty({@required String value, @required int position}) {
+  void _changeFocusToPreviousNodeWhenValueIsEmpty({required String value, required int position}) {
     /// Check if the current value at this position is empty
     /// If it is move focus to previous text field.
     if (value.isEmpty) {
       if (position == 0) return;
 
-      _focusNodesList[position].unfocus();
-      _focusNodesList[position - 1].requestFocus();
+      _focusNodesList[position]!.unfocus();
+      _focusNodesList[position - 1]!.requestFocus();
 
-      _otpTextControllersList[position - 1].selection = TextSelection.fromPosition(
-        TextPosition(offset: _otpTextControllersList[position - 1].value.text.length),
+      _otpTextControllersList[position - 1]!.selection = TextSelection.fromPosition(
+        TextPosition(offset: _otpTextControllersList[position - 1]!.value.text.length),
       );
     }
 
@@ -180,7 +180,7 @@ class _OTPTextFieldState extends State<OTPTextField> {
 
   /// [_changeFocusToNextNodeWhenValueIsEntered] method
   /// this method will manage changing of focus to otp text field when value is entered
-  void _changeFocusToNextNodeWhenValueIsEntered({@required String value, @required int position}) {
+  void _changeFocusToNextNodeWhenValueIsEntered({required String value, required int position}) {
     if (value.length > widget.noOfOtpFields) {
       value = value.substring(0, widget.noOfOtpFields);
     }
@@ -189,7 +189,7 @@ class _OTPTextFieldState extends State<OTPTextField> {
       String _otp = value.substring(i, i + 1);
 
       _otpList[i] = value;
-      _otpTextControllersList[i].text = _otp;
+      _otpTextControllersList[i]!.text = _otp;
     }
 
     // calling set entered otp method
@@ -218,8 +218,8 @@ class _OTPTextFieldState extends State<OTPTextField> {
 
   @override
   void dispose() {
-    _focusNodesList.forEach((FocusNode _focusNode) => _focusNode.dispose());
-    _otpTextControllersList.forEach((TextEditingController _controller) => _controller.dispose());
+    _focusNodesList.forEach((FocusNode? _focusNode) => _focusNode!.dispose());
+    _otpTextControllersList.forEach((TextEditingController? _controller) => _controller!.dispose());
 
     super.dispose();
   }

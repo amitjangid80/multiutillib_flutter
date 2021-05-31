@@ -16,7 +16,7 @@ class ConnectivityLayout extends StatelessWidget {
   final AlignmentGeometry alignment;
 
   ConnectivityLayout({
-    @required this.child,
+    required this.child,
     this.bgColor = Colors.red,
     this.disableInteraction = false,
     this.message = kInternetNotAvailable,

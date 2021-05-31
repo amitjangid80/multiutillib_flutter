@@ -10,17 +10,17 @@ enum ProgressDialogType { Normal, Download }
 ///
 /// this method will show progress dialog
 /// Uses [_ProgressDialog] class
-showProgressDialog(BuildContext context, {String message = 'Please wait...', Widget progressWidget}) async {
+showProgressDialog(BuildContext context, {String message = 'Please wait...', Widget? progressWidget}) async {
   _progressDialog = _ProgressDialog(context, isDismissible: false, type: ProgressDialogType.Normal);
 
-  _progressDialog.style(
+  _progressDialog!.style(
     message: message,
     size: progressWidget != null ? 40.0 : 60.0,
     padding: EdgeInsets.all(progressWidget != null ? 12.0 : 8.0),
     progressWidget: progressWidget /* ?? Image(image: AssetImage('assets/gif/double_ring_loading_io.gif'))*/,
   );
 
-  await _progressDialog.show();
+  await _progressDialog!.show();
 }
 
 /// hide progress dialog method
@@ -29,23 +29,23 @@ showProgressDialog(BuildContext context, {String message = 'Please wait...', Wid
 /// Uses [_ProgressDialog] from [progress_dialog] package
 hideProgressDialog() async {
   if (_progressDialog != null) {
-    await _progressDialog.hide();
+    await _progressDialog!.hide();
   }
 }
 
 String _dialogMessage = "Please wait...";
 double _size = 60.0, _progress = 0.0, _maxProgress = 100.0;
 
-Widget _customBody;
-_ProgressDialog _progressDialog;
+Widget? _customBody;
+_ProgressDialog? _progressDialog;
 
 TextAlign _textAlign = TextAlign.left;
 TextDirection _direction = TextDirection.ltr;
 Alignment _progressWidgetAlignment = Alignment.centerLeft;
 
 bool _isShowing = false;
-ProgressDialogType _progressDialogType;
-BuildContext _context, _dismissingContext;
+ProgressDialogType? _progressDialogType;
+BuildContext? _context, _dismissingContext;
 bool _barrierDismissible = true, _showLogs = false;
 
 TextStyle _progressTextStyle = TextStyle(
@@ -68,15 +68,15 @@ EdgeInsets _dialogPadding = const EdgeInsets.all(8.0);
 Widget _progressWidget = Image.asset('assets/gif/double_ring_loading_io.gif', package: "multiutillib");
 
 class _ProgressDialog {
-  _Body _dialog;
+  _Body? _dialog;
 
   _ProgressDialog(
     BuildContext context, {
-    ProgressDialogType type,
-    bool isDismissible,
-    bool showLogs,
-    TextDirection textDirection,
-    Widget customBody,
+    ProgressDialogType? type,
+    bool? isDismissible,
+    bool? showLogs,
+    TextDirection? textDirection,
+    Widget? customBody,
   }) {
     _context = context;
     _progressDialogType = type ?? ProgressDialogType.Normal;
@@ -87,21 +87,21 @@ class _ProgressDialog {
   }
 
   void style({
-    double size,
-    Widget child,
-    double progress,
-    double maxProgress,
-    String message,
-    Widget progressWidget,
-    Color backgroundColor,
-    TextStyle progressTextStyle,
-    TextStyle messageTextStyle,
-    double elevation,
-    TextAlign textAlign,
-    double borderRadius,
-    Curve insetAnimCurve,
-    EdgeInsets padding,
-    Alignment progressWidgetAlignment,
+    double? size,
+    Widget? child,
+    double? progress,
+    double? maxProgress,
+    String? message,
+    Widget? progressWidget,
+    Color? backgroundColor,
+    TextStyle? progressTextStyle,
+    TextStyle? messageTextStyle,
+    double? elevation,
+    TextAlign? textAlign,
+    double? borderRadius,
+    Curve? insetAnimCurve,
+    EdgeInsets? padding,
+    Alignment? progressWidgetAlignment,
   }) {
     if (_isShowing) return;
 
@@ -126,12 +126,12 @@ class _ProgressDialog {
   }
 
   void update({
-    double progress,
-    double maxProgress,
-    String message,
-    Widget progressWidget,
-    TextStyle progressTextStyle,
-    TextStyle messageTextStyle,
+    double? progress,
+    double? maxProgress,
+    String? message,
+    Widget? progressWidget,
+    TextStyle? progressTextStyle,
+    TextStyle? messageTextStyle,
   }) {
     if (_progressDialogType == ProgressDialogType.Download) {
       _progress = progress ?? _progress;
@@ -143,7 +143,7 @@ class _ProgressDialog {
     _messageStyle = messageTextStyle ?? _messageStyle;
     _progressTextStyle = progressTextStyle ?? _progressTextStyle;
 
-    if (_isShowing) _dialog.update();
+    if (_isShowing) _dialog!.update();
   }
 
   bool isShowing() {
@@ -154,7 +154,7 @@ class _ProgressDialog {
     try {
       if (_isShowing) {
         _isShowing = false;
-        Navigator.of(_dismissingContext).pop();
+        Navigator.of(_dismissingContext!).pop();
 
         if (_showLogs) debugPrint('ProgressDialog dismissed');
 
@@ -178,7 +178,7 @@ class _ProgressDialog {
         _dialog = new _Body();
 
         showDialog<dynamic>(
-          context: _context,
+          context: _context!,
           barrierDismissible: _barrierDismissible,
           builder: (BuildContext context) {
             _dismissingContext = context;
