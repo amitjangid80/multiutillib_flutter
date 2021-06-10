@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:multiutillib/utils/constants.dart';
 import 'package:multiutillib/utils/string_extension.dart';
 
-extension DurationExtension on String {
+extension DurationExtension<T extends String> on String {
   /// [toDuration] extension
   /// this extension will convert a string into [Duration] object
   Duration get toDuration => _parseDuration(this);
@@ -28,7 +28,7 @@ extension DurationExtension on String {
   String formatTime({String? newTimeFormat}) => _convertTimeString(this, newTimeFormat: newTimeFormat);
 }
 
-extension DateTimeExtension on DateTime {
+extension DateTimeExtension<T extends DateTime> on DateTime {
   /// [toTimeOfDay] extension
   /// this extension will convert a string into [TimeOfDay] object
   TimeOfDay get toTimeOfDay => TimeOfDay.fromDateTime(this);
@@ -39,13 +39,13 @@ extension DateTimeExtension on DateTime {
       _formatDateTime(this.toString(), newDateTimeFormat: newDateTimeFormat);
 }
 
-extension FromDurationExtension on Duration {
+extension FromDurationExtension<T extends Duration> on Duration {
   /// [toTimeString] extension method
   /// this method will convert the provided duration into default time String
   String toTimeString({String? newTimeString}) => _convertToTimeString(this, newTimeString: newTimeString);
 }
 
-extension TimeOfDayExtension on TimeOfDay {
+extension TimeOfDayExtension<T extends TimeOfDay> on TimeOfDay {
   /// [formatTime] extension method
   /// this extension method will convert a time of day into provided or default time format string
   String formatTime({String? newTimeFormat}) => _convertTimeOfDay(this, newTimeFormat: newTimeFormat);
@@ -119,9 +119,9 @@ String _convertTimeOfDay(TimeOfDay timeOfDay, {String? newTimeFormat}) {
 }
 
 String _convertToTimeString(Duration duration, {String? newTimeString}) {
-  String _twoDigitHours = duration.inHours.toTwoDigits;
-  String _twoDigitMinutes = duration.inMinutes.remainder(60).toTwoDigits;
-  String _twoDigitSeconds = duration.inSeconds.remainder(60).toTwoDigits;
+  String _twoDigitHours = "${duration.inHours}".toTwoDigits;
+  String _twoDigitMinutes = "${duration.inMinutes.remainder(60)}".toTwoDigits;
+  String _twoDigitSeconds = "${duration.inSeconds.remainder(60)}".toTwoDigits;
 
   DateTime _now = DateTime.now();
 

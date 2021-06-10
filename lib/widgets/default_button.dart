@@ -13,7 +13,7 @@ class DefaultButton extends StatelessWidget {
   final EdgeInsetsGeometry margin;
   final bool isEnabled, isUpperCase;
 
-  DefaultButton({
+  const DefaultButton({
     this.btnColor,
     this.height = 50,
     this.elevation = 4,

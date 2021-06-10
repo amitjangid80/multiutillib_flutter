@@ -133,29 +133,26 @@ Example:
 
 ```dart
 // Checking if a string or int or double value is numeric or not
-123.isNumeric => returns true
 '123'.isNumeric => returns true
 'String'.isNumeric => returns false
 
 // Converting a string to two digits
-Text('To Two Digit: ${9.toTwoDigits}'),
 Text('To Two Digit: ${'9'.toTwoDigits}'),
 
 // Converting a string to three digits
-Text('To Three Digit: ${9.toThreeDigits}'),
 Text('To Three Digit: ${'9'.toThreeDigits}'),
 
 // Converting a string to a fixed length
 Text('To Length of String: ${'9'.toLengthOfString(5)}'),
 
 // Formatting numbers with extensions
-Text('Format Number: ' + 1010.869.formatNumber()),
+Text('Format Number: ' + '1010.869'.formatNumber()),
 Text('Format Number to Compact: ' + '88944444'.formatNumberToCompact), // return 1K, 2k, 2M
 
-Text('Replace Null With Empty: ' + null.replaceNullWithEmpty),
-Text('Replace True or False: ' + true.replaceTrueOrFalse.toString()),
-Text('Replace Null With Zero: ' + null.replaceNullWithZero.toString()),
-Text('Replace Null with Double: ' + null.replaceNullWithDouble.toString()),
+Text('Replace Null With Empty: ' + 'null'.replaceNullWithEmpty),
+Text('Replace True or False: ' + 'true'.replaceTrueOrFalse.toString()),
+Text('Replace Null With Zero: ' + 'null'.replaceNullWithZero.toString()),
+Text('Replace Null with Double: ' + 'null'.replaceNullWithDouble.toString()),
 Text('Convert Duration to Time String: ' + '16:35:34'.toDuration.toTimeString(newTimeString: 'mm:ss')),
 ```
 
@@ -314,7 +311,6 @@ Example:
 ```dart
 DefaultButton(
     isEnabled = true,
-    borderRadius = 24,
     isUpperCase = true,
     margin = const EdgeInsets.only(top: 20),
     @required String text,

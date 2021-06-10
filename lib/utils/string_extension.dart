@@ -2,7 +2,7 @@
 
 import 'package:intl/intl.dart';
 
-extension StringExtension on dynamic {
+extension StringExtension<T extends String> on String {
   /// [toInt] extension
   /// this method can be used on string as an extension to convert a string into integer
   int? get toInt => int.tryParse(this);
@@ -40,7 +40,7 @@ extension StringExtension on dynamic {
   double get replaceNullWithDouble => _replaceNullWithDouble(this);
 }
 
-extension NumberExtension<T extends dynamic> on dynamic {
+extension NumberExtension<T extends String> on String {
   /// [formatNumberToCompact] method
   /// this method will format the number in compact view i.e. 1K, 2K etc
   String get formatNumberToCompact => _formatNumberToCompact(numberToFormat: this);
@@ -51,7 +51,7 @@ extension NumberExtension<T extends dynamic> on dynamic {
 
   /// [isNumeric] extension
   /// this extension will check if passed string is numeric or not
-  bool get isNumeric => double.tryParse(this?.toString() ?? '') != null;
+  bool get isNumeric => double.tryParse(this.toString()) != null;
 }
 
 /// [_replaceTrueOrFalse] method
