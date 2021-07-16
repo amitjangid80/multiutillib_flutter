@@ -8,9 +8,9 @@ import 'package:multiutillib/multiutillib.dart';
 showConfirmationDialog(
   BuildContext context, {
   Widget? transitionAnimation,
-  String negativeBtnText: kNo,
-  String positiveBtnText: kYes,
-  bool barrierDismissible: false,
+  String negativeBtnText = kNo,
+  String positiveBtnText = kYes,
+  bool barrierDismissible = false,
   Color dividerColor = Colors.blue,
   Color negativeBtnColor = Colors.red,
   Color positiveBtnColor = Colors.blue,
@@ -75,14 +75,13 @@ showConfirmationDialog(
 }
 
 class _CustomConfirmDialog extends StatelessWidget {
-  final double _borderRadius = 20;
   final VoidCallback onPositivePressed;
   final TextAlign titleTextAlign, descTextAlign;
   final Color dividerColor, positiveBtnColor, negativeBtnColor;
   final String title, description, negativeBtnText, positiveBtnText;
   final TextStyle titleStyle, descStyle, positiveBtnStyle, negativeBtnStyle;
 
-  _CustomConfirmDialog({
+  const _CustomConfirmDialog({
     required this.title,
     required this.descStyle,
     required this.titleStyle,
@@ -101,6 +100,7 @@ class _CustomConfirmDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double _borderRadius = 20;
     final double _width = MediaQuery.of(context).size.width;
 
     return WillPopScope(
@@ -120,16 +120,13 @@ class _CustomConfirmDialog extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(title, style: titleStyle, textAlign: titleTextAlign),
                   Container(
                     height: 1.5,
                     margin: const EdgeInsets.symmetric(vertical: 20),
                     child: Row(
-                      mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: List.generate(
                         12,
                         (index) => Container(
@@ -161,10 +158,7 @@ class _CustomConfirmDialog extends StatelessWidget {
                       btnTextStyle: negativeBtnStyle,
                       onPressed: () => Navigator.pop(context, ""),
                       shape: const RoundedRectangleBorder(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: const Radius.circular(30),
-                          bottomLeft: const Radius.circular(30),
-                        ),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30)),
                       ),
                     ),
                   ),
@@ -175,9 +169,9 @@ class _CustomConfirmDialog extends StatelessWidget {
                       onPressed: onPositivePressed,
                       btnTextStyle: positiveBtnStyle,
                       shape: const RoundedRectangleBorder(
-                        borderRadius: const BorderRadius.only(
-                          topRight: const Radius.circular(30),
-                          bottomRight: const Radius.circular(30),
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(30),
+                          bottomRight: Radius.circular(30),
                         ),
                       ),
                     ),

@@ -1,5 +1,6 @@
 // Created by AMIT JANGID on 26/12/20.
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -38,7 +39,7 @@ class OTPTextField extends StatefulWidget {
   @override
   _OTPTextFieldState createState() => _OTPTextFieldState();
 
-  OTPTextField({
+  const OTPTextField({
     required this.noOfOtpFields,
     required this.onCompleted,
     this.borderWidth = 2,
@@ -57,7 +58,7 @@ class _OTPTextFieldState extends State<OTPTextField> {
   late List<FocusNode?> _focusNodesList;
   late List<TextEditingController?> _otpTextControllersList;
 
-  var _underlineInputBorder;
+  var _underlineInputBorder = const UnderlineInputBorder(borderSide: BorderSide(color: Colors.blue, width: 2));
 
   @override
   void initState() {
@@ -186,7 +187,7 @@ class _OTPTextFieldState extends State<OTPTextField> {
     }
 
     for (int i = 0; i < value.length; i++) {
-      String _otp = value.substring(i, i + 1);
+      final String _otp = value.substring(i, i + 1);
 
       _otpList[i] = value;
       _otpTextControllersList[i]!.text = _otp;
@@ -207,7 +208,7 @@ class _OTPTextFieldState extends State<OTPTextField> {
 
   void _setEnteredOtp() {
     /// calling get entered otp method
-    String _enteredOTP = _getEnteredOtp();
+    final String _enteredOTP = _getEnteredOtp();
 
     /// if there are no null values that means otp is completed
     /// Call the `onCompleted` callback function provided
@@ -222,5 +223,11 @@ class _OTPTextFieldState extends State<OTPTextField> {
     _otpTextControllersList.forEach((TextEditingController? _controller) => _controller!.dispose());
 
     super.dispose();
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('_underlineInputBorder', _underlineInputBorder));
   }
 }

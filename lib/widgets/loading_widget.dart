@@ -12,11 +12,11 @@ class LoadingWidget extends StatelessWidget {
   final EdgeInsetsGeometry margin;
   final Color baseColor, highlightColor;
 
-  LoadingWidget({
-    this.itemCount = 6,
+  const LoadingWidget({
+    this.itemCount = 4,
     this.highlightColor = Colors.white,
     this.baseColor = const Color(0xFFE0E0E0),
-    this.margin = const EdgeInsets.symmetric(horizontal: 12),
+    this.margin = const EdgeInsets.only(top: 12, left: 12, right: 12),
   });
 
   @override
@@ -31,12 +31,9 @@ class LoadingWidget extends StatelessWidget {
           margin: margin,
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Shimmer.fromColors(
@@ -48,7 +45,6 @@ class LoadingWidget extends StatelessWidget {
                   Expanded(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Shimmer.fromColors(

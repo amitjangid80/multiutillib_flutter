@@ -1,17 +1,15 @@
 // Created by AMIT JANGID on 19/08/20.
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-
-enum ProgressDialogType { Normal, Download }
+import 'package:multiutillib/enums/progess_dialog_type.dart';
 
 /// show progress dialog method
 ///
 /// this method will show progress dialog
 /// Uses [_ProgressDialog] class
 showProgressDialog(BuildContext context, {String message = 'Please wait...', Widget? progressWidget}) async {
-  _progressDialog = _ProgressDialog(context, isDismissible: false, type: ProgressDialogType.Normal);
+  _progressDialog = _ProgressDialog(context, isDismissible: false, type: ProgressDialogType.normal);
 
   _progressDialog!.style(
     message: message,
@@ -45,16 +43,16 @@ Alignment _progressWidgetAlignment = Alignment.centerLeft;
 
 bool _isShowing = false;
 ProgressDialogType? _progressDialogType;
-BuildContext? _context, _dismissingContext;
+late BuildContext? _context, _dismissingContext;
 bool _barrierDismissible = true, _showLogs = false;
 
-TextStyle _progressTextStyle = TextStyle(
+TextStyle _progressTextStyle = const TextStyle(
   fontSize: 12.0,
   color: Colors.black,
   fontWeight: FontWeight.w400,
 );
 
-TextStyle _messageStyle = TextStyle(
+TextStyle _messageStyle = const TextStyle(
   fontSize: 18.0,
   color: Colors.black,
   fontWeight: FontWeight.w600,
@@ -68,7 +66,7 @@ EdgeInsets _dialogPadding = const EdgeInsets.all(8.0);
 Widget _progressWidget = Image.asset('assets/gif/double_ring_loading_io.gif', package: "multiutillib");
 
 class _ProgressDialog {
-  _Body? _dialog;
+  // _Body? _dialog;
 
   _ProgressDialog(
     BuildContext context, {
@@ -79,10 +77,10 @@ class _ProgressDialog {
     Widget? customBody,
   }) {
     _context = context;
-    _progressDialogType = type ?? ProgressDialogType.Normal;
+    _progressDialogType = type ?? ProgressDialogType.normal;
     _barrierDismissible = isDismissible ?? true;
     _showLogs = showLogs ?? false;
-    _customBody = customBody ?? null;
+    _customBody = customBody;
     _direction = textDirection ?? TextDirection.ltr;
   }
 
@@ -105,7 +103,7 @@ class _ProgressDialog {
   }) {
     if (_isShowing) return;
 
-    if (_progressDialogType == ProgressDialogType.Download) {
+    if (_progressDialogType == ProgressDialogType.download) {
       _progress = progress ?? _progress;
     }
 
@@ -133,7 +131,7 @@ class _ProgressDialog {
     TextStyle? progressTextStyle,
     TextStyle? messageTextStyle,
   }) {
-    if (_progressDialogType == ProgressDialogType.Download) {
+    if (_progressDialogType == ProgressDialogType.download) {
       _progress = progress ?? _progress;
     }
 
@@ -143,7 +141,7 @@ class _ProgressDialog {
     _messageStyle = messageTextStyle ?? _messageStyle;
     _progressTextStyle = progressTextStyle ?? _progressTextStyle;
 
-    if (_isShowing) _dialog!.update();
+    if (_isShowing) _BodyState().update();
   }
 
   bool isShowing() {
@@ -175,8 +173,6 @@ class _ProgressDialog {
   Future<bool> show() async {
     try {
       if (!_isShowing) {
-        _dialog = new _Body();
-
         showDialog<dynamic>(
           context: _context!,
           barrierDismissible: _barrierDismissible,
@@ -185,12 +181,11 @@ class _ProgressDialog {
             return WillPopScope(
               onWillPop: () async => _barrierDismissible,
               child: Dialog(
-                child: _dialog,
                 elevation: _dialogElevation,
                 backgroundColor: _backgroundColor,
                 insetAnimationCurve: _insetAnimCurve,
-                insetAnimationDuration: const Duration(milliseconds: 100),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(_borderRadius))),
+                child: _Body(),
               ),
             );
           },
@@ -198,7 +193,7 @@ class _ProgressDialog {
 
         // Delaying the function for 200 milliseconds
         // [Default transitionDuration of DialogRoute]
-        await Future.delayed(Duration(milliseconds: 200));
+        await Future.delayed(const Duration(milliseconds: 200));
 
         if (_showLogs) debugPrint('ProgressDialog shown');
         _isShowing = true;
@@ -220,16 +215,14 @@ class _ProgressDialog {
 }
 
 class _Body extends StatefulWidget {
-  final _BodyState _dialog = _BodyState();
+  /*final _BodyState _dialog = _BodyState();
 
   update() {
     _dialog.update();
-  }
+  }*/
 
   @override
-  State<StatefulWidget> createState() {
-    return _dialog;
-  }
+  State<StatefulWidget> createState() => _BodyState();
 }
 
 class _BodyState extends State<_Body> {
@@ -254,7 +247,7 @@ class _BodyState extends State<_Body> {
     );
 
     final text = Expanded(
-      child: _progressDialogType == ProgressDialogType.Normal
+      child: _progressDialogType == ProgressDialogType.normal
           ? Text(_dialogMessage, style: _messageStyle, textAlign: _textAlign, textDirection: _direction)
           : Padding(
               padding: const EdgeInsets.all(8.0),
@@ -288,9 +281,9 @@ class _BodyState extends State<_Body> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   const SizedBox(width: 8.0),
-                  _direction == TextDirection.ltr ? _loader : text,
+                  if (_direction == TextDirection.ltr) _loader else text,
                   const SizedBox(width: 16.0),
-                  _direction == TextDirection.rtl ? _loader : text,
+                  if (_direction == TextDirection.rtl) _loader else text,
                   const SizedBox(width: 8.0),
                 ],
               ),

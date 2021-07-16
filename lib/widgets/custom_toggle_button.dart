@@ -11,7 +11,7 @@ class CustomToggleButton extends StatefulWidget {
   final double width, height, borderRadius;
   final Color activeSwitchColor, inactiveSwitchColor, activeTextColor, inactiveTextColor;
 
-  CustomToggleButton({
+  const CustomToggleButton({
     required this.textOn,
     required this.textOff,
     required this.onChanged,
@@ -74,7 +74,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
                 margin: const EdgeInsets.all(3),
                 padding: const EdgeInsets.all(0),
                 borderRadius: widget.borderRadius,
-                child: Container(height: widget.height, width: widget.width * 0.5),
+                child: SizedBox(height: widget.height, width: widget.width * 0.5),
               ),
             ),
             GestureDetector(
@@ -87,7 +87,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
                 });
               },
               child: Align(
-                alignment: Alignment(-1, 0),
+                alignment: const Alignment(-1, 0),
                 child: Container(
                   width: widget.width * 0.5,
                   color: Colors.transparent,
@@ -112,7 +112,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
                 });
               },
               child: Align(
-                alignment: Alignment(1, 0),
+                alignment: const Alignment(1, 0),
                 child: Container(
                   width: widget.width * 0.5,
                   color: Colors.transparent,

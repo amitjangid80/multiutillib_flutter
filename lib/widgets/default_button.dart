@@ -15,14 +15,14 @@ class DefaultButton extends StatelessWidget {
 
   const DefaultButton({
     this.btnColor,
-    this.height = 50,
+    this.height = 48,
     this.elevation = 4,
     this.isEnabled = true,
     this.isUpperCase = false,
-    this.margin = const EdgeInsets.only(top: 10),
-    this.shape = const RoundedRectangleBorder(borderRadius: const BorderRadius.all(const Radius.circular(30))),
+    this.margin = const EdgeInsets.only(top: 12),
+    this.shape = const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(24))),
     this.btnTextStyle = const TextStyle(
-      fontSize: 16,
+      fontSize: 18,
       letterSpacing: 0.27,
       color: Colors.white,
       fontWeight: FontWeight.w700,
@@ -39,13 +39,13 @@ class DefaultButton extends StatelessWidget {
       child: ElevatedButton(
         clipBehavior: Clip.antiAlias,
         onPressed: isEnabled ? onPressed as void Function()? : null,
-        child: Text(isUpperCase ? text!.toUpperCase() : text!, style: btnTextStyle),
         style: ElevatedButton.styleFrom(
           shape: shape,
           primary: btnColor,
           elevation: elevation,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
+        child: Text(isUpperCase ? text!.toUpperCase() : text!, style: btnTextStyle),
       ),
     );
   }

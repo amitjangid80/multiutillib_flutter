@@ -10,7 +10,7 @@ class RichTextWidget extends StatelessWidget {
   final bool showColon, isDescNewLine;
   final TextStyle captionStyle, descriptionStyle;
 
-  RichTextWidget({
+  const RichTextWidget({
     required this.caption,
     required this.description,
     this.showColon = true,

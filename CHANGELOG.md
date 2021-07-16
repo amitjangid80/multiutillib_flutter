@@ -1,3 +1,7 @@
+# [1.1.2] 16-07-2021
+* Optimized code after adding analysis options.
+* Added UI Helpers and Custom App Bar.
+
 ## [1.1.1] 10-06-2021
 * Bug fixes after migrating to null safety.
 

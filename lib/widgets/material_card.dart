@@ -12,7 +12,7 @@ class MaterialCard extends StatelessWidget {
   final EdgeInsetsGeometry margin, padding;
   final BorderRadiusGeometry? borderRadiusGeometry;
 
-  MaterialCard({
+  const MaterialCard({
     required this.child,
     this.onTap,
     this.shadowColor,
@@ -36,8 +36,8 @@ class MaterialCard extends StatelessWidget {
           type: MaterialType.card,
           clipBehavior: Clip.antiAlias,
           shadowColor: shadowColor ?? Colors.grey[200],
-          child: Container(child: child, padding: padding),
           borderRadius: borderRadius == null ? borderRadiusGeometry : BorderRadius.circular(borderRadius!),
+          child: Container(padding: padding, child: child),
         ),
       ),
     );

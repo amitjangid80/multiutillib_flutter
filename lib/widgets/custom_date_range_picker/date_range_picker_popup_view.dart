@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
-import 'package:multiutillib/multiutillib.dart';
+import 'package:multiutillib/widgets/default_button.dart';
 import 'package:multiutillib/widgets/custom_date_range_picker/date_range_picker_calendar_view.dart';
 
 showCustomDateRangePicker({
@@ -105,7 +105,7 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
 
   @override
   void initState() {
-    animationController = AnimationController(duration: Duration(milliseconds: 400), vsync: this);
+    animationController = AnimationController(duration: const Duration(milliseconds: 400), vsync: this);
 
     if (widget.initialStartDate != null) {
       startDate = widget.initialStartDate;
@@ -135,7 +135,7 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
           animation: animationController,
           builder: (BuildContext context, Widget? child) {
             return AnimatedOpacity(
-              duration: Duration(milliseconds: 100),
+              duration: const Duration(milliseconds: 100),
               opacity: animationController.value,
               child: InkWell(
                 focusColor: Colors.transparent,
@@ -151,13 +151,13 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(24.0)),
+                        borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                         boxShadow: <BoxShadow>[
-                          BoxShadow(color: Colors.grey.withOpacity(0.2), offset: Offset(4, 4), blurRadius: 8.0),
+                          BoxShadow(color: Colors.grey.withOpacity(0.2), offset: const Offset(4, 4), blurRadius: 8.0),
                         ],
                       ),
                       child: InkWell(
-                        borderRadius: BorderRadius.all(Radius.circular(24.0)),
+                        borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                         onTap: () {},
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -169,17 +169,16 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                                 Expanded(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: <Widget>[
-                                      Text(
+                                      const Text(
                                         "From",
                                         textAlign: TextAlign.left,
                                         style: TextStyle(fontSize: 16, color: Colors.grey, fontWeight: FontWeight.w100),
                                       ),
-                                      SizedBox(height: 4),
+                                      const SizedBox(height: 4),
                                       Text(
                                         startDate != null ? DateFormat("EEE, dd MMM").format(startDate!) : "--/-- ",
-                                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                                       ),
                                     ],
                                   ),
@@ -188,16 +187,15 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                                 Expanded(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: <Widget>[
-                                      Text(
+                                      const Text(
                                         "To",
                                         style: TextStyle(fontSize: 16, color: Colors.grey, fontWeight: FontWeight.w100),
                                       ),
-                                      SizedBox(height: 4),
+                                      const SizedBox(height: 4),
                                       Text(
                                         endDate != null ? DateFormat("EEE, dd MMM").format(endDate!) : "--/-- ",
-                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                                       ),
                                     ],
                                   ),
@@ -225,9 +223,7 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                             Container(
                               margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                               child: Row(
-                                mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Expanded(
                                     child: DefaultButton(
@@ -239,7 +235,9 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                                         try {
                                           widget.onCancelClick!();
                                           Navigator.pop(context);
-                                        } catch (e) {}
+                                        } catch (e) {
+                                          debugPrint('exception while setting on cancel click button');
+                                        }
                                       },
                                     ),
                                   ),
@@ -254,7 +252,9 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                                         try {
                                           widget.onApplyClick!(startDate, endDate);
                                           Navigator.pop(context);
-                                        } catch (e) {}
+                                        } catch (e) {
+                                          debugPrint('exception while setting on apply button');
+                                        }
                                       },
                                     ),
                                   ),

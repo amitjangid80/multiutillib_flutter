@@ -77,15 +77,15 @@ Duration _parseDuration(String _timeString) {
 
 /// [_formatDateTime] method
 /// this method will format a date string in default or format provided.
-String _formatDateTime(String dateTime, {String? newDateTimeFormat}) {
-  dateTime = dateTime.replaceNullWithEmpty;
+String _formatDateTime(dateTime, {String? newDateTimeFormat}) {
+  dateTime = dateTime.toString().replaceNullWithEmpty;
 
   if (dateTime.toString().isNotEmpty) {
     /// formatting date in yyyy-MM-dd HH:mm:ss default format
     dateTime = DateFormat(newDateTimeFormat ?? kDefaultDateTimeFormat).format(DateTime.parse(dateTime));
   }
 
-  return dateTime;
+  return dateTime.toString();
 }
 
 /// [_convertDateTimeString] method

@@ -9,7 +9,7 @@ showCustomDialog(
   BuildContext context, {
   String btnText = kOK,
   Color btnColor = Colors.blue,
-  bool barrierDismissible: false,
+  bool barrierDismissible = false,
   Color dividerColor = Colors.blue,
   TextAlign descTextAlign = TextAlign.center,
   TextAlign titleTextAlign = TextAlign.center,
@@ -66,13 +66,12 @@ showCustomDialog(
 }
 
 class _CustomDialog extends StatelessWidget {
-  final double _borderRadius = 20;
   final Color dividerColor, btnColor;
   final String title, btnText, description;
   final TextAlign titleTextAlign, descTextAlign;
   final TextStyle btnStyle, titleStyle, descStyle;
 
-  _CustomDialog({
+  const _CustomDialog({
     required this.title,
     required this.btnText,
     required this.btnColor,
@@ -87,6 +86,7 @@ class _CustomDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double _borderRadius = 20;
     final double _width = MediaQuery.of(context).size.width;
 
     return WillPopScope(
@@ -106,16 +106,13 @@ class _CustomDialog extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(title, style: titleStyle, textAlign: titleTextAlign),
                   Container(
                     height: 1.5,
                     margin: const EdgeInsets.symmetric(vertical: 20),
                     child: Row(
-                      mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: List.generate(
                         12,
                         (index) => Container(

@@ -161,7 +161,7 @@ String getCharFromString({required String stringToExtract}) {
     return 'String passed cannot be empty';
   }
 
-  const Pattern _pattern = r'[^A-Za-z]';
+  const Pattern _pattern = '[^A-Za-z]';
   final RegExp _regex = RegExp(_pattern as String);
 
   return stringToExtract.replaceAll(_regex, ' ');

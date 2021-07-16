@@ -15,7 +15,7 @@ class ConnectivityLayout extends StatelessWidget {
   final bool disableInteraction;
   final AlignmentGeometry alignment;
 
-  ConnectivityLayout({
+  const ConnectivityLayout({
     required this.child,
     this.bgColor = Colors.red,
     this.disableInteraction = false,
@@ -28,12 +28,12 @@ class ConnectivityLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: ConnectivityWidgetWrapper(
-        child: child,
         color: bgColor,
         message: message,
         alignment: alignment,
         messageStyle: messageStyle,
         disableInteraction: disableInteraction,
+        child: child,
       ),
     );
   }

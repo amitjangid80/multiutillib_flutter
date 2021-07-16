@@ -139,13 +139,13 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.all(const Radius.circular(24.0)),
+                        borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                         boxShadow: [
-                          BoxShadow(color: Colors.grey.withOpacity(0.2), offset: Offset(4, 4), blurRadius: 8.0),
+                          BoxShadow(color: Colors.grey.withOpacity(0.2), offset: const Offset(4, 4), blurRadius: 8.0),
                         ],
                       ),
                       child: InkWell(
-                        borderRadius: BorderRadius.all(const Radius.circular(24.0)),
+                        borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                         onTap: () {},
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -166,9 +166,7 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                             Container(
                               margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                               child: Row(
-                                mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Expanded(
                                     child: DefaultButton(
@@ -180,7 +178,9 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                                         try {
                                           widget.onCancelClick!();
                                           Navigator.pop(context);
-                                        } catch (e) {}
+                                        } catch (e) {
+                                          debugPrint('exception in on cancel click method');
+                                        }
                                       },
                                     ),
                                   ),
@@ -195,7 +195,9 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                                         try {
                                           widget.onApplyClick!(startDate);
                                           Navigator.pop(context);
-                                        } catch (e) {}
+                                        } catch (e) {
+                                          debugPrint('exception in on apply click method');
+                                        }
                                       },
                                     ),
                                   ),

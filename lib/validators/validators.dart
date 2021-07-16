@@ -8,7 +8,7 @@ String? emailValidator(String _value) {
   const Pattern _pattern =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
-  final RegExp _regex = new RegExp(_pattern as String);
+  final RegExp _regex = RegExp(_pattern as String);
 
   if (_value.isEmpty) {
     return _emailIdIsRequired;

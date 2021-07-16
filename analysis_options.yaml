@@ -15,6 +15,7 @@ analyzer:
     todo: ignore
     # allow dynamic variables to be assigned
     argument_type_not_assignable: ignore
+    avoid_function_literals_in_foreach_calls: ignore
     # return_of_invalid_type_from_closure: ignore
     # invalid_assignment: ignore
     # non_bool_operand: ignore
@@ -736,7 +737,7 @@ linter:
 
     # Any sorting is better than no sorting
     # https://dart-lang.github.io/linter/lints/sort_pub_dependencies.html
-    - sort_pub_dependencies
+    # - sort_pub_dependencies
 
     # Default constructor comes first.
     # pedantic: disabled

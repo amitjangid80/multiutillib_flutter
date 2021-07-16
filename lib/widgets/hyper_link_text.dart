@@ -8,16 +8,21 @@ import 'package:url_launcher/url_launcher.dart';
 /// This widget uses [launch] method from [url_launcher] package
 class HyperLinkText extends StatelessWidget {
   final String url, text;
+  final EdgeInsetsGeometry padding;
 
-  HyperLinkText({required this.url, required this.text});
+  const HyperLinkText({this.padding = const EdgeInsets.all(12), required this.url, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: _launchUrl,
-      child: Text(
-        text,
-        style: Theme.of(context).textTheme.headline6!.copyWith(color: Colors.blue, decoration: TextDecoration.underline),
+      child: Padding(
+        padding: padding,
+        child: Text(
+          text,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal)
+              .copyWith(color: Colors.blue, decoration: TextDecoration.underline),
+        ),
       ),
     );
   }
