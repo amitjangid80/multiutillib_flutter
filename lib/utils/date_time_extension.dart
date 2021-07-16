@@ -35,8 +35,7 @@ extension DateTimeExtension<T extends DateTime> on DateTime {
 
   /// [formatDateTime] extension method
   /// this extension method will convert a date time into provided or default date time format string
-  String formatDateTime({String? newDateTimeFormat}) =>
-      _formatDateTime(this.toString(), newDateTimeFormat: newDateTimeFormat);
+  String formatDateTime({String? newDateTimeFormat}) => _formatDateTime(this, newDateTimeFormat: newDateTimeFormat);
 }
 
 extension FromDurationExtension<T extends Duration> on Duration {
@@ -57,7 +56,7 @@ Duration _parseDuration(String _timeString) {
   int _hours = 0, _minutes = 0, _seconds = 0;
 
   /// splitting date time string into parts
-  List<String> _parts = _timeString.split(':');
+  final List<String> _parts = _timeString.split(':');
 
   /// checking length of parts is greater than 2
   if (_parts.length > 2) {
@@ -81,9 +80,9 @@ Duration _parseDuration(String _timeString) {
 String _formatDateTime(String dateTime, {String? newDateTimeFormat}) {
   dateTime = dateTime.replaceNullWithEmpty;
 
-  if (dateTime.toString().length > 0) {
+  if (dateTime.toString().isNotEmpty) {
     /// formatting date in yyyy-MM-dd HH:mm:ss default format
-    dateTime = DateFormat('${newDateTimeFormat ?? kDefaultDateTimeFormat}').format(DateTime.parse(dateTime));
+    dateTime = DateFormat(newDateTimeFormat ?? kDefaultDateTimeFormat).format(DateTime.parse(dateTime));
   }
 
   return dateTime;
@@ -92,8 +91,8 @@ String _formatDateTime(String dateTime, {String? newDateTimeFormat}) {
 /// [_convertDateTimeString] method
 /// this method will convert a date time string into time of day object
 TimeOfDay _convertDateTimeString(String _dateTime) {
-  List<String> _parts = _dateTime.split(":");
-  TimeOfDay _timeOfDay = TimeOfDay(hour: _parts[0].toInt!, minute: _parts[1].toInt!);
+  final List<String> _parts = _dateTime.split(":");
+  final TimeOfDay _timeOfDay = TimeOfDay(hour: _parts[0].toInt!, minute: _parts[1].toInt!);
 
   return _timeOfDay;
 }
@@ -101,8 +100,8 @@ TimeOfDay _convertDateTimeString(String _dateTime) {
 /// [_convertTimeString] method
 /// this method will convert time string to time format passed or default
 String _convertTimeString(String _time, {String? newTimeFormat}) {
-  List<String> _parts = _time.split(":");
-  TimeOfDay _timeOfDay = TimeOfDay(hour: _parts[0].toInt!, minute: _parts[1].toInt!);
+  final List<String> _parts = _time.split(":");
+  final TimeOfDay _timeOfDay = TimeOfDay(hour: _parts[0].toInt!, minute: _parts[1].toInt!);
 
   /// calling _convertTimeOfDay method for converting time string
   return _convertTimeOfDay(_timeOfDay, newTimeFormat: newTimeFormat);
@@ -112,20 +111,20 @@ String _convertTimeString(String _time, {String? newTimeFormat}) {
 /// this method will convert time of day to time format passed or default
 String _convertTimeOfDay(TimeOfDay timeOfDay, {String? newTimeFormat}) {
   final now = DateTime.now();
-  DateTime _dateTime = DateTime(now.year, now.month, now.day, timeOfDay.hour, timeOfDay.minute);
+  final DateTime _dateTime = DateTime(now.year, now.month, now.day, timeOfDay.hour, timeOfDay.minute);
 
   // calling .formatDateTime extension method to convert date time object to string to display time in given format
   return _dateTime.formatDateTime(newDateTimeFormat: newTimeFormat ?? kTimeDisplayFormat);
 }
 
 String _convertToTimeString(Duration duration, {String? newTimeString}) {
-  String _twoDigitHours = "${duration.inHours}".toTwoDigits;
-  String _twoDigitMinutes = "${duration.inMinutes.remainder(60)}".toTwoDigits;
-  String _twoDigitSeconds = "${duration.inSeconds.remainder(60)}".toTwoDigits;
+  final String _twoDigitHours = "${duration.inHours}".toTwoDigits;
+  final String _twoDigitMinutes = "${duration.inMinutes.remainder(60)}".toTwoDigits;
+  final String _twoDigitSeconds = "${duration.inSeconds.remainder(60)}".toTwoDigits;
 
-  DateTime _now = DateTime.now();
+  final DateTime _now = DateTime.now();
 
-  DateTime _dateTime = DateTime(
+  final DateTime _dateTime = DateTime(
     _now.year,
     _now.month,
     _now.day,

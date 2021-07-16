@@ -15,7 +15,7 @@ class DecimalInputFormatter extends TextInputFormatter {
     TextSelection _newSelection = newValue.selection;
 
     if (decimalRange != null) {
-      String _value = newValue.text;
+      final String _value = newValue.text;
 
       if (_value.contains(".") && _value.substring(_value.indexOf(".") + 1).length > decimalRange!) {
         _truncated = oldValue.text;
@@ -29,7 +29,7 @@ class DecimalInputFormatter extends TextInputFormatter {
         );
       }
 
-      return TextEditingValue(text: _truncated, selection: _newSelection, composing: TextRange.empty);
+      return TextEditingValue(text: _truncated, selection: _newSelection);
     }
 
     return newValue;

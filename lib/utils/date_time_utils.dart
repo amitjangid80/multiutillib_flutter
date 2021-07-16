@@ -9,22 +9,21 @@ import 'package:multiutillib/multiutillib.dart';
 /// this method will get current date in format provided.
 String getCurrentDate({String? newDateTimeFormat}) {
   if (newDateTimeFormat != null && newDateTimeFormat.isNotEmpty) {
-    return DateFormat('$newDateTimeFormat').format(DateTime.now());
+    return DateFormat(newDateTimeFormat).format(DateTime.now());
   } else {
-    return DateFormat('$kDefaultDateTimeFormat').format(DateTime.now());
+    return DateFormat(kDefaultDateTimeFormat).format(DateTime.now());
   }
 }
 
 /// [formatDateTime] method
 /// this method will format a date string in default or format provided.
 @Deprecated('Use .toDisplayDate extension instead.')
-String formatDateTime(dateTime, {String? newDateTimeFormat}) {
-  // dateTime = replaceNullWithEmpty(dateTime);
-  dateTime = dateTime.toString().replaceNullWithEmpty;
+String formatDateTime(String dateTime, {String? newDateTimeFormat}) {
+  dateTime = dateTime.replaceNullWithEmpty;
 
-  if (dateTime.toString().length > 0) {
+  if (dateTime.toString().isNotEmpty) {
     /// formatting date in yyyy-MM-dd HH:mm:ss format
-    dateTime = DateFormat('${newDateTimeFormat ?? kDefaultDateTimeFormat}').format(DateTime.parse(dateTime));
+    dateTime = DateFormat(newDateTimeFormat ?? kDefaultDateTimeFormat).format(DateTime.parse(dateTime));
   }
 
   return dateTime;
@@ -34,8 +33,8 @@ String formatDateTime(dateTime, {String? newDateTimeFormat}) {
 /// this method will convert time of day to date time format
 @Deprecated('Use .toDisplayTime extension instead.')
 String convertTimeOfDay(TimeOfDay timeOfDay, {String? timeFormat}) {
-  final now = new DateTime.now();
-  DateTime _dateTime = DateTime(now.year, now.month, now.day, timeOfDay.hour, timeOfDay.minute);
+  final now = DateTime.now();
+  final DateTime _dateTime = DateTime(now.year, now.month, now.day, timeOfDay.hour, timeOfDay.minute);
 
   /// calling format date time method to convert time of day for display
   return formatDateTime(_dateTime.toString(), newDateTimeFormat: timeFormat ?? kTimeDisplayFormat);

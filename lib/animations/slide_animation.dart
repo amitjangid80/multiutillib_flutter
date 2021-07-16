@@ -10,7 +10,7 @@ class SlideAnimation extends StatefulWidget {
   final SlideDirection slideDirection;
   final AnimationController animationController;
 
-  SlideAnimation({
+  const SlideAnimation({
     required this.position,
     required this.itemCount,
     required this.animationController,
@@ -29,7 +29,7 @@ class _SlideAnimationState extends State<SlideAnimation> with SingleTickerProvid
   Widget build(BuildContext context) {
     var _yTranslation = 0.0, _xTranslation = 0.0;
 
-    var _slideAnimation = Tween(begin: 0.0, end: 1.0).animate(
+    final _slideAnimation = Tween(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: widget.animationController,
         curve: Interval((1 / widget.itemCount) * widget.position, 1.0, curve: Curves.fastOutSlowIn),
@@ -54,8 +54,8 @@ class _SlideAnimationState extends State<SlideAnimation> with SingleTickerProvid
         return FadeTransition(
           opacity: _slideAnimation,
           child: Transform(
-            child: widget.child,
             transform: Matrix4.translationValues(_xTranslation, _yTranslation, 0.0),
+            child: widget.child,
           ),
         );
       },

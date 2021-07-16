@@ -13,7 +13,7 @@ import 'package:package_info/package_info.dart';
 /// [getAppVersion] method
 /// this method will return the current version of the app
 Future<String> getAppVersion() async {
-  PackageInfo _packageInfo = await PackageInfo.fromPlatform();
+  final PackageInfo _packageInfo = await PackageInfo.fromPlatform();
   return _packageInfo.version;
 }
 
@@ -21,13 +21,13 @@ Future<String> getAppVersion() async {
 /// this method will get device or model name of the device
 Future<String?> getDeviceName() async {
   String? _deviceName;
-  DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
+  final DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
 
   if (Platform.isAndroid) {
-    AndroidDeviceInfo _androidDeviceInfo = await _deviceInfoPlugin.androidInfo;
+    final AndroidDeviceInfo _androidDeviceInfo = await _deviceInfoPlugin.androidInfo;
     _deviceName = _androidDeviceInfo.model;
   } else if (Platform.isIOS) {
-    IosDeviceInfo _iosDeviceInfo = await _deviceInfoPlugin.iosInfo;
+    final IosDeviceInfo _iosDeviceInfo = await _deviceInfoPlugin.iosInfo;
     _deviceName = _iosDeviceInfo.name;
   }
 
@@ -38,13 +38,13 @@ Future<String?> getDeviceName() async {
 /// this method will get device info like model name and device id
 Future<String> getDeviceId() async {
   String _deviceId;
-  DeviceInfoPlugin _deviceInfo = DeviceInfoPlugin();
+  final DeviceInfoPlugin _deviceInfo = DeviceInfoPlugin();
 
   if (Platform.isAndroid) {
-    AndroidDeviceInfo _androidInfo = await _deviceInfo.androidInfo;
+    final AndroidDeviceInfo _androidInfo = await _deviceInfo.androidInfo;
     _deviceId = _androidInfo.androidId;
   } else {
-    IosDeviceInfo _iosDeviceInfo = await _deviceInfo.iosInfo;
+    final IosDeviceInfo _iosDeviceInfo = await _deviceInfo.iosInfo;
     _deviceId = _iosDeviceInfo.identifierForVendor;
   }
 
@@ -54,7 +54,7 @@ Future<String> getDeviceId() async {
 /// [replaceNullWithEmpty] method
 /// this method will check and replace null with an empty string
 @Deprecated('You can use .replaceNullWithEmpty extension.')
-String replaceNullWithEmpty(data) {
+String replaceNullWithEmpty(String? data) {
   if (data == null) {
     return '';
   } else if (data.toString().toLowerCase() == 'null') {
@@ -69,7 +69,7 @@ String replaceNullWithEmpty(data) {
 /// [replaceNullWithZero] method
 /// this method will check and replace null with an integer value
 @Deprecated('You can use .replaceNullWithZero extension.')
-int replaceNullWithZero(data) {
+int replaceNullWithZero(String? data) {
   if (data == null) {
     return 0;
   } else if (data.toString().toLowerCase() == 'null') {
@@ -84,7 +84,7 @@ int replaceNullWithZero(data) {
 /// [replaceNullWithDouble] method
 /// this method will check and replace null with an double value
 @Deprecated('You can use .replaceNullWithDouble extension.')
-double replaceNullWithDouble(data) {
+double replaceNullWithDouble(String? data) {
   if (data == null) {
     return 0.0;
   } else if (data.toString().toLowerCase() == 'null') {
@@ -104,11 +104,7 @@ int replaceTrueOrFalse(data) => data.toString().toLowerCase() == 'true' ? 1 : 0;
 /// [formatNumber] method
 /// this method will format the number in default pattern or custom pattern
 @Deprecated('You can use .formatNumber extension method.')
-String formatNumber({required var numberToFormat, String customPattern = '##,###,###.##'}) {
-  if (numberToFormat == null) {
-    numberToFormat = 0;
-  }
-
+String formatNumber({required String numberToFormat, String customPattern = '##,###,###.##'}) {
   return NumberFormat.currency(decimalDigits: 2, customPattern: customPattern).format(numberToFormat);
 }
 
@@ -122,10 +118,10 @@ bool isNumeric(String s) {
 /// [getSingleDigitRandomNumber] method
 /// this method will return a single digit random number
 String getSingleDigitRandomNumber() {
-  var _min = 1, _max = 9;
-  var _rnd = Random.secure();
+  const int _min = 1, _max = 9;
+  final Random _rnd = Random.secure();
 
-  var _number = _min + _rnd.nextInt(_max - _min);
+  final int _number = _min + _rnd.nextInt(_max - _min);
   debugPrint('generated random single digit number is: $_number');
 
   return _number.toString();
@@ -142,8 +138,8 @@ String getRandomNumber({required int min, required int max}) {
     return 'min value cannot be greater than max value';
   }
 
-  var _rnd = Random.secure();
-  var _number = min + _rnd.nextInt(max - min);
+  final _rnd = Random.secure();
+  final _number = min + _rnd.nextInt(max - min);
   debugPrint('generated random number between $min & $max is: $_number');
 
   return _number.toString();
@@ -152,7 +148,7 @@ String getRandomNumber({required int min, required int max}) {
 /// [getRandomMobileNumber] method
 /// this method will return randomly generated mobile number
 String getRandomMobileNumber() {
-  var _min = 700000000, _max = 999999999;
+  const _min = 700000000, _max = 999999999;
 
   /// calling get random number method
   return getRandomNumber(min: _min, max: _max);
@@ -165,8 +161,8 @@ String getCharFromString({required String stringToExtract}) {
     return 'String passed cannot be empty';
   }
 
-  Pattern _pattern = r'[^A-Za-z]';
-  RegExp _regex = new RegExp(_pattern as String);
+  const Pattern _pattern = r'[^A-Za-z]';
+  final RegExp _regex = RegExp(_pattern as String);
 
   return stringToExtract.replaceAll(_regex, ' ');
 }
@@ -182,8 +178,8 @@ String? getNumbersFromString({String? stringToExtract}) {
     return 'String passed cannot be empty';
   }
 
-  Pattern _pattern = r'\d+';
-  RegExp _regex = new RegExp(_pattern as String);
+  const Pattern _pattern = r'\d+';
+  final RegExp _regex = RegExp(_pattern as String);
 
   return _regex.stringMatch(stringToExtract);
 }

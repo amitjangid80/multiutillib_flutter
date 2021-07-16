@@ -7,8 +7,8 @@ class Animations {
   /// This method uses [SlideTransition] widget
   static fromRight(Animation<double> animation, Widget child) {
     return SlideTransition(
-      child: child,
       position: Tween<Offset>(end: Offset.zero, begin: const Offset(1.0, 0.0)).animate(animation),
+      child: child,
     );
   }
 
@@ -16,8 +16,8 @@ class Animations {
   /// This method uses [SlideTransition] widget
   static fromLeft(Animation<double> animation, Widget child) {
     return SlideTransition(
-      child: child,
       position: Tween<Offset>(end: Offset.zero, begin: const Offset(-1.0, 0.0)).animate(animation),
+      child: child,
     );
   }
 
@@ -25,8 +25,8 @@ class Animations {
   /// This method uses [SlideTransition] widget
   static fromTop(Animation<double> animation, Widget child) {
     return SlideTransition(
-      child: child,
       position: Tween<Offset>(end: Offset.zero, begin: const Offset(0.0, -1.0)).animate(animation),
+      child: child,
     );
   }
 
@@ -34,8 +34,8 @@ class Animations {
   /// This method uses [SlideTransition] widget
   static fromBottom(Animation<double> animation, Widget child) {
     return SlideTransition(
-      child: child,
       position: Tween<Offset>(end: Offset.zero, begin: const Offset(0.0, 1.0)).animate(animation),
+      child: child,
     );
   }
 
@@ -43,9 +43,9 @@ class Animations {
   /// This method uses [ScaleTransition] widget
   static grow(Animation<double> animation, Widget child) {
     return ScaleTransition(
-      child: child,
       scale: Tween<double>(end: 1.0, begin: 0.0)
-          .animate(CurvedAnimation(parent: animation, curve: const Interval(0.00, 0.50, curve: Curves.linear))),
+          .animate(CurvedAnimation(parent: animation, curve: const Interval(0.00, 0.50))),
+      child: child,
     );
   }
 }

@@ -30,7 +30,7 @@ class CustomCalendarView extends StatefulWidget {
 }
 
 class _CustomCalendarViewState extends State<CustomCalendarView> {
-  List<DateTime> _dateList = [];
+  final List<DateTime> _dateList = [];
   var _currentMonthDate = DateTime.now();
 
   DateTime? _endDate;
@@ -57,7 +57,7 @@ class _CustomCalendarViewState extends State<CustomCalendarView> {
     _dateList.clear();
 
     int _previousMothDay = 0;
-    var _newDate = DateTime(_monthDate.year, _monthDate.month, 0);
+    final DateTime _newDate = DateTime(_monthDate.year, _monthDate.month, 0);
 
     if (_newDate.weekday < 7) {
       _previousMothDay = _newDate.weekday;
@@ -86,20 +86,20 @@ class _CustomCalendarViewState extends State<CustomCalendarView> {
                   width: 38,
                   height: 38,
                   decoration: BoxDecoration(
-                    border: new Border.all(color: widget.leftArrowColor!),
-                    borderRadius: BorderRadius.all(Radius.circular(24.0)),
+                    border: Border.all(color: widget.leftArrowColor!),
+                    borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                   ),
                   child: Material(
                     color: Colors.transparent,
                     child: InkWell(
                       borderRadius: const BorderRadius.all(Radius.circular(24.0)),
-                      child: Icon(Icons.keyboard_arrow_left, color: widget.leftArrowColor),
                       onTap: () {
                         setState(() {
                           _currentMonthDate = DateTime(_currentMonthDate.year, _currentMonthDate.month, 0);
                           setListOfDate(_currentMonthDate);
                         });
                       },
+                      child: Icon(Icons.keyboard_arrow_left, color: widget.leftArrowColor),
                     ),
                   ),
                 ),
@@ -118,20 +118,20 @@ class _CustomCalendarViewState extends State<CustomCalendarView> {
                   width: 38,
                   height: 38,
                   decoration: BoxDecoration(
-                    border: new Border.all(color: widget.rightArrowColor!),
+                    border: Border.all(color: widget.rightArrowColor!),
                     borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                   ),
                   child: Material(
                     color: Colors.transparent,
                     child: InkWell(
-                      borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                      child: Icon(Icons.keyboard_arrow_right, color: widget.rightArrowColor),
+                      borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                       onTap: () {
                         setState(() {
                           _currentMonthDate = DateTime(_currentMonthDate.year, _currentMonthDate.month + 2, 0);
                           setListOfDate(_currentMonthDate);
                         });
                       },
+                      child: Icon(Icons.keyboard_arrow_right, color: widget.rightArrowColor),
                     ),
                   ),
                 ),
@@ -139,14 +139,14 @@ class _CustomCalendarViewState extends State<CustomCalendarView> {
             ],
           ),
         ),
-        Padding(child: Row(children: _getDaysNameUI()), padding: const EdgeInsets.only(right: 8, left: 8, bottom: 8)),
-        Padding(child: Column(children: _getDaysNoUI()), padding: const EdgeInsets.only(right: 8, left: 8)),
+        Padding(padding: const EdgeInsets.only(right: 8, left: 8, bottom: 8), child: Row(children: _getDaysNameUI())),
+        Padding(padding: const EdgeInsets.only(right: 8, left: 8), child: Column(children: _getDaysNoUI())),
       ],
     );
   }
 
   List<Widget> _getDaysNameUI() {
-    List<Widget> _listUI = [];
+    final List<Widget> _listUI = [];
 
     for (var i = 0; i < 7; i++) {
       _listUI.add(
@@ -165,10 +165,10 @@ class _CustomCalendarViewState extends State<CustomCalendarView> {
 
   List<Widget> _getDaysNoUI() {
     var _count = 0;
-    List<Widget> _noList = [];
+    final List<Widget> _noList = [];
 
     for (var i = 0; i < _dateList.length / 7; i++) {
-      List<Widget> _listUI = [];
+      final List<Widget> _listUI = [];
 
       for (var i = 0; i < 7; i++) {
         final _date = _dateList[_count];
@@ -177,138 +177,140 @@ class _CustomCalendarViewState extends State<CustomCalendarView> {
           Expanded(
             child: AspectRatio(
               aspectRatio: 1.0,
-              child: Container(
-                child: Stack(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(top: 3, bottom: 3),
-                      child: Material(
-                        color: Colors.transparent,
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            top: 2,
-                            bottom: 2,
-                            right: _isEndDateRadius(_date) ? 4 : 0,
-                            left: _isStartDateRadius(_date) ? 4 : 0,
-                          ),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: _startDate != null && _endDate != null
-                                  ? _getIsItStartAndEndDate(_date) || _getIsInRange(_date)
-                                      ? widget.selectedDateColor!.withOpacity(0.4)
-                                      : Colors.transparent
-                                  : Colors.transparent,
-                              borderRadius: BorderRadius.only(
-                                topRight: _isEndDateRadius(_date) ? Radius.circular(24.0) : Radius.circular(0.0),
-                                topLeft: _isStartDateRadius(_date) ? Radius.circular(24.0) : Radius.circular(0.0),
-                                bottomRight: _isEndDateRadius(_date) ? Radius.circular(24.0) : Radius.circular(0.0),
-                                bottomLeft: _isStartDateRadius(_date) ? Radius.circular(24.0) : Radius.circular(0.0),
-                              ),
+              child: Stack(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3, bottom: 3),
+                    child: Material(
+                      color: Colors.transparent,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: 2,
+                          bottom: 2,
+                          right: _isEndDateRadius(_date) ? 4 : 0,
+                          left: _isStartDateRadius(_date) ? 4 : 0,
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: _startDate != null && _endDate != null
+                                ? _getIsItStartAndEndDate(_date) || _getIsInRange(_date)
+                                    ? widget.selectedDateColor!.withOpacity(0.4)
+                                    : Colors.transparent
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.only(
+                              topRight:
+                                  _isEndDateRadius(_date) ? const Radius.circular(24.0) : const Radius.circular(0.0),
+                              topLeft:
+                                  _isStartDateRadius(_date) ? const Radius.circular(24.0) : const Radius.circular(0.0),
+                              bottomRight:
+                                  _isEndDateRadius(_date) ? const Radius.circular(24.0) : const Radius.circular(0.0),
+                              bottomLeft:
+                                  _isStartDateRadius(_date) ? const Radius.circular(24.0) : const Radius.circular(0.0),
                             ),
                           ),
                         ),
                       ),
                     ),
-                    Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                        onTap: () {
-                          if (_currentMonthDate.month == _date.month) {
-                            if (widget.minimumDate != null && widget.maximumDate != null) {
-                              var _newMinimumDate = DateTime(
-                                widget.minimumDate!.year,
-                                widget.minimumDate!.month,
-                                widget.minimumDate!.day - 1,
-                              );
+                  ),
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      borderRadius: const BorderRadius.all(Radius.circular(32.0)),
+                      onTap: () {
+                        if (_currentMonthDate.month == _date.month) {
+                          if (widget.minimumDate != null && widget.maximumDate != null) {
+                            final DateTime _newMinimumDate = DateTime(
+                              widget.minimumDate!.year,
+                              widget.minimumDate!.month,
+                              widget.minimumDate!.day - 1,
+                            );
 
-                              var _newMaximumDate = DateTime(
-                                widget.maximumDate!.year,
-                                widget.maximumDate!.month,
-                                widget.maximumDate!.day + 1,
-                              );
+                            final DateTime _newMaximumDate = DateTime(
+                              widget.maximumDate!.year,
+                              widget.maximumDate!.month,
+                              widget.maximumDate!.day + 1,
+                            );
 
-                              if (_date.isAfter(_newMinimumDate) && _date.isBefore(_newMaximumDate)) {
-                                _onDateClick(_date);
-                              }
-                            } else if (widget.minimumDate != null) {
-                              var _newMinimumDate = DateTime(
-                                widget.minimumDate!.year,
-                                widget.minimumDate!.month,
-                                widget.minimumDate!.day - 1,
-                              );
-
-                              if (_date.isAfter(_newMinimumDate)) {
-                                _onDateClick(_date);
-                              }
-                            } else if (widget.maximumDate != null) {
-                              var _newMaximumDate = DateTime(
-                                widget.maximumDate!.year,
-                                widget.maximumDate!.month,
-                                widget.maximumDate!.day + 1,
-                              );
-
-                              if (_date.isBefore(_newMaximumDate)) {
-                                _onDateClick(_date);
-                              }
-                            } else {
+                            if (_date.isAfter(_newMinimumDate) && _date.isBefore(_newMaximumDate)) {
                               _onDateClick(_date);
                             }
+                          } else if (widget.minimumDate != null) {
+                            final DateTime _newMinimumDate = DateTime(
+                              widget.minimumDate!.year,
+                              widget.minimumDate!.month,
+                              widget.minimumDate!.day - 1,
+                            );
+
+                            if (_date.isAfter(_newMinimumDate)) {
+                              _onDateClick(_date);
+                            }
+                          } else if (widget.maximumDate != null) {
+                            final DateTime _newMaximumDate = DateTime(
+                              widget.maximumDate!.year,
+                              widget.maximumDate!.month,
+                              widget.maximumDate!.day + 1,
+                            );
+
+                            if (_date.isBefore(_newMaximumDate)) {
+                              _onDateClick(_date);
+                            }
+                          } else {
+                            _onDateClick(_date);
                           }
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.all(2),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: _getIsItStartAndEndDate(_date) ? widget.selectedDateColor : Colors.transparent,
-                              borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                              border: Border.all(
-                                color: _getIsItStartAndEndDate(_date) ? Colors.white : Colors.transparent,
-                                width: 2,
-                              ),
-                              boxShadow: _getIsItStartAndEndDate(_date)
-                                  ? [BoxShadow(blurRadius: 4, color: Colors.grey, offset: Offset(0, 0))]
-                                  : null,
+                        }
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(2),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: _getIsItStartAndEndDate(_date) ? widget.selectedDateColor : Colors.transparent,
+                            borderRadius: const BorderRadius.all(Radius.circular(32.0)),
+                            border: Border.all(
+                              color: _getIsItStartAndEndDate(_date) ? Colors.white : Colors.transparent,
+                              width: 2,
                             ),
-                            child: Center(
-                              child: Text(
-                                "${_date.day}",
-                                style: TextStyle(
-                                  color: _getIsItStartAndEndDate(_date)
-                                      ? Colors.white
-                                      : _currentMonthDate.month == _date.month
-                                          ? Colors.black
-                                          : Colors.grey.withOpacity(0.6),
-                                  fontSize: MediaQuery.of(context).size.width > 360 ? 18 : 16,
-                                  fontWeight: _getIsItStartAndEndDate(_date) ? FontWeight.bold : FontWeight.normal,
-                                ),
+                            boxShadow: _getIsItStartAndEndDate(_date)
+                                ? [const BoxShadow(blurRadius: 4, color: Colors.grey)]
+                                : null,
+                          ),
+                          child: Center(
+                            child: Text(
+                              "${_date.day}",
+                              style: TextStyle(
+                                color: _getIsItStartAndEndDate(_date)
+                                    ? Colors.white
+                                    : _currentMonthDate.month == _date.month
+                                        ? Colors.black
+                                        : Colors.grey.withOpacity(0.6),
+                                fontSize: MediaQuery.of(context).size.width > 360 ? 18 : 16,
+                                fontWeight: _getIsItStartAndEndDate(_date) ? FontWeight.bold : FontWeight.normal,
                               ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      bottom: 9,
-                      child: Container(
-                        height: 6,
-                        width: 6,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: (DateTime.now().day == _date.day &&
-                                  DateTime.now().month == _date.month &&
-                                  DateTime.now().year == _date.year)
-                              ? _getIsInRange(_date)
-                                  ? Colors.white
-                                  : widget.selectedDateColor
-                              : Colors.transparent,
-                        ),
+                  ),
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 9,
+                    child: Container(
+                      height: 6,
+                      width: 6,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: (DateTime.now().day == _date.day &&
+                                DateTime.now().month == _date.month &&
+                                DateTime.now().year == _date.year)
+                            ? _getIsInRange(_date)
+                                ? Colors.white
+                                : widget.selectedDateColor
+                            : Colors.transparent,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -317,14 +319,7 @@ class _CustomCalendarViewState extends State<CustomCalendarView> {
         _count += 1;
       }
 
-      _noList.add(
-        Row(
-          children: _listUI,
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-        ),
-      );
+      _noList.add(Row(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: _listUI));
     }
 
     return _noList;
@@ -385,7 +380,9 @@ class _CustomCalendarViewState extends State<CustomCalendarView> {
     setState(() {
       try {
         widget.onDateChange!(_startDate);
-      } catch (e) {}
+      } catch (e) {
+        debugPrint('exception while check for is end date radius: ${e.toString()}');
+      }
     });
   }
 }

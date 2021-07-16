@@ -68,7 +68,7 @@ class _CalendarPopupView extends StatefulWidget {
   final Color? rightArrowColor;
   final Color? selectedDateColor;
 
-  _CalendarPopupView({
+  const _CalendarPopupView({
     this.minimumDate,
     this.maximumDate,
     this.barrierDismissible,
@@ -99,7 +99,7 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
 
   @override
   void initState() {
-    animationController = AnimationController(duration: Duration(milliseconds: 400), vsync: this);
+    animationController = AnimationController(duration: const Duration(milliseconds: 400), vsync: this);
     if (widget.initialStartDate != null) {
       endDate = widget.initialStartDate;
       startDate = widget.initialStartDate;
@@ -123,7 +123,7 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
           animation: animationController,
           builder: (BuildContext context, Widget? child) {
             return AnimatedOpacity(
-              duration: Duration(milliseconds: 100),
+              duration: const Duration(milliseconds: 100),
               opacity: animationController.value,
               child: InkWell(
                 splashColor: Colors.transparent,
@@ -139,13 +139,13 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(24.0)),
+                        borderRadius: BorderRadius.all(const Radius.circular(24.0)),
                         boxShadow: [
                           BoxShadow(color: Colors.grey.withOpacity(0.2), offset: Offset(4, 4), blurRadius: 8.0),
                         ],
                       ),
                       child: InkWell(
-                        borderRadius: BorderRadius.all(Radius.circular(24.0)),
+                        borderRadius: BorderRadius.all(const Radius.circular(24.0)),
                         onTap: () {},
                         child: Column(
                           mainAxisSize: MainAxisSize.min,

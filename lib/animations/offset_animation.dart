@@ -33,13 +33,13 @@ class OffsetAnimation extends AnimatedWidget {
 
   @override
   Widget build(BuildContext context) {
-    Animation<double> _animation = listenable as Animation<double>;
+    final Animation<double> _animation = listenable as Animation<double>;
 
     return AnimatedBuilder(
       animation: _animation,
       builder: (context, child) => Container(
-        child: widget,
         padding: EdgeInsets.only(left: _animation.value + end, right: end - _animation.value),
+        child: widget,
       ),
     );
   }

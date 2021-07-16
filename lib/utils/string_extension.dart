@@ -51,7 +51,7 @@ extension NumberExtension<T extends String> on String {
 
   /// [isNumeric] extension
   /// this extension will check if passed string is numeric or not
-  bool get isNumeric => double.tryParse(this.toString()) != null;
+  bool get isNumeric => double.tryParse(this) != null;
 }
 
 /// [_replaceTrueOrFalse] method
@@ -60,8 +60,8 @@ int _replaceTrueOrFalse(data) => data?.toString().toLowerCase() == 'true' ? 1 : 
 
 /// [_replaceNullWithEmpty] method
 /// this method will check and replace null with an empty string
-String _replaceNullWithEmpty(data) {
-  if (data == null) {
+String _replaceNullWithEmpty(String data) {
+  if (data.isEmpty) {
     return '';
   } else if (data.toString().toLowerCase() == 'null') {
     return '';
@@ -100,9 +100,9 @@ double _replaceNullWithDouble(data) {
   }
 }
 
-_formatNumberToCompact({numberToFormat}) {
-  if (numberToFormat == null) numberToFormat = 0;
-  var _numberToFormat = double.parse(numberToFormat.toString());
+String _formatNumberToCompact({String? numberToFormat}) {
+  numberToFormat ??= '0';
+  final _numberToFormat = double.parse(numberToFormat);
 
   return NumberFormat.compactCurrency(symbol: '', decimalDigits: 2).format(_numberToFormat);
 }
@@ -110,8 +110,8 @@ _formatNumberToCompact({numberToFormat}) {
 /// [_formatNumber] method
 /// this method will format the number in default pattern or custom pattern
 String _formatNumber({required var numberToFormat, String? customPattern}) {
-  if (numberToFormat == null) numberToFormat = 0;
-  var _numberToFormat = double.parse(numberToFormat.toString());
+  numberToFormat ??= 0;
+  final _numberToFormat = double.parse(numberToFormat.toString());
 
   return NumberFormat.currency(decimalDigits: 2, customPattern: customPattern ?? '##,###,###.##')
       .format(_numberToFormat);
