@@ -1,5 +1,7 @@
 library multiutillib;
 
+export 'package:connectivity_wrapper/connectivity_wrapper.dart';
+
 //#region utils
 export 'package:multiutillib/utils/utils.dart';
 export 'package:multiutillib/utils/constants.dart';

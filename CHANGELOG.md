@@ -1,3 +1,6 @@
+# [1.1.3] 30-07-2021
+* Resolved bug in connectivity layout.
+
 # [1.1.2] 16-07-2021
 * Optimized code after adding analysis options.
 * Added UI Helpers and Custom App Bar.

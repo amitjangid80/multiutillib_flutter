@@ -8,6 +8,7 @@ import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 /// This widget is used to show messages for network operations
 /// This widget uses [ConnectivityWidgetWrapper] from [connectivity_wrapper] package
 class ConnectivityLayout extends StatelessWidget {
+  final bool stacked;
   final Widget child;
   final Color bgColor;
   final String message;
@@ -17,6 +18,7 @@ class ConnectivityLayout extends StatelessWidget {
 
   const ConnectivityLayout({
     required this.child,
+    this.stacked = false,
     this.bgColor = Colors.red,
     this.disableInteraction = false,
     this.message = kInternetNotAvailable,
@@ -30,6 +32,7 @@ class ConnectivityLayout extends StatelessWidget {
       child: ConnectivityWidgetWrapper(
         color: bgColor,
         message: message,
+        stacked: stacked,
         alignment: alignment,
         messageStyle: messageStyle,
         disableInteraction: disableInteraction,
