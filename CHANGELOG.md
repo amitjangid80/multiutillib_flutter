@@ -1,3 +1,6 @@
+# [1.1.4]
+* Migrated from the deprecated package_info plugin to package_info_plus.
+
 # [1.1.3] 30-07-2021
 * Resolved bug in connectivity layout.
 

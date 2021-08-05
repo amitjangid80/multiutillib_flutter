@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:intl/intl.dart';
 import 'package:device_info/device_info.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 /// [getAppVersion] method
 /// this method will return the current version of the app
