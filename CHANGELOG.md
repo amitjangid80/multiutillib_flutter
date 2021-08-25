@@ -1,3 +1,7 @@
+# [1.1.4] 25-08-2021
+* Resolved bug in ui helper's horizontal spacing.
+* Now you can add text style to rich text widget individually.
+
 # [1.1.3] 30-07-2021
 * Resolved bug in connectivity layout.
 

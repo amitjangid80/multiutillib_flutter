@@ -25,9 +25,8 @@ class RichTextWidget extends StatelessWidget {
     return RichText(
       textAlign: textAlign,
       text: TextSpan(
-        style: captionStyle,
         children: <TextSpan>[
-          TextSpan(text: '$caption${showColon ? ':' : ''}${isDescNewLine ? '\n' : ' '}'),
+          TextSpan(text: '$caption${showColon ? ':' : ''}${isDescNewLine ? '\n' : ' '}', style: captionStyle),
           TextSpan(text: description, style: descriptionStyle),
         ],
       ),

@@ -251,7 +251,6 @@ class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProvi
                                       onPressed: () {
                                         try {
                                           widget.onApplyClick!(startDate, endDate);
-                                          Navigator.pop(context);
                                         } catch (e) {
                                           debugPrint('exception while setting on apply button');
                                         }
