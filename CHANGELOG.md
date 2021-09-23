@@ -1,3 +1,7 @@
+#[1.1.5] 23-09-2021
+* Updated other packages used in this package.
+* Added border radius field to Loading widget.
+
 # [1.1.4] 25-08-2021
 * Resolved bug in ui helper's horizontal spacing.
 * Now you can add text style to rich text widget individually.

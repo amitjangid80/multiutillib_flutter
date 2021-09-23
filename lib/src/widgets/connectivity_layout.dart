@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:multiutillib/utils/constants.dart';
+import 'package:multiutillib/src/utils/constants.dart';
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 
 /// This widget is used to show messages for network operations

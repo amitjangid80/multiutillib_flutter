@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
-import 'package:multiutillib/utils/constants.dart';
-import 'package:multiutillib/utils/string_extension.dart';
+import 'package:multiutillib/src/utils/constants.dart';
+import 'package:multiutillib/src/utils/string_extension.dart';
 
 extension DurationExtension<T extends String> on String {
   /// [toDuration] extension

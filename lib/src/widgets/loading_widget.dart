@@ -1,7 +1,7 @@
 // Created by AMIT JANGID on 26/12/20.
 
 import 'package:flutter/material.dart';
-import 'package:multiutillib/widgets/material_card.dart';
+import 'package:multiutillib/src/widgets/material_card.dart';
 
 import 'package:shimmer/shimmer.dart';
 
@@ -9,11 +9,13 @@ import 'package:shimmer/shimmer.dart';
 /// This widget uses [Shimmer] widget from [shimmer] package
 class LoadingWidget extends StatelessWidget {
   final int itemCount;
+  final double borderRadius;
   final EdgeInsetsGeometry margin;
   final Color baseColor, highlightColor;
 
   const LoadingWidget({
     this.itemCount = 4,
+    this.borderRadius = 12,
     this.highlightColor = Colors.white,
     this.baseColor = const Color(0xFFE0E0E0),
     this.margin = const EdgeInsets.only(top: 12, left: 12, right: 12),
@@ -28,6 +30,7 @@ class LoadingWidget extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, _position) {
         return MaterialCard(
+          borderRadius: borderRadius,
           margin: margin,
           child: Column(
             mainAxisSize: MainAxisSize.min,

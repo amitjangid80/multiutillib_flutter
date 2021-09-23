@@ -337,6 +337,7 @@ Example:
 ```dart
 LoadingWidget(
     itemCount = 6,
+    borderRadius = 12,
     highlightColor = Colors.white,
     baseColor = const Color(0xFFE0E0E0),
 ),

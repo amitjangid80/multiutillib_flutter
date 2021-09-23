@@ -1,49 +1,47 @@
 library multiutillib;
 
-export 'package:connectivity_wrapper/connectivity_wrapper.dart';
-
 //#region utils
-export 'package:multiutillib/utils/utils.dart';
-export 'package:multiutillib/utils/constants.dart';
-export 'package:multiutillib/utils/ui_helpers.dart';
-export 'package:multiutillib/utils/date_time_utils.dart';
+export 'src/utils/utils.dart';
+export 'src/utils/constants.dart';
+export 'src/utils/ui_helpers.dart';
+export 'src/utils/date_time_utils.dart';
 //#endregion utils
 
 //#region animations
-export 'package:multiutillib/animations/animations.dart';
-export 'package:multiutillib/animations/fade_animation.dart';
-export 'package:multiutillib/animations/slide_animation.dart';
-export 'package:multiutillib/animations/offset_animation.dart';
+export 'src/animations/animations.dart';
+export 'src/animations/fade_animation.dart';
+export 'src/animations/slide_animation.dart';
+export 'src/animations/offset_animation.dart';
 //#endregion animations
 
 //#region enums
-export 'package:multiutillib/enums/slide_animation_type.dart';
-export 'package:multiutillib/enums/dialog_animation_type.dart';
+export 'src/enums/slide_animation_type.dart';
+export 'src/enums/dialog_animation_type.dart';
 //#endregion enums
 
 //#region validators
-export 'package:multiutillib/validators/validators.dart';
-export 'package:multiutillib/validators/decimal_input_format.dart';
+export 'src/validators/validators.dart';
+export 'src/validators/decimal_input_format.dart';
 //#endregion validators
 
 //#region extensions
-export 'package:multiutillib/utils/string_extension.dart';
-export 'package:multiutillib/utils/date_time_extension.dart';
+export 'src/utils/string_extension.dart';
+export 'src/utils/date_time_extension.dart';
 //#region extensions
 
 //#region widgets
-export 'package:multiutillib/widgets/material_card.dart';
-export 'package:multiutillib/widgets/otp_text_field.dart';
-export 'package:multiutillib/widgets/default_button.dart';
-export 'package:multiutillib/widgets/loading_widget.dart';
-export 'package:multiutillib/widgets/hyper_link_text.dart';
-export 'package:multiutillib/widgets/no_records_found.dart';
-export 'package:multiutillib/widgets/rich_text_widgets.dart';
-export 'package:multiutillib/widgets/connectivity_layout.dart';
-export 'package:multiutillib/widgets/custom_toggle_button.dart';
-export 'package:multiutillib/widgets/dialogs/custom_dialog.dart';
-export 'package:multiutillib/widgets/dialogs/progress_dialog.dart';
-export 'package:multiutillib/widgets/dialogs/custom_confirm_dialog.dart';
-export 'package:multiutillib/widgets/custom_date_picker/date_picker_popup_view.dart';
-export 'package:multiutillib/widgets/custom_date_range_picker/date_range_picker_popup_view.dart';
+export 'src/widgets/material_card.dart';
+export 'src/widgets/otp_text_field.dart';
+export 'src/widgets/default_button.dart';
+export 'src/widgets/loading_widget.dart';
+export 'src/widgets/hyper_link_text.dart';
+export 'src/widgets/no_records_found.dart';
+export 'src/widgets/rich_text_widgets.dart';
+export 'src/widgets/connectivity_layout.dart';
+export 'src/widgets/custom_toggle_button.dart';
+export 'src/widgets/dialogs/custom_dialog.dart';
+export 'src/widgets/dialogs/progress_dialog.dart';
+export 'src/widgets/dialogs/custom_confirm_dialog.dart';
+export 'src/widgets/custom_date_picker/date_picker_popup_view.dart';
+export 'src/widgets/custom_date_range_picker/date_range_picker_popup_view.dart';
 //#endregion widgets

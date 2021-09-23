@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:intl/intl.dart';
-import 'package:device_info/device_info.dart';
-import 'package:package_info/package_info.dart';
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 /// [getAppVersion] method
 /// this method will return the current version of the app
@@ -42,10 +42,10 @@ Future<String> getDeviceId() async {
 
   if (Platform.isAndroid) {
     final AndroidDeviceInfo _androidInfo = await _deviceInfo.androidInfo;
-    _deviceId = _androidInfo.androidId;
+    _deviceId = _androidInfo.androidId!;
   } else {
     final IosDeviceInfo _iosDeviceInfo = await _deviceInfo.iosInfo;
-    _deviceId = _iosDeviceInfo.identifierForVendor;
+    _deviceId = _iosDeviceInfo.identifierForVendor!;
   }
 
   return _deviceId;

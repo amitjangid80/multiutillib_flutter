@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 class DefaultButton extends StatelessWidget {
   final String? text;
   final Color? btnColor;
-  final Function onPressed;
   final OutlinedBorder shape;
   final TextStyle? btnTextStyle;
+  final VoidCallback? onPressed;
   final double height, elevation;
   final EdgeInsetsGeometry margin;
   final bool isEnabled, isUpperCase;
@@ -38,7 +38,7 @@ class DefaultButton extends StatelessWidget {
       margin: margin,
       child: ElevatedButton(
         clipBehavior: Clip.antiAlias,
-        onPressed: isEnabled ? onPressed as void Function()? : null,
+        onPressed: isEnabled ? onPressed : null,
         style: ElevatedButton.styleFrom(
           shape: shape,
           primary: btnColor,
