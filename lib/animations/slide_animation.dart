@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:multiutillib/src/enums/slide_animation_type.dart';
+import 'package:multiutillib/enums/slide_animation_type.dart';
 
 class SlideAnimation extends StatefulWidget {
   final Widget child;

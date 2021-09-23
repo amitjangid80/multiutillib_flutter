@@ -3,8 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
-import 'package:multiutillib/src/widgets/default_button.dart';
-import 'package:multiutillib/src/widgets/custom_date_range_picker/date_range_picker_calendar_view.dart';
+import 'package:multiutillib/widgets/default_button.dart';
+import 'package:multiutillib/widgets/custom_date_range_picker/date_range_picker_calendar_view.dart';
 
 showCustomDateRangePicker({
   required BuildContext context,

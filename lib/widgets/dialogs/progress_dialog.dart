@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:multiutillib/src/enums/progess_dialog_type.dart';
+import 'package:multiutillib/enums/progess_dialog_type.dart';
 
 /// show progress dialog method
 ///

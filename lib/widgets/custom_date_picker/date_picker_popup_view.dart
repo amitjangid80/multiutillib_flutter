@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import 'package:multiutillib/src/widgets/default_button.dart';
-import 'package:multiutillib/src/widgets/custom_date_picker/date_picker_calendar_view.dart';
+import 'package:multiutillib/widgets/default_button.dart';
+import 'package:multiutillib/widgets/custom_date_picker/date_picker_calendar_view.dart';
 
 showCustomDatePicker({
   required BuildContext context,

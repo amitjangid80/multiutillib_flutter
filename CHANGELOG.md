@@ -1,4 +1,7 @@
-#[1.1.5] 23-09-2021
+# [1.1.6] 23-09-2021
+* Removed src folder and moved all files outside src.
+
+# [1.1.5] 23-09-2021
 * Updated other packages used in this package.
 * Added border radius field to Loading widget.
 

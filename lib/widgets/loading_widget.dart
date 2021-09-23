@@ -1,7 +1,7 @@
 // Created by AMIT JANGID on 26/12/20.
 
 import 'package:flutter/material.dart';
-import 'package:multiutillib/src/widgets/material_card.dart';
+import 'package:multiutillib/widgets/material_card.dart';
 
 import 'package:shimmer/shimmer.dart';
 

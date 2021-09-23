@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:multiutillib/src/widgets/material_card.dart';
+import 'package:multiutillib/widgets/material_card.dart';
 
 class CustomToggleButton extends StatefulWidget {
   final int transitionTime;
