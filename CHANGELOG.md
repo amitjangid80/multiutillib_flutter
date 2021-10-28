@@ -1,3 +1,7 @@
+# [1.1.7] 28-10-2021
+* Updated all the dependencies.
+* Updated dart version to 2.14.0.
+
 # [1.1.6] 23-09-2021
 * Removed src folder and moved all files outside src.
 
