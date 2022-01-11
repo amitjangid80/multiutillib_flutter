@@ -13,6 +13,7 @@ class MaterialCard extends StatelessWidget {
   final BorderRadiusGeometry? borderRadiusGeometry;
 
   const MaterialCard({
+    Key? key,
     required this.child,
     this.onTap,
     this.shadowColor,
@@ -22,7 +23,7 @@ class MaterialCard extends StatelessWidget {
     this.color = Colors.white,
     this.padding = const EdgeInsets.all(12),
     this.margin = const EdgeInsets.only(top: 12),
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

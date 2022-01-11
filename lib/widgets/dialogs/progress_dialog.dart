@@ -1,7 +1,6 @@
 // Created by AMIT JANGID on 19/08/20.
 
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:multiutillib/enums/progess_dialog_type.dart';
 
 /// show progress dialog method
@@ -9,6 +8,7 @@ import 'package:multiutillib/enums/progess_dialog_type.dart';
 /// this method will show progress dialog
 /// Uses [_ProgressDialog] class
 showProgressDialog(BuildContext context, {String message = 'Please wait...', Widget? progressWidget}) async {
+  _context = context;
   _progressDialog = _ProgressDialog(context, isDismissible: false, type: ProgressDialogType.normal);
 
   _progressDialog!.style(

@@ -40,6 +40,7 @@ class OTPTextField extends StatefulWidget {
   _OTPTextFieldState createState() => _OTPTextFieldState();
 
   const OTPTextField({
+    Key? key,
     required this.noOfOtpFields,
     required this.onCompleted,
     this.borderWidth = 2,
@@ -50,7 +51,8 @@ class OTPTextField extends StatefulWidget {
     this.textAlign = TextAlign.center,
     this.margin = const EdgeInsets.only(top: 15, left: 15, right: 15),
     this.textStyle = const TextStyle(fontSize: 16, letterSpacing: 0.27, color: Colors.black),
-  }) : assert(noOfOtpFields > 1);
+  })  : assert(noOfOtpFields > 1),
+        super(key: key);
 }
 
 class _OTPTextFieldState extends State<OTPTextField> {
@@ -201,7 +203,11 @@ class _OTPTextFieldState extends State<OTPTextField> {
   /// this method will get entered otp from otp list
   String _getEnteredOtp() {
     String _otp = "";
-    _otpList.forEach((String value) => _otp += value);
+    // _otpList.forEach((String value) => _otp += value);
+
+    for (final String value in _otpList) {
+      _otp += value;
+    }
 
     return _otp;
   }
@@ -219,8 +225,16 @@ class _OTPTextFieldState extends State<OTPTextField> {
 
   @override
   void dispose() {
-    _focusNodesList.forEach((FocusNode? _focusNode) => _focusNode!.dispose());
-    _otpTextControllersList.forEach((TextEditingController? _controller) => _controller!.dispose());
+    // _focusNodesList.forEach((FocusNode? _focusNode) => _focusNode!.dispose());
+    // _otpTextControllersList.forEach((TextEditingController? _controller) => _controller!.dispose());
+
+    for (int i = 0; i < _focusNodesList.length; i++) {
+      _focusNodesList[i]!.dispose();
+    }
+
+    for (int i = 0; i < _otpTextControllersList.length; i++) {
+      _otpTextControllersList[i]!.dispose();
+    }
 
     super.dispose();
   }

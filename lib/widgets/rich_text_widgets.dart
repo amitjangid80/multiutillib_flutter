@@ -11,6 +11,7 @@ class RichTextWidget extends StatelessWidget {
   final TextStyle captionStyle, descriptionStyle;
 
   const RichTextWidget({
+    Key? key,
     required this.caption,
     required this.description,
     this.showColon = true,
@@ -18,7 +19,7 @@ class RichTextWidget extends StatelessWidget {
     this.textAlign = TextAlign.start,
     this.captionStyle = const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.normal),
     this.descriptionStyle = const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.normal),
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

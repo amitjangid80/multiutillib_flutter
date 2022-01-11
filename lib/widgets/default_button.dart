@@ -14,6 +14,7 @@ class DefaultButton extends StatelessWidget {
   final bool isEnabled, isUpperCase;
 
   const DefaultButton({
+    Key? key,
     this.btnColor,
     this.height = 48,
     this.elevation = 4,
@@ -29,7 +30,7 @@ class DefaultButton extends StatelessWidget {
     ),
     required this.text,
     required this.onPressed,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

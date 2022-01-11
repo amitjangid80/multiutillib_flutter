@@ -12,6 +12,7 @@ class CustomToggleButton extends StatefulWidget {
   final Color activeSwitchColor, inactiveSwitchColor, activeTextColor, inactiveTextColor;
 
   const CustomToggleButton({
+    Key? key,
     required this.textOn,
     required this.textOff,
     required this.onChanged,
@@ -23,7 +24,7 @@ class CustomToggleButton extends StatefulWidget {
     this.activeSwitchColor = Colors.white,
     this.inactiveTextColor = Colors.white,
     this.inactiveSwitchColor = Colors.blue,
-  });
+  }) : super(key: key);
 
   @override
   _CustomToggleButtonState createState() => _CustomToggleButtonState();

@@ -1,3 +1,7 @@
+# [1.1.8] 11-01-2022
+* Updated all the dependencies.
+* Deprecating Connectivity Layout Widget.
+
 # [1.1.7] 28-10-2021
 * Updated all the dependencies.
 * Updated dart version to 2.14.0.

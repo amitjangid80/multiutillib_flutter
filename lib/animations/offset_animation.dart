@@ -16,10 +16,12 @@ class OffsetAnimation extends AnimatedWidget {
   final AnimationController animationController;
 
   OffsetAnimation({
+    Key? key,
     this.end = 15.0,
     required this.animationController,
     required this.widget,
   }) : super(
+          key: key,
           listenable:
               Tween(begin: 0.0, end: end).chain(CurveTween(curve: Curves.elasticIn)).animate(animationController)
                 ..addStatusListener(

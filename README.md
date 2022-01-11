@@ -285,7 +285,7 @@ await hideProgressDialog();
 ```
 
 ## ConnectivityLayout
-
+This Widget is been deprecated
 This is widget to show connectivity message like Internet Connection not available.
 To use this widget you need to use [connectivity_wrapper](https://pub.dev/packages/connectivity_wrapper) package and wrap your ```MaterialApp``` with ```ConnectivityAppWrapper```.
 

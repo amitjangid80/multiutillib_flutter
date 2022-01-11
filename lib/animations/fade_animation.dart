@@ -9,7 +9,7 @@ class FadeAnimation extends StatelessWidget {
   final double delay;
   final Widget child;
 
-  const FadeAnimation({required this.delay, required this.child});
+  const FadeAnimation({Key? key, required this.delay, required this.child}) : super(key: key);
 
   /// Animates a widget to show fade transition.
   /// [PlayAnimation] from [simple_animations] package
