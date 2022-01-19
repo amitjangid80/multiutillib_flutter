@@ -43,7 +43,11 @@ class LoadingWidget extends StatelessWidget {
                   Shimmer.fromColors(
                     baseColor: baseColor,
                     highlightColor: highlightColor,
-                    child: Container(width: 50, height: 50, color: baseColor, padding: const EdgeInsets.all(10)),
+                    child: Container(
+                        width: 50,
+                        height: 50,
+                        color: baseColor,
+                        padding: const EdgeInsets.all(10)),
                   ),
                   const SizedBox(width: 10),
                   Expanded(
@@ -54,13 +58,17 @@ class LoadingWidget extends StatelessWidget {
                         Shimmer.fromColors(
                           baseColor: baseColor,
                           highlightColor: highlightColor,
-                          child: Container(color: baseColor, padding: const EdgeInsets.all(10)),
+                          child: Container(
+                              color: baseColor,
+                              padding: const EdgeInsets.all(10)),
                         ),
                         const SizedBox(height: 10),
                         Shimmer.fromColors(
                           baseColor: baseColor,
                           highlightColor: highlightColor,
-                          child: Container(color: baseColor, padding: const EdgeInsets.all(10)),
+                          child: Container(
+                              color: baseColor,
+                              padding: const EdgeInsets.all(10)),
                         ),
                       ],
                     ),

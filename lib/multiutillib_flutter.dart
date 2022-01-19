@@ -37,7 +37,6 @@ export 'widgets/loading_widget.dart';
 export 'widgets/hyper_link_text.dart';
 export 'widgets/no_records_found.dart';
 export 'widgets/rich_text_widgets.dart';
-export 'widgets/connectivity_layout.dart';
 export 'widgets/custom_toggle_button.dart';
 export 'widgets/dialogs/custom_dialog.dart';
 export 'widgets/dialogs/progress_dialog.dart';

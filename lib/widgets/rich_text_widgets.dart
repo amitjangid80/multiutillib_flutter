@@ -17,8 +17,10 @@ class RichTextWidget extends StatelessWidget {
     this.showColon = true,
     this.isDescNewLine = false,
     this.textAlign = TextAlign.start,
-    this.captionStyle = const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.normal),
-    this.descriptionStyle = const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.normal),
+    this.captionStyle = const TextStyle(
+        fontSize: 14, color: Colors.black, fontWeight: FontWeight.normal),
+    this.descriptionStyle = const TextStyle(
+        fontSize: 14, color: Colors.black, fontWeight: FontWeight.normal),
   }) : super(key: key);
 
   @override
@@ -27,7 +29,10 @@ class RichTextWidget extends StatelessWidget {
       textAlign: textAlign,
       text: TextSpan(
         children: <TextSpan>[
-          TextSpan(text: '$caption${showColon ? ':' : ''}${isDescNewLine ? '\n' : ' '}', style: captionStyle),
+          TextSpan(
+              text:
+                  '$caption${showColon ? ':' : ''}${isDescNewLine ? '\n' : ' '}',
+              style: captionStyle),
           TextSpan(text: description, style: descriptionStyle),
         ],
       ),

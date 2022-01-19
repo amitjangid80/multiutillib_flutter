@@ -10,7 +10,11 @@ class HyperLinkText extends StatelessWidget {
   final String url, text;
   final EdgeInsetsGeometry padding;
 
-  const HyperLinkText({Key? key, this.padding = const EdgeInsets.all(12), required this.url, required this.text})
+  const HyperLinkText(
+      {Key? key,
+      this.padding = const EdgeInsets.all(12),
+      required this.url,
+      required this.text})
       : super(key: key);
 
   @override
@@ -22,7 +26,8 @@ class HyperLinkText extends StatelessWidget {
         child: Text(
           text,
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal)
-              .copyWith(color: Colors.blue, decoration: TextDecoration.underline),
+              .copyWith(
+                  color: Colors.blue, decoration: TextDecoration.underline),
         ),
       ),
     );

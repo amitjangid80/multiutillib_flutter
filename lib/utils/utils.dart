@@ -6,7 +6,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:intl/intl.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -24,7 +23,8 @@ Future<String?> getDeviceName() async {
   final DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
 
   if (Platform.isAndroid) {
-    final AndroidDeviceInfo _androidDeviceInfo = await _deviceInfoPlugin.androidInfo;
+    final AndroidDeviceInfo _androidDeviceInfo =
+        await _deviceInfoPlugin.androidInfo;
     _deviceName = _androidDeviceInfo.model;
   } else if (Platform.isIOS) {
     final IosDeviceInfo _iosDeviceInfo = await _deviceInfoPlugin.iosInfo;
@@ -49,70 +49,6 @@ Future<String> getDeviceId() async {
   }
 
   return _deviceId;
-}
-
-/// [replaceNullWithEmpty] method
-/// this method will check and replace null with an empty string
-@Deprecated('You can use .replaceNullWithEmpty extension.')
-String replaceNullWithEmpty(String? data) {
-  if (data == null) {
-    return '';
-  } else if (data.toString().toLowerCase() == 'null') {
-    return '';
-  } else if (data.toString().isEmpty) {
-    return '';
-  } else {
-    return data;
-  }
-}
-
-/// [replaceNullWithZero] method
-/// this method will check and replace null with an integer value
-@Deprecated('You can use .replaceNullWithZero extension.')
-int replaceNullWithZero(String? data) {
-  if (data == null) {
-    return 0;
-  } else if (data.toString().toLowerCase() == 'null') {
-    return 0;
-  } else if (data.toString().isEmpty) {
-    return 0;
-  } else {
-    return int.parse(data.toString());
-  }
-}
-
-/// [replaceNullWithDouble] method
-/// this method will check and replace null with an double value
-@Deprecated('You can use .replaceNullWithDouble extension.')
-double replaceNullWithDouble(String? data) {
-  if (data == null) {
-    return 0.0;
-  } else if (data.toString().toLowerCase() == 'null') {
-    return 0.0;
-  } else if (data.toString().isEmpty) {
-    return 0.0;
-  } else {
-    return double.parse(data.toString());
-  }
-}
-
-/// [replaceTrueOrFalse] method
-/// this method will check and replace true/false value with integer value
-@Deprecated('You can use .replaceTrueOrFalse extension.')
-int replaceTrueOrFalse(data) => data.toString().toLowerCase() == 'true' ? 1 : 0;
-
-/// [formatNumber] method
-/// this method will format the number in default pattern or custom pattern
-@Deprecated('You can use .formatNumber extension method.')
-String formatNumber({required String numberToFormat, String customPattern = '##,###,###.##'}) {
-  return NumberFormat.currency(decimalDigits: 2, customPattern: customPattern).format(numberToFormat);
-}
-
-/// [isNumeric] method
-/// this method will check if passed string is numeric or not
-@Deprecated('You can use .isNumeric extension.')
-bool isNumeric(String s) {
-  return double.tryParse(s) != null;
 }
 
 /// [getSingleDigitRandomNumber] method

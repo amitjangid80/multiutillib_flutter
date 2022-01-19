@@ -9,7 +9,10 @@ class CustomToggleButton extends StatefulWidget {
   final String textOn, textOff;
   final Function(String value) onChanged;
   final double width, height, borderRadius;
-  final Color activeSwitchColor, inactiveSwitchColor, activeTextColor, inactiveTextColor;
+  final Color activeSwitchColor,
+      inactiveSwitchColor,
+      activeTextColor,
+      inactiveTextColor;
 
   const CustomToggleButton({
     Key? key,
@@ -75,7 +78,8 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
                 margin: const EdgeInsets.all(3),
                 padding: const EdgeInsets.all(0),
                 borderRadius: widget.borderRadius,
-                child: SizedBox(height: widget.height, width: widget.width * 0.5),
+                child:
+                    SizedBox(height: widget.height, width: widget.width * 0.5),
               ),
             ),
             GestureDetector(
@@ -97,7 +101,9 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
                     widget.textOn,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: _selectedValue == widget.textOn ? widget.activeTextColor : widget.inactiveTextColor,
+                      color: _selectedValue == widget.textOn
+                          ? widget.activeTextColor
+                          : widget.inactiveTextColor,
                     ),
                   ),
                 ),
@@ -122,7 +128,9 @@ class _CustomToggleButtonState extends State<CustomToggleButton>
                     widget.textOff,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: _selectedValue == widget.textOff ? widget.activeTextColor : widget.inactiveTextColor,
+                      color: _selectedValue == widget.textOff
+                          ? widget.activeTextColor
+                          : widget.inactiveTextColor,
                     ),
                   ),
                 ),

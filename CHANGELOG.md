@@ -1,3 +1,9 @@
+# [1.1.9] 19-01-2022
+* Added Connectivity Builder Widget.
+* Removed Connectivity Layout Widget.
+* Added [isNullOrEmpty] string extension.
+* Added [trimLastChat] string extension.
+
 # [1.1.8] 11-01-2022
 * Updated all the dependencies.
 * Deprecating Connectivity Layout Widget.

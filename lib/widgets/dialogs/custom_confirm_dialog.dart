@@ -20,10 +20,14 @@ showConfirmationDialog(
   TextAlign titleTextAlign = TextAlign.center,
   Duration transitionDuration = const Duration(milliseconds: 400),
   DialogAnimationType dialogAnimationType = DialogAnimationType.grow,
-  TextStyle descStyle = const TextStyle(fontSize: 16, letterSpacing: 0.27, color: Colors.black),
-  TextStyle titleStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.bold),
-  TextStyle positiveBtnStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
-  TextStyle negativeBtnStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
+  TextStyle descStyle =
+      const TextStyle(fontSize: 16, letterSpacing: 0.27, color: Colors.black),
+  TextStyle titleStyle = const TextStyle(
+      fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.bold),
+  TextStyle positiveBtnStyle = const TextStyle(
+      fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
+  TextStyle negativeBtnStyle = const TextStyle(
+      fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
   required String title,
   required String description,
   required VoidCallback onPositivePressed,
@@ -111,14 +115,18 @@ class _CustomConfirmDialog extends StatelessWidget {
         elevation: 0,
         clipBehavior: Clip.antiAlias,
         backgroundColor: Colors.transparent,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(_borderRadius)),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(_borderRadius)),
         child: Stack(
           children: <Widget>[
             Container(
               width: _width,
               margin: const EdgeInsets.only(bottom: 20),
-              padding: const EdgeInsets.only(top: 24, left: 20, right: 20, bottom: 80),
-              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(_borderRadius)),
+              padding: const EdgeInsets.only(
+                  top: 24, left: 20, right: 20, bottom: 80),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(_borderRadius)),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -142,7 +150,8 @@ class _CustomConfirmDialog extends StatelessWidget {
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 10),
-                    child: Text(description, style: descStyle, textAlign: descTextAlign),
+                    child: Text(description,
+                        style: descStyle, textAlign: descTextAlign),
                   ),
                 ],
               ),
@@ -160,7 +169,9 @@ class _CustomConfirmDialog extends StatelessWidget {
                       btnTextStyle: negativeBtnStyle,
                       onPressed: () => Navigator.pop(context, ""),
                       shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30)),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            bottomLeft: Radius.circular(30)),
                       ),
                     ),
                   ),

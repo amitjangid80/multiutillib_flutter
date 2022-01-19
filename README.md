@@ -10,7 +10,7 @@ This package used following packages:
 4. [url_launcher](https://pub.dev/packages/url_launcher)
 5. [package_info](https://pub.dev/packages/package_info)
 6. [simple_animations](https://pub.dev/packages/simple_animations)
-7. [connectivity_wrapper](https://pub.dev/packages/connectivity_wrapper)
+7. [connectivity_plus](https://pub.dev/packages/connectivity_plus)
 
 ## Examples
 
@@ -136,6 +136,12 @@ Example:
 '123'.isNumeric => returns true
 'String'.isNumeric => returns false
 
+// Checking if a string is null or empty
+strToCheck.isNullOrEmpty
+
+// for removing last character from a string
+stringToRemoveLastChat.trimLastChar
+
 // Converting a string to two digits
 Text('To Two Digit: ${'9'.toTwoDigits}'),
 
@@ -169,20 +175,20 @@ showConfirmationDialog(
     String negativeBtnText 'No',
     String positiveBtnText: 'Yes',
     bool barrierDismissible: false,
-    Color dividerColor = Colors.blue,
-    Color positiveBtnColor = Colors.blue,
-    Color negativeBtnColor = Colors.blueAccent,
-    TextAlign descTextAlign = TextAlign.center,
-    TextAlign titleTextAlign = TextAlign.center,
-    Duration transitionDuration = const Duration(milliseconds: 400),
-    DialogAnimationType dialogAnimationType = DialogAnimationType.grow,
-    TextStyle descStyle = const TextStyle(fontSize: 16, letterSpacing: 0.27, color: Colors.black),
-    TextStyle titleStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.bold),
-    TextStyle positiveBtnStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
-    TextStyle negativeBtnStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
-    @required String title,
-    @required String description,
-    @required VoidCallback onPositivePressed,
+    Color dividerColor: Colors.blue,
+    Color positiveBtnColor: Colors.blue,
+    Color negativeBtnColor: Colors.blueAccent,
+    TextAlign descTextAlign: TextAlign.center,
+    TextAlign titleTextAlign: TextAlign.center,
+    Duration transitionDuration: const Duration(milliseconds: 400),
+    DialogAnimationType dialogAnimationType: DialogAnimationType.grow,
+    TextStyle descStyle: const TextStyle(fontSize: 16, letterSpacing: 0.27, color: Colors.black),
+    TextStyle titleStyle: const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.bold),
+    TextStyle positiveBtnStyle: const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
+    TextStyle negativeBtnStyle: const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
+    required String title,
+    required String description,
+    required VoidCallback onPositivePressed,
 );
 ```
 
@@ -195,19 +201,19 @@ Example:
 ```dart
 showCustomDialog(
   BuildContext context,
-  String btnText = 'OK',
-  Color btnColor = Colors.blue,
+  String btnText: 'OK',
+  Color btnColor: Colors.blue,
   bool barrierDismissible: false,
-  Color dividerColor = Colors.blue,
-  TextAlign descTextAlign = TextAlign.center,
-  TextAlign titleTextAlign = TextAlign.center,
-  Duration transitionDuration = const Duration(milliseconds: 400),
-  DialogAnimationType dialogAnimationType = DialogAnimationType.grow,
-  TextStyle descStyle = const TextStyle(fontSize: 16, letterSpacing: 0.27, color: Colors.black),
-  TextStyle btnStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
-  TextStyle titleStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.bold),
-  @required String title,
-  @required String description,
+  Color dividerColor: Colors.blue,
+  TextAlign descTextAlign: TextAlign.center,
+  TextAlign titleTextAlign: TextAlign.center,
+  Duration transitionDuration: const Duration(milliseconds: 400),
+  DialogAnimationType dialogAnimationType: DialogAnimationType.grow,
+  TextStyle descStyle: const TextStyle(fontSize: 16, letterSpacing: 0.27, color: Colors.black),
+  TextStyle btnStyle: const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
+  TextStyle titleStyle: const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.bold),
+  required String title,
+  required String description,
 );
 ```
 
@@ -218,27 +224,27 @@ This class wil help display custom date range picker dialog.
 Example: 
 
 ```dart
-showCustomDateRangePicker({
-  @required BuildContext context,
-  @required Function onCancelClick,
-  String applyButtonText = 'Apply',
-  String cancelButtonText = 'Cancel',
-  Color leftArrowColor = Colors.blue,
-  Color rightArrowColor = Colors.blue,
-  Color applyButtonColor = Colors.blue,
-  Color cancelButtonColor = Colors.red,
-  Color weekDaysTextColor = Colors.blue,
-  Color selectedRangeColor = Colors.blue,
-  Color monthYearTextColor = Colors.black,
-  @required Function(DateTime startDate, DateTime endDate) onApplyClick,
-  TextStyle applyButtonTextStyle = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
-  TextStyle cancelButtonTextStyle = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+showCustomDateRangePicker(
+  required BuildContext context,
+  required Function onCancelClick,
+  String applyButtonText: 'Apply',
+  String cancelButtonText: 'Cancel',
+  Color leftArrowColor: Colors.blue,
+  Color rightArrowColor: Colors.blue,
+  Color applyButtonColor: Colors.blue,
+  Color cancelButtonColor: Colors.red,
+  Color weekDaysTextColor: Colors.blue,
+  Color selectedRangeColor: Colors.blue,
+  Color monthYearTextColor: Colors.black,
+  required Function(DateTime startDate, DateTime endDate) onApplyClick,
+  TextStyle applyButtonTextStyle: const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+  TextStyle cancelButtonTextStyle: const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
   DateTime minimumDate,
   DateTime maximumDate,
   DateTime initialEndDate,
   DateTime initialStartDate,
-  bool barrierDismissible = false,
-});
+  bool barrierDismissible: false,
+);
 ```
 
 ## CustomDatePicker
@@ -248,26 +254,26 @@ This class wil help display custom date picker dialog.
 Example: 
 
 ```dart
-showCustomDatePicker({
-  @required BuildContext context,
-  @required Function onCancelClick,
-  String applyButtonText = 'Apply',
-  String cancelButtonText = 'Cancel',
-  Color leftArrowColor = Colors.blue,
-  Color rightArrowColor = Colors.blue,
-  Color applyButtonColor = Colors.blue,
-  Color cancelButtonColor = Colors.red,
-  Color weekDaysTextColor = Colors.blue,
-  Color selectedDateColor = Colors.blue,
-  Color monthYearTextColor = Colors.black,
-  @required Function(DateTime dateTime) onApplyClick,
-  TextStyle applyButtonTextStyle = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
-  TextStyle cancelButtonTextStyle = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+showCustomDatePicker(
+  required BuildContext context,
+  required Function onCancelClick,
+  String applyButtonText: 'Apply',
+  String cancelButtonText: 'Cancel',
+  Color leftArrowColor: Colors.blue,
+  Color rightArrowColor: Colors.blue,
+  Color applyButtonColor: Colors.blue,
+  Color cancelButtonColor: Colors.red,
+  Color weekDaysTextColor: Colors.blue,
+  Color selectedDateColor: Colors.blue,
+  Color monthYearTextColor: Colors.black,
+  required Function(DateTime dateTime) onApplyClick,
+  TextStyle applyButtonTextStyle: const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+  TextStyle cancelButtonTextStyle: const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
   DateTime minimumDate,
   DateTime maximumDate,
   DateTime initialStartDate,
-  bool barrierDismissible = false,
-});
+  bool barrierDismissible: false,
+);
 ```
 
 ## ProgressDialog
@@ -284,21 +290,23 @@ await showProgressDialog(context);
 await hideProgressDialog();
 ```
 
-## ConnectivityLayout
-This Widget is been deprecated
-This is widget to show connectivity message like Internet Connection not available.
-To use this widget you need to use [connectivity_wrapper](https://pub.dev/packages/connectivity_wrapper) package and wrap your ```MaterialApp``` with ```ConnectivityAppWrapper```.
+## ConnectivityBuilder
+This is widget to show connectivity message like "Internet Connection not available".
 
 Example:
 
 ```dart
-ConnectivityLayout(
-    @required Widget child,
-    this.bgColor = Colors.red,
-    this.disableInteraction = false,
-    this.alignment = Alignment.bottomCenter,
-    this.message = 'Internet Connection not Available.',
-    this.messageStyle = const TextStyle(color: Colors.white),
+ConnectivityBuilder(
+    Key? key,
+    required builder,
+    gradient,
+    offlineWidget,
+    bgColor: Colors.red,
+    position: Position.bottom,
+    disableInteraction: false,
+    alignment: Alignment.center,
+    message: kInternetNotAvailable,
+    textStyle: const TextStyle(fontSize: 14, color: Colors.white),
 ),
 ```
 
@@ -310,11 +318,11 @@ Example:
 
 ```dart
 DefaultButton(
-    isEnabled = true,
-    isUpperCase = true,
-    margin = const EdgeInsets.only(top: 20),
-    @required String text,
-    @required Function onPressed,
+    isEnabled: true,
+    isUpperCase: true,
+    margin: const EdgeInsets.only(top: 20),
+    required String text,
+    required Function onPressed,
 ),
 ```
 
@@ -336,10 +344,10 @@ Example:
 
 ```dart
 LoadingWidget(
-    itemCount = 6,
-    borderRadius = 12,
-    highlightColor = Colors.white,
-    baseColor = const Color(0xFFE0E0E0),
+    itemCount: 6,
+    borderRadius: 12,
+    highlightColor: Colors.white,
+    baseColor: const Color(0xFFE0E0E0),
 ),
 ```
 
@@ -352,14 +360,14 @@ Example:
 
 ```dart
 MaterialCard(
-    @required Widget child,
+    required Widget child,
     onTap,
     borderRadius,
-    elevation = 4,
+    elevation: 4,
     borderRadiusGeometry,
-    color = Colors.white,
-    padding = const EdgeInsets.all(12),
-    margin = const EdgeInsets.only(top: 12),
+    color: Colors.white,
+    padding: const EdgeInsets.all(12),
+    margin: const EdgeInsets.only(top: 12),
 ),
 ```
 
@@ -371,17 +379,17 @@ Example:
 
 ```dart
 OTPTextField(
-    @required int noOfOtpFields,
-    @required ValueChanged<String> onCompleted,
-    borderWidth = 2,
-    isEnabled = true,
-    autoFocus = true,
-    autoCorrect = false,
-    borderColor = Colors.blue,
-    cursorColor = Colors.blue,
-    textAlign = TextAlign.center,
-    margin = const EdgeInsets.only(top: 20, left: 20, right: 20),
-    textStyle = const TextStyle(fontSize: 16, letterSpacing: 0.27, color: Colors.black),
+    required int noOfOtpFields,
+    required ValueChanged<String> onCompleted,
+    borderWidth: 2,
+    isEnabled: true,
+    autoFocus: true,
+    autoCorrect: false,
+    borderColor: Colors.blue,
+    cursorColor: Colors.blue,
+    textAlign: TextAlign.center,
+    margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
+    textStyle: const TextStyle(fontSize: 16, letterSpacing: 0.27, color: Colors.black),
 ),
 ```
 
@@ -393,11 +401,11 @@ Example:
 
 ```dart
 RichTextWidget(
-    @required String caption,
-    @required String description,
-    isDescNewLine = false,
-    captionStyle = const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.normal),
-    descriptionStyle = const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.normal),
+    required String caption,
+    required String description,
+    isDescNewLine: false,
+    captionStyle: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.normal),
+    descriptionStyle: const TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.normal),
 ),
 ```
 
@@ -409,17 +417,17 @@ Example:
 
 ```dart
 CustomToggleButton({
-    @required this.textOn,
-    @required this.textOff,
-    @required this.onChanged,
-    this.width = 200,
-    this.height = 45,
-    this.borderRadius = 50,
-    this.transitionTime = 300,
-    this.activeTextColor = Colors.black,
-    this.activeSwitchColor = Colors.white,
-    this.inactiveTextColor = Colors.white,
-    this.inactiveSwitchColor = Colors.blue,
+    textOn,
+    textOff,
+    onChanged,
+    width: 200,
+    height: 45,
+    borderRadius: 50,
+    transitionTime: 300,
+    activeTextColor: Colors.black,
+    activeSwitchColor: Colors.white,
+    inactiveTextColor: Colors.white,
+    inactiveSwitchColor: Colors.blue,
 });
 ```
 

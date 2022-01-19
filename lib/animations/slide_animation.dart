@@ -23,7 +23,8 @@ class SlideAnimation extends StatefulWidget {
   _SlideAnimationState createState() => _SlideAnimationState();
 }
 
-class _SlideAnimationState extends State<SlideAnimation> with SingleTickerProviderStateMixin {
+class _SlideAnimationState extends State<SlideAnimation>
+    with SingleTickerProviderStateMixin {
   /// Animates a widget to slide from either direction.
   /// Using [AnimatedBuilder] for animation
   @override
@@ -33,7 +34,8 @@ class _SlideAnimationState extends State<SlideAnimation> with SingleTickerProvid
     final _slideAnimation = Tween(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: widget.animationController,
-        curve: Interval((1 / widget.itemCount) * widget.position, 1.0, curve: Curves.fastOutSlowIn),
+        curve: Interval((1 / widget.itemCount) * widget.position, 1.0,
+            curve: Curves.fastOutSlowIn),
       ),
     );
 
@@ -55,7 +57,8 @@ class _SlideAnimationState extends State<SlideAnimation> with SingleTickerProvid
         return FadeTransition(
           opacity: _slideAnimation,
           child: Transform(
-            transform: Matrix4.translationValues(_xTranslation, _yTranslation, 0.0),
+            transform:
+                Matrix4.translationValues(_xTranslation, _yTranslation, 0.0),
             child: widget.child,
           ),
         );
