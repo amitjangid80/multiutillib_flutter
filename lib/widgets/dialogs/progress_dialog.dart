@@ -1,24 +1,36 @@
 // Created by AMIT JANGID on 19/08/20.
 
 import 'package:flutter/material.dart';
-import 'package:multiutillib/enums/progess_dialog_type.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:multiutillib/enums/progress_dialog_type.dart';
 
 /// show progress dialog method
 ///
 /// this method will show progress dialog
 /// Uses [_ProgressDialog] class
-showProgressDialog(BuildContext context,
-    {String message = 'Please wait...', Widget? progressWidget}) async {
+showProgressDialog(BuildContext context, {String message = 'Please wait...', Widget? progressWidget}) async {
   _context = context;
-  _progressDialog = _ProgressDialog(context,
-      isDismissible: false, type: ProgressDialogType.normal);
+  _progressDialog = _ProgressDialog(context, isDismissible: false, type: ProgressDialogType.normal);
 
   _progressDialog!.style(
     message: message,
     size: progressWidget != null ? 40.0 : 60.0,
     padding: EdgeInsets.all(progressWidget != null ? 12.0 : 8.0),
-    progressWidget:
-        progressWidget /* ?? Image(image: AssetImage('assets/gif/double_ring_loading_io.gif'))*/,
+    progressWidget: progressWidget /* ?? Image(image: AssetImage('assets/gif/double_ring_loading_io.gif'))*/,
+  );
+
+  await _progressDialog!.show();
+}
+
+showInkDropProgressDialog(BuildContext context, {String message = 'Please wait...'}) async {
+  _context = context;
+  _progressDialog = _ProgressDialog(context, isDismissible: false, type: ProgressDialogType.normal);
+
+  _progressDialog!.style(
+    size: 40,
+    message: message,
+    padding: const EdgeInsets.all(12),
+    progressWidget: LoadingAnimationWidget.inkDrop(color: Colors.blue, size: 40),
   );
 
   await _progressDialog!.show();
@@ -66,8 +78,7 @@ Curve _insetAnimCurve = Curves.easeInOut;
 double _dialogElevation = 8.0, _borderRadius = 8.0;
 EdgeInsets _dialogPadding = const EdgeInsets.all(8.0);
 
-Widget _progressWidget = Image.asset('assets/gif/double_ring_loading_io.gif',
-    package: "multiutillib");
+Widget _progressWidget = Image.asset('assets/gif/double_ring_loading_io.gif', package: "multiutillib");
 
 class _ProgressDialog {
   // _Body? _dialog;
@@ -124,8 +135,7 @@ class _ProgressDialog {
     _textAlign = textAlign ?? _textAlign;
     _progressWidget = child ?? _progressWidget;
     _dialogPadding = padding ?? _dialogPadding;
-    _progressWidgetAlignment =
-        progressWidgetAlignment ?? _progressWidgetAlignment;
+    _progressWidgetAlignment = progressWidgetAlignment ?? _progressWidgetAlignment;
   }
 
   void update({
@@ -189,9 +199,7 @@ class _ProgressDialog {
                 elevation: _dialogElevation,
                 backgroundColor: _backgroundColor,
                 insetAnimationCurve: _insetAnimCurve,
-                shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.all(Radius.circular(_borderRadius))),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(_borderRadius))),
                 child: _Body(),
               ),
             );
@@ -255,10 +263,7 @@ class _BodyState extends State<_Body> {
 
     final text = Expanded(
       child: _progressDialogType == ProgressDialogType.normal
-          ? Text(_dialogMessage,
-              style: _messageStyle,
-              textAlign: _textAlign,
-              textDirection: _direction)
+          ? Text(_dialogMessage, style: _messageStyle, textAlign: _textAlign, textDirection: _direction)
           : Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -267,16 +272,13 @@ class _BodyState extends State<_Body> {
                   const SizedBox(height: 8.0),
                   Row(
                     children: <Widget>[
-                      Expanded(
-                          child: Text(_dialogMessage,
-                              style: _messageStyle, textDirection: _direction)),
+                      Expanded(child: Text(_dialogMessage, style: _messageStyle, textDirection: _direction)),
                     ],
                   ),
                   const SizedBox(height: 4.0),
                   Align(
                     alignment: Alignment.bottomRight,
-                    child: Text("$_progress/$_maxProgress",
-                        style: _progressTextStyle, textDirection: _direction),
+                    child: Text("$_progress/$_maxProgress", style: _progressTextStyle, textDirection: _direction),
                   ),
                 ],
               ),

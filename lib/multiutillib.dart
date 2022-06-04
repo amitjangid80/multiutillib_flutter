@@ -30,7 +30,7 @@ export 'validators/decimal_input_format.dart';
 //#region extensions
 export 'utils/string_extension.dart';
 export 'utils/date_time_extension.dart';
-//#region extensions
+//#endregion extensions
 
 //#region widgets
 export 'widgets/material_card.dart';
@@ -40,11 +40,19 @@ export 'widgets/loading_widget.dart';
 export 'widgets/hyper_link_text.dart';
 export 'widgets/no_records_found.dart';
 export 'widgets/rich_text_widgets.dart';
+export 'widgets/loader/loading_dots.dart';
 export 'widgets/connectivity_builder.dart';
 export 'widgets/custom_toggle_button.dart';
 export 'widgets/dialogs/custom_dialog.dart';
+export 'widgets/loader/loading_ink_drop.dart';
 export 'widgets/dialogs/progress_dialog.dart';
 export 'widgets/dialogs/custom_confirm_dialog.dart';
 export 'widgets/custom_date_picker/date_picker_popup_view.dart';
 export 'widgets/custom_date_range_picker/date_range_picker_popup_view.dart';
 //#endregion widgets
+
+//#region rest
+export 'rest/api_client.dart';
+export 'rest/api_response.dart';
+export 'rest/app_exception.dart';
+//#endregion rest

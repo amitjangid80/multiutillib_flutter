@@ -1,6 +1,7 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:multiutillib/multiutillib.dart';
-import 'package:connectivity_wrapper/connectivity_wrapper.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 void main() => runApp(const MyApp());
 
@@ -9,13 +10,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConnectivityAppWrapper(
-      app: MaterialApp(
-        home: const MyHomePage(),
-        title: 'multiutillib Example',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(primarySwatch: Colors.blue, visualDensity: VisualDensity.adaptivePlatformDensity),
-      ),
+    return MaterialApp(
+      home: const MyHomePage(),
+      title: 'multiutillib Example',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primarySwatch: Colors.blue, visualDensity: VisualDensity.adaptivePlatformDensity),
     );
   }
 }
@@ -47,6 +46,18 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         setState(() => _isValid = _isEmailValid);
       }
     });
+
+    _showProgressDialog();
+  }
+
+  _showProgressDialog() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await showInkDropProgressDialog(context);
+
+      await Future.delayed(const Duration(seconds: 3));
+
+      await hideProgressDialog();
+    });
   }
 
   @override
@@ -58,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         builder: (_isOnline) {
           return MaterialCard(
             borderRadius: 15,
+            // color: Colors.grey[300],
             margin: const EdgeInsets.all(15),
             child: SingleChildScrollView(
               child: Column(
@@ -73,6 +85,13 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                     end: 20,
                     animationController: _animationController,
                     widget: Container(height: 100, color: Colors.black12, width: double.infinity),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      LoadingAnimationWidget.inkDrop(color: Colors.blue, size: 36),
+                    ],
                   ),
                   const SizedBox(height: 10),
                   Text('Get Current Date: ${getCurrentDate()}'),
@@ -173,6 +192,13 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   FutureBuilder(
                     future: getDeviceName(),
                     builder: (context, snapshot) {
+                      var _formattedNumber = NumberFormat.compactCurrency(
+                        symbol: '',
+                        locale: 'en_IN',
+                        decimalDigits: 2,
+                      ).format(100000);
+
+                      debugPrint('Formatted Number is $_formattedNumber');
                       debugPrint('snapshot data is: ${snapshot.data}');
 
                       if (snapshot.hasData) return Text(snapshot.data);
