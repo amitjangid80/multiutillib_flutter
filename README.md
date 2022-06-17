@@ -11,6 +11,7 @@ This package used following packages:
 5. [package_info](https://pub.dev/packages/package_info)
 6. [simple_animations](https://pub.dev/packages/simple_animations)
 7. [connectivity_plus](https://pub.dev/packages/connectivity_plus)
+8. [loading_animation_widget](https://pub.dev/packages/loading_animation_widget)
 
 ## Examples
 

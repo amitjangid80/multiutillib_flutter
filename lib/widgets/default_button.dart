@@ -21,8 +21,7 @@ class DefaultButton extends StatelessWidget {
     this.isEnabled = true,
     this.isUpperCase = false,
     this.margin = const EdgeInsets.only(top: 12),
-    this.shape = const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(24))),
+    this.shape = const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(24))),
     this.btnTextStyle = const TextStyle(
       fontSize: 18,
       letterSpacing: 0.27,
@@ -47,8 +46,7 @@ class DefaultButton extends StatelessWidget {
           elevation: elevation,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        child: Text(isUpperCase ? text!.toUpperCase() : text!,
-            style: btnTextStyle),
+        child: Text(isUpperCase ? text!.toUpperCase() : text!, style: btnTextStyle),
       ),
     );
   }

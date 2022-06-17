@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     _showProgressDialog();
   }
 
-  _showProgressDialog() {
+  _showProgressDialog() async {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await showInkDropProgressDialog(context);
 

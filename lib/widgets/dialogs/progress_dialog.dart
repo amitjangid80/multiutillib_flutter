@@ -1,8 +1,8 @@
 // Created by AMIT JANGID on 19/08/20.
 
 import 'package:flutter/material.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:multiutillib/enums/progress_dialog_type.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 /// show progress dialog method
 ///

@@ -1,3 +1,8 @@
+# [1.2.0] 17-06-2022
+* Added Debounce Util.
+* Changes in Progress dialog loader.
+* Added loading animation widget.
+
 # [1.1.9] 19-01-2022
 * Added Connectivity Builder Widget.
 * Removed Connectivity Layout Widget.

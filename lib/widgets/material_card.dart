@@ -37,9 +37,7 @@ class MaterialCard extends StatelessWidget {
           type: MaterialType.card,
           clipBehavior: Clip.antiAlias,
           shadowColor: shadowColor ?? Colors.grey[200],
-          borderRadius: borderRadius == null
-              ? borderRadiusGeometry
-              : BorderRadius.circular(borderRadius!),
+          borderRadius: borderRadius == null ? borderRadiusGeometry : BorderRadius.circular(borderRadius!),
           child: Container(padding: padding, child: child),
         ),
       ),
