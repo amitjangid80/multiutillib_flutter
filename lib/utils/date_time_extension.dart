@@ -21,13 +21,11 @@ extension DurationExtension<T extends String> on String {
 
   /// [formatDateTime] extension method
   /// this extension method will convert a date time string into provided or default date time format string
-  String formatDateTime({String? newDateTimeFormat}) =>
-      _formatDateTime(this, newDateTimeFormat: newDateTimeFormat);
+  String formatDateTime({String? newDateTimeFormat}) => _formatDateTime(this, newDateTimeFormat: newDateTimeFormat);
 
   /// [formatTime] extension method
   /// this extension method will convert a date time string into provided or default time format string
-  String formatTime({String? newTimeFormat}) =>
-      _convertTimeString(this, newTimeFormat: newTimeFormat);
+  String formatTime({String? newTimeFormat}) => _convertTimeString(this, newTimeFormat: newTimeFormat);
 }
 
 extension DateTimeExtension<T extends DateTime> on DateTime {
@@ -37,47 +35,44 @@ extension DateTimeExtension<T extends DateTime> on DateTime {
 
   /// [formatDateTime] extension method
   /// this extension method will convert a date time into provided or default date time format string
-  String formatDateTime({String? newDateTimeFormat}) =>
-      _formatDateTime(this, newDateTimeFormat: newDateTimeFormat);
+  String formatDateTime({String? newDateTimeFormat}) => _formatDateTime(this, newDateTimeFormat: newDateTimeFormat);
 }
 
 extension FromDurationExtension<T extends Duration> on Duration {
   /// [toTimeString] extension method
   /// this method will convert the provided duration into default time String
-  String toTimeString({String? newTimeString}) =>
-      _convertToTimeString(this, newTimeString: newTimeString);
+  String toTimeString({String? newTimeString}) => _convertToTimeString(this, newTimeString: newTimeString);
 }
 
 extension TimeOfDayExtension<T extends TimeOfDay> on TimeOfDay {
   /// [formatTime] extension method
   /// this extension method will convert a time of day into provided or default time format string
-  String formatTime({String? newTimeFormat}) =>
-      _convertTimeOfDay(this, newTimeFormat: newTimeFormat);
+  String formatTime({String? newTimeFormat}) => _convertTimeOfDay(this, newTimeFormat: newTimeFormat);
 }
 
 /// [_parseDuration] method
 /// this method will convert a string into duration and will return duration
-Duration _parseDuration(String _timeString) {
-  int _hours = 0, _minutes = 0, _seconds = 0;
+Duration _parseDuration(String timeString) {
+  int hours = 0, minutes = 0, seconds = 0;
 
   /// splitting date time string into parts
-  final List<String> _parts = _timeString.split(':');
+  final List<String> parts = timeString.split(':');
 
   /// checking length of parts is greater than 2
-  if (_parts.length > 2) {
-    _hours = int.parse(_parts[_parts.length - 3]);
+  if (parts.length > 2) {
+    hours = int.parse(parts[parts.length - 3]);
   }
 
   /// checking length of parts is greater than 1
-  if (_parts.length > 1) {
-    _minutes = int.parse(_parts[_parts.length - 2]);
+  if (parts.length > 1) {
+    minutes = int.parse(parts[parts.length - 2]);
   }
 
   /// converting remaining or single part of string to int
-  _seconds = int.parse(_parts[_parts.length - 1]);
+  seconds = int.parse(parts[parts.length - 1]);
 
   /// returning duration after getting all the values
-  return Duration(hours: _hours, minutes: _minutes, seconds: _seconds);
+  return Duration(hours: hours, minutes: minutes, seconds: seconds);
 }
 
 /// [_formatDateTime] method
@@ -87,8 +82,7 @@ String _formatDateTime(dateTime, {String? newDateTimeFormat}) {
 
   if (dateTime.toString().isNotEmpty) {
     /// formatting date in yyyy-MM-dd HH:mm:ss default format
-    dateTime = DateFormat(newDateTimeFormat ?? kDefaultDateTimeFormat)
-        .format(DateTime.parse(dateTime));
+    dateTime = DateFormat(newDateTimeFormat ?? kDefaultDateTimeFormat).format(DateTime.parse(dateTime));
   }
 
   return dateTime.toString();
@@ -96,56 +90,49 @@ String _formatDateTime(dateTime, {String? newDateTimeFormat}) {
 
 /// [_convertDateTimeString] method
 /// this method will convert a date time string into time of day object
-TimeOfDay _convertDateTimeString(String _dateTime) {
-  final List<String> _parts = _dateTime.split(":");
-  final TimeOfDay _timeOfDay =
-      TimeOfDay(hour: _parts[0].toInt!, minute: _parts[1].toInt!);
+TimeOfDay _convertDateTimeString(String dateTime) {
+  final List<String> parts = dateTime.split(":");
+  final TimeOfDay timeOfDay = TimeOfDay(hour: parts[0].toInt!, minute: parts[1].toInt!);
 
-  return _timeOfDay;
+  return timeOfDay;
 }
 
 /// [_convertTimeString] method
 /// this method will convert time string to time format passed or default
-String _convertTimeString(String _time, {String? newTimeFormat}) {
-  final List<String> _parts = _time.split(":");
-  final TimeOfDay _timeOfDay =
-      TimeOfDay(hour: _parts[0].toInt!, minute: _parts[1].toInt!);
+String _convertTimeString(String time, {String? newTimeFormat}) {
+  final List<String> parts = time.split(":");
+  final TimeOfDay timeOfDay = TimeOfDay(hour: parts[0].toInt!, minute: parts[1].toInt!);
 
   /// calling _convertTimeOfDay method for converting time string
-  return _convertTimeOfDay(_timeOfDay, newTimeFormat: newTimeFormat);
+  return _convertTimeOfDay(timeOfDay, newTimeFormat: newTimeFormat);
 }
 
 /// [_convertTimeOfDay] method
 /// this method will convert time of day to time format passed or default
 String _convertTimeOfDay(TimeOfDay timeOfDay, {String? newTimeFormat}) {
   final now = DateTime.now();
-  final DateTime _dateTime =
-      DateTime(now.year, now.month, now.day, timeOfDay.hour, timeOfDay.minute);
+  final DateTime dateTime = DateTime(now.year, now.month, now.day, timeOfDay.hour, timeOfDay.minute);
 
   // calling .formatDateTime extension method to convert date time object to string to display time in given format
-  return _dateTime.formatDateTime(
-      newDateTimeFormat: newTimeFormat ?? kTimeDisplayFormat);
+  return dateTime.formatDateTime(newDateTimeFormat: newTimeFormat ?? kTimeDisplayFormat);
 }
 
 String _convertToTimeString(Duration duration, {String? newTimeString}) {
-  final String _twoDigitHours = "${duration.inHours}".toTwoDigits;
-  final String _twoDigitMinutes =
-      "${duration.inMinutes.remainder(60)}".toTwoDigits;
-  final String _twoDigitSeconds =
-      "${duration.inSeconds.remainder(60)}".toTwoDigits;
+  final String twoDigitHours = "${duration.inHours}".toTwoDigits;
+  final String twoDigitMinutes = "${duration.inMinutes.remainder(60)}".toTwoDigits;
+  final String twoDigitSeconds = "${duration.inSeconds.remainder(60)}".toTwoDigits;
 
-  final DateTime _now = DateTime.now();
+  final DateTime now = DateTime.now();
 
-  final DateTime _dateTime = DateTime(
-    _now.year,
-    _now.month,
-    _now.day,
-    _twoDigitHours.toInt!,
-    _twoDigitMinutes.toInt!,
-    _twoDigitSeconds.toInt!,
+  final DateTime dateTime = DateTime(
+    now.year,
+    now.month,
+    now.day,
+    twoDigitHours.toInt!,
+    twoDigitMinutes.toInt!,
+    twoDigitSeconds.toInt!,
   );
 
   // calling .formatDateTime extension method to convert date time to string in given format
-  return _dateTime.formatDateTime(
-      newDateTimeFormat: newTimeString ?? kTimeDisplayFormat);
+  return dateTime.formatDateTime(newDateTimeFormat: newTimeString ?? kTimeDisplayFormat);
 }

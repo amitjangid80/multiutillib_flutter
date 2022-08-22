@@ -31,8 +31,7 @@ extension StringExtension on String? {
 
   /// [toLengthOfString] extension
   /// this extension will convert a string to the length specified
-  String toLengthOfString(lengthOfString) =>
-      _digitsString(this, lengthOfString: lengthOfString);
+  String toLengthOfString(lengthOfString) => _digitsString(this, lengthOfString: lengthOfString);
 
   /// [replaceNullWithEmpty] method
   /// this method will check and replace null with an empty string
@@ -44,8 +43,7 @@ extension StringExtension on String? {
 
   /// [isNullOrEmpty] extension
   /// this extension will check if the string is empty or null
-  bool get isNullOrEmpty =>
-      this == null || (this != null && this?.isEmpty == true);
+  bool get isNullOrEmpty => this == null || (this != null && this?.isEmpty == true);
 
   /// [trimLastChar] extension
   /// this extension will trim or remove last character from a string
@@ -57,13 +55,11 @@ extension StringExtension on String? {
 extension NumberExtension on String? {
   /// [formatNumberToCompact] method
   /// this method will format the number in compact view i.e. 1K, 2K etc
-  String get formatNumberToCompact =>
-      _formatNumberToCompact(numberToFormat: this);
+  String get formatNumberToCompact => _formatNumberToCompact(numberToFormat: this);
 
   /// [formatNumber] method
   /// this method will format the number in default pattern or custom pattern
-  String formatNumber({String? customPattern}) =>
-      _formatNumber(numberToFormat: this, customPattern: customPattern);
+  String formatNumber({String? customPattern}) => _formatNumber(numberToFormat: this, customPattern: customPattern);
 
   /// [isNumeric] extension
   /// this extension will check if passed string is numeric or not
@@ -72,8 +68,7 @@ extension NumberExtension on String? {
 
 /// [_replaceTrueOrFalse] method
 /// this method will check and replace true/false value with integer value
-int _replaceTrueOrFalse(data) =>
-    data?.toString().toLowerCase() == 'true' ? 1 : 0;
+int _replaceTrueOrFalse(data) => data?.toString().toLowerCase() == 'true' ? 1 : 0;
 
 /// [_replaceNullWithEmpty] method
 /// this method will check and replace null with an empty string
@@ -121,22 +116,18 @@ double _replaceNullWithDouble(dynamic data) {
 
 String _formatNumberToCompact({String? numberToFormat}) {
   numberToFormat ??= '0';
-  final _numberToFormat = double.parse(numberToFormat);
+  final noToFormat = double.parse(numberToFormat);
 
-  return NumberFormat.compactCurrency(symbol: '', decimalDigits: 2)
-      .format(_numberToFormat);
+  return NumberFormat.compactCurrency(symbol: '', decimalDigits: 2).format(noToFormat);
 }
 
 /// [_formatNumber] method
 /// this method will format the number in default pattern or custom pattern
 String _formatNumber({required var numberToFormat, String? customPattern}) {
   numberToFormat ??= 0;
-  final _numberToFormat = double.parse(numberToFormat.toString());
+  final noToFormat = double.parse(numberToFormat.toString());
 
-  return NumberFormat.currency(
-          decimalDigits: 2, customPattern: customPattern ?? '##,###,###.##')
-      .format(_numberToFormat);
+  return NumberFormat.currency(decimalDigits: 2, customPattern: customPattern ?? '##,###,###.##').format(noToFormat);
 }
 
-String _digitsString(dynamic n, {int? lengthOfString}) =>
-    n.toString().padLeft(lengthOfString ?? 2, "0");
+String _digitsString(dynamic n, {int? lengthOfString}) => n.toString().padLeft(lengthOfString ?? 2, "0");

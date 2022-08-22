@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-
 import 'package:intl/intl.dart';
+import 'package:flutter/material.dart';
 import 'package:multiutillib/widgets/default_button.dart';
 import 'package:multiutillib/widgets/custom_date_range_picker/date_range_picker_calendar_view.dart';
 
@@ -17,10 +16,8 @@ showCustomDateRangePicker({
   Color selectedRangeColor = Colors.blue,
   Color monthYearTextColor = Colors.black,
   required Function(DateTime? startDate, DateTime? endDate)? onApplyClick,
-  TextStyle applyButtonTextStyle = const TextStyle(
-      fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
-  TextStyle cancelButtonTextStyle = const TextStyle(
-      fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+  TextStyle applyButtonTextStyle = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+  TextStyle cancelButtonTextStyle = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
   DateTime? minimumDate,
   DateTime? maximumDate,
   DateTime? initialEndDate,
@@ -98,16 +95,14 @@ class _CalendarPopupView extends StatefulWidget {
   _CalendarPopupViewState createState() => _CalendarPopupViewState();
 }
 
-class _CalendarPopupViewState extends State<_CalendarPopupView>
-    with TickerProviderStateMixin {
+class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProviderStateMixin {
   late AnimationController animationController;
   DateTime? startDate;
   DateTime? endDate;
 
   @override
   void initState() {
-    animationController = AnimationController(
-        duration: const Duration(milliseconds: 400), vsync: this);
+    animationController = AnimationController(duration: const Duration(milliseconds: 400), vsync: this);
 
     if (widget.initialStartDate != null) {
       startDate = widget.initialStartDate;
@@ -153,18 +148,13 @@ class _CalendarPopupViewState extends State<_CalendarPopupView>
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(24.0)),
+                        borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                         boxShadow: <BoxShadow>[
-                          BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              offset: const Offset(4, 4),
-                              blurRadius: 8.0),
+                          BoxShadow(color: Colors.grey.withOpacity(0.2), offset: const Offset(4, 4), blurRadius: 8.0),
                         ],
                       ),
                       child: InkWell(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(24.0)),
+                        borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                         onTap: () {},
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -180,48 +170,29 @@ class _CalendarPopupViewState extends State<_CalendarPopupView>
                                       const Text(
                                         "From",
                                         textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.grey,
-                                            fontWeight: FontWeight.w100),
+                                        style: TextStyle(fontSize: 16, color: Colors.grey, fontWeight: FontWeight.w100),
                                       ),
                                       const SizedBox(height: 4),
                                       Text(
-                                        startDate != null
-                                            ? DateFormat("EEE, dd MMM")
-                                                .format(startDate!)
-                                            : "--/-- ",
-                                        style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold),
+                                        startDate != null ? DateFormat("EEE, dd MMM").format(startDate!) : "--/-- ",
+                                        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                                       ),
                                     ],
                                   ),
                                 ),
-                                Container(
-                                    width: 1,
-                                    height: 74,
-                                    color: Colors.grey[500]!.withOpacity(0.5)),
+                                Container(width: 1, height: 74, color: Colors.grey[500]!.withOpacity(0.5)),
                                 Expanded(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       const Text(
                                         "To",
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.grey,
-                                            fontWeight: FontWeight.w100),
+                                        style: TextStyle(fontSize: 16, color: Colors.grey, fontWeight: FontWeight.w100),
                                       ),
                                       const SizedBox(height: 4),
                                       Text(
-                                        endDate != null
-                                            ? DateFormat("EEE, dd MMM")
-                                                .format(endDate!)
-                                            : "--/-- ",
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16),
+                                        endDate != null ? DateFormat("EEE, dd MMM").format(endDate!) : "--/-- ",
+                                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                                       ),
                                     ],
                                   ),
@@ -239,8 +210,7 @@ class _CalendarPopupViewState extends State<_CalendarPopupView>
                               weekDaysTextColor: widget.weekDaysTextColor,
                               monthYearTextColor: widget.monthYearTextColor,
                               selectedRangeColor: widget.selectedRangeColor,
-                              startEndDateChange: (DateTime? startDateData,
-                                  DateTime? endDateData) {
+                              startEndDateChange: (DateTime? startDateData, DateTime? endDateData) {
                                 setState(() {
                                   endDate = endDateData;
                                   startDate = startDateData;
@@ -248,8 +218,7 @@ class _CalendarPopupViewState extends State<_CalendarPopupView>
                               },
                             ),
                             Container(
-                              margin: const EdgeInsets.symmetric(
-                                  vertical: 8, horizontal: 16),
+                              margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -258,15 +227,13 @@ class _CalendarPopupViewState extends State<_CalendarPopupView>
                                       text: widget.cancelButtonText,
                                       margin: const EdgeInsets.all(0),
                                       btnColor: widget.cancelButtonColor,
-                                      btnTextStyle:
-                                          widget.cancelButtonTextStyle,
+                                      btnTextStyle: widget.cancelButtonTextStyle,
                                       onPressed: () {
                                         try {
                                           widget.onCancelClick!();
                                           Navigator.pop(context);
                                         } catch (e) {
-                                          debugPrint(
-                                              'exception while setting on cancel click button');
+                                          debugPrint('exception while setting on cancel click button');
                                         }
                                       },
                                     ),
@@ -280,11 +247,9 @@ class _CalendarPopupViewState extends State<_CalendarPopupView>
                                       btnTextStyle: widget.applyButtonTextStyle,
                                       onPressed: () {
                                         try {
-                                          widget.onApplyClick!(
-                                              startDate, endDate);
+                                          widget.onApplyClick!(startDate, endDate);
                                         } catch (e) {
-                                          debugPrint(
-                                              'exception while setting on apply button');
+                                          debugPrint('exception while setting on apply button');
                                         }
                                       },
                                     ),

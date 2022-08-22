@@ -23,10 +23,10 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({Key key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  MyHomePageState createState() => MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+class MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
   AnimationController _animationController;
   final TextEditingController _textEditingController = TextEditingController();
 
@@ -40,10 +40,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     _animationController.forward();
 
     _textEditingController.addListener(() {
-      final _isEmailValid = emailValidator(_textEditingController.value.text);
+      final isEmailValid = emailValidator(_textEditingController.value.text);
 
-      if (_isEmailValid != _isValid) {
-        setState(() => _isValid = _isEmailValid);
+      if (isEmailValid != _isValid) {
+        setState(() => _isValid = isEmailValid);
       }
     });
 
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       backgroundColor: Colors.grey[300],
       appBar: AppBar(title: const Text('Multi Util Lib')),
       body: ConnectivityBuilder(
-        builder: (_isOnline) {
+        builder: (isOnline) {
           return MaterialCard(
             borderRadius: 15,
             // color: Colors.grey[300],
@@ -78,21 +78,15 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   CustomToggleButton(
                     textOn: 'On',
                     textOff: 'Off',
-                    onChanged: (_value) => debugPrint(_value),
+                    onChanged: (value) => debugPrint(value),
                   ),
                   const SizedBox(height: 10),
-                  OffsetAnimation(
-                    end: 20,
-                    animationController: _animationController,
-                    widget: Container(height: 100, color: Colors.black12, width: double.infinity),
+                  FadeAnimation(
+                    delay: 1.5,
+                    child: Container(height: 100, color: Colors.black12, width: double.infinity),
                   ),
                   const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      LoadingAnimationWidget.inkDrop(color: Colors.blue, size: 36),
-                    ],
-                  ),
+                  LoadingAnimationWidget.inkDrop(color: Colors.blue, size: 36),
                   const SizedBox(height: 10),
                   Text('Get Current Date: ${getCurrentDate()}'),
                   const SizedBox(height: 10),
@@ -192,13 +186,13 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   FutureBuilder(
                     future: getDeviceName(),
                     builder: (context, snapshot) {
-                      var _formattedNumber = NumberFormat.compactCurrency(
+                      var formattedNumber = NumberFormat.compactCurrency(
                         symbol: '',
                         locale: 'en_IN',
                         decimalDigits: 2,
                       ).format(100000);
 
-                      debugPrint('Formatted Number is $_formattedNumber');
+                      debugPrint('Formatted Number is $formattedNumber');
                       debugPrint('snapshot data is: ${snapshot.data}');
 
                       if (snapshot.hasData) return Text(snapshot.data);
@@ -289,7 +283,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   OTPTextField(
                     autoFocus: false,
                     noOfOtpFields: 6,
-                    onCompleted: (_enteredOtp) => debugPrint('entered otp is: $_enteredOtp'),
+                    onCompleted: (enteredOtp) => debugPrint('entered otp is: $enteredOtp'),
                   ),
                   const SizedBox(height: 10),
                   const RichTextWidget(

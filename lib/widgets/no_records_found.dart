@@ -11,10 +11,11 @@ class NoRecordsFound extends StatelessWidget {
       child: Text(
         'No Records Found',
         style: TextStyle(
-            fontSize: 18,
-            letterSpacing: 0.10,
-            color: Colors.black,
-            fontWeight: FontWeight.w600),
+          fontSize: 18,
+          letterSpacing: 0.10,
+          color: Colors.black,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }

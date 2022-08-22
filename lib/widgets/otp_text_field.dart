@@ -37,7 +37,7 @@ class OTPTextField extends StatefulWidget {
   final ValueChanged<String> onCompleted;
 
   @override
-  _OTPTextFieldState createState() => _OTPTextFieldState();
+  OTPTextFieldState createState() => OTPTextFieldState();
 
   const OTPTextField({
     Key? key,
@@ -50,19 +50,17 @@ class OTPTextField extends StatefulWidget {
     this.cursorColor = Colors.blue,
     this.textAlign = TextAlign.center,
     this.margin = const EdgeInsets.only(top: 15, left: 15, right: 15),
-    this.textStyle =
-        const TextStyle(fontSize: 16, letterSpacing: 0.27, color: Colors.black),
+    this.textStyle = const TextStyle(fontSize: 16, letterSpacing: 0.27, color: Colors.black),
   })  : assert(noOfOtpFields > 1),
         super(key: key);
 }
 
-class _OTPTextFieldState extends State<OTPTextField> {
+class OTPTextFieldState extends State<OTPTextField> {
   late List<String> _otpList;
   late List<FocusNode?> _focusNodesList;
   late List<TextEditingController?> _otpTextControllersList;
 
-  var _underlineInputBorder = const UnderlineInputBorder(
-      borderSide: BorderSide(color: Colors.blue, width: 2));
+  var _underlineInputBorder = const UnderlineInputBorder(borderSide: BorderSide(color: Colors.blue, width: 2));
 
   @override
   void initState() {
@@ -73,8 +71,7 @@ class _OTPTextFieldState extends State<OTPTextField> {
     _otpTextControllersList = List.filled(widget.noOfOtpFields, null);
 
     _underlineInputBorder = UnderlineInputBorder(
-      borderSide:
-          BorderSide(color: widget.borderColor, width: widget.borderWidth),
+      borderSide: BorderSide(color: widget.borderColor, width: widget.borderWidth),
     );
   }
 
@@ -83,15 +80,14 @@ class _OTPTextFieldState extends State<OTPTextField> {
     return Container(
       margin: widget.margin,
       child: Row(
-        children: List.generate(widget.noOfOtpFields, (_position) {
+        children: List.generate(widget.noOfOtpFields, (position) {
           // calling add focus node to each text field method
-          _addFocusNodeToEachTextField(position: _position);
+          _addFocusNodeToEachTextField(position: position);
 
           // calling add text editing controller to each text field method
-          _addTextEditingControllerToEachTextField(position: _position);
+          _addTextEditingControllerToEachTextField(position: position);
 
-          return Expanded(
-              child: _otpTextFields(context: context, position: _position));
+          return Expanded(child: _otpTextFields(context: context, position: position));
         }),
       ),
     );
@@ -111,28 +107,23 @@ class _OTPTextFieldState extends State<OTPTextField> {
         focusNode: _focusNodesList[position],
         controller: _otpTextControllersList[position],
         keyboardType: const TextInputType.numberWithOptions(),
-        inputFormatters: [
-          LengthLimitingTextInputFormatter(1),
-          FilteringTextInputFormatter.allow(RegExp("[0-9]"))
-        ],
+        inputFormatters: [LengthLimitingTextInputFormatter(1), FilteringTextInputFormatter.allow(RegExp("[0-9]"))],
         decoration: InputDecoration(
           border: _underlineInputBorder,
           focusedBorder: _underlineInputBorder,
           enabledBorder: _underlineInputBorder,
         ),
-        onChanged: (_input) {
+        onChanged: (input) {
           try {
-            if (_input.length > 1) {
+            if (input.length > 1) {
               /// calling change focus to next node when value is entered
-              _changeFocusToNextNodeWhenValueIsEntered(
-                  value: _input, position: position);
+              _changeFocusToNextNodeWhenValueIsEntered(value: input, position: position);
 
               return;
             }
 
             /// calling change focus to previous node when value is empty
-            _changeFocusToPreviousNodeWhenValueIsEmpty(
-                value: _input, position: position);
+            _changeFocusToPreviousNodeWhenValueIsEmpty(value: input, position: position);
           } catch (e, s) {
             debugPrint('exception while adding otp to list: ${s.toString()}');
           }
@@ -159,8 +150,7 @@ class _OTPTextFieldState extends State<OTPTextField> {
 
   /// [_changeFocusToPreviousNodeWhenValueIsEmpty] method
   /// this method will manage changing of focus to otp text field when value is entered
-  void _changeFocusToPreviousNodeWhenValueIsEmpty(
-      {required String value, required int position}) {
+  void _changeFocusToPreviousNodeWhenValueIsEmpty({required String value, required int position}) {
     /// Check if the current value at this position is empty
     /// If it is move focus to previous text field.
     if (value.isEmpty) {
@@ -169,10 +159,8 @@ class _OTPTextFieldState extends State<OTPTextField> {
       _focusNodesList[position]!.unfocus();
       _focusNodesList[position - 1]!.requestFocus();
 
-      _otpTextControllersList[position - 1]!.selection =
-          TextSelection.fromPosition(
-        TextPosition(
-            offset: _otpTextControllersList[position - 1]!.value.text.length),
+      _otpTextControllersList[position - 1]!.selection = TextSelection.fromPosition(
+        TextPosition(offset: _otpTextControllersList[position - 1]!.value.text.length),
       );
     }
 
@@ -195,17 +183,16 @@ class _OTPTextFieldState extends State<OTPTextField> {
 
   /// [_changeFocusToNextNodeWhenValueIsEntered] method
   /// this method will manage changing of focus to otp text field when value is entered
-  void _changeFocusToNextNodeWhenValueIsEntered(
-      {required String value, required int position}) {
+  void _changeFocusToNextNodeWhenValueIsEntered({required String value, required int position}) {
     if (value.length > widget.noOfOtpFields) {
       value = value.substring(0, widget.noOfOtpFields);
     }
 
     for (int i = 0; i < value.length; i++) {
-      final String _otp = value.substring(i, i + 1);
+      final String otp = value.substring(i, i + 1);
 
       _otpList[i] = value;
-      _otpTextControllersList[i]!.text = _otp;
+      _otpTextControllersList[i]!.text = otp;
     }
 
     // calling set entered otp method
@@ -215,26 +202,24 @@ class _OTPTextFieldState extends State<OTPTextField> {
   /// [_getEnteredOtp] method
   /// this method will get entered otp from otp list
   String _getEnteredOtp() {
-    String _otp = "";
+    String otp = "";
     // _otpList.forEach((String value) => _otp += value);
 
     for (final String value in _otpList) {
-      _otp += value;
+      otp += value;
     }
 
-    return _otp;
+    return otp;
   }
 
   void _setEnteredOtp() {
     /// calling get entered otp method
-    final String _enteredOTP = _getEnteredOtp();
+    final String enteredOTP = _getEnteredOtp();
 
     /// if there are no null values that means otp is completed
     /// Call the `onCompleted` callback function provided
-    if (!_otpList.contains(null) &&
-        !_otpList.contains('') &&
-        _enteredOTP.length == widget.noOfOtpFields) {
-      widget.onCompleted(_enteredOTP);
+    if (!_otpList.contains(null) && !_otpList.contains('') && enteredOTP.length == widget.noOfOtpFields) {
+      widget.onCompleted(enteredOTP);
     }
   }
 
@@ -257,7 +242,6 @@ class _OTPTextFieldState extends State<OTPTextField> {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-        DiagnosticsProperty('_underlineInputBorder', _underlineInputBorder));
+    properties.add(DiagnosticsProperty('_underlineInputBorder', _underlineInputBorder));
   }
 }

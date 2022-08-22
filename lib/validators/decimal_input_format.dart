@@ -5,34 +5,31 @@ import 'dart:math' as math;
 import 'package:flutter/services.dart';
 
 class DecimalInputFormatter extends TextInputFormatter {
-  DecimalInputFormatter({this.decimalRange})
-      : assert(decimalRange == null || decimalRange > 0);
+  DecimalInputFormatter({this.decimalRange}) : assert(decimalRange == null || decimalRange > 0);
 
   final int? decimalRange;
 
   @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
-    String _truncated = newValue.text;
-    TextSelection _newSelection = newValue.selection;
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+    String truncated = newValue.text;
+    TextSelection newSelection = newValue.selection;
 
     if (decimalRange != null) {
-      final String _value = newValue.text;
+      final String value = newValue.text;
 
-      if (_value.contains(".") &&
-          _value.substring(_value.indexOf(".") + 1).length > decimalRange!) {
-        _truncated = oldValue.text;
-        _newSelection = oldValue.selection;
-      } else if (_value == ".") {
-        _truncated = "0.";
+      if (value.contains(".") && value.substring(value.indexOf(".") + 1).length > decimalRange!) {
+        truncated = oldValue.text;
+        newSelection = oldValue.selection;
+      } else if (value == ".") {
+        truncated = "0.";
 
-        _newSelection = newValue.selection.copyWith(
-          baseOffset: math.min(_truncated.length, _truncated.length + 1),
-          extentOffset: math.min(_truncated.length, _truncated.length + 1),
+        newSelection = newValue.selection.copyWith(
+          baseOffset: math.min(truncated.length, truncated.length + 1),
+          extentOffset: math.min(truncated.length, truncated.length + 1),
         );
       }
 
-      return TextEditingValue(text: _truncated, selection: _newSelection);
+      return TextEditingValue(text: truncated, selection: newSelection);
     }
 
     return newValue;

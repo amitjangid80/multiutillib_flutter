@@ -4,15 +4,15 @@ const String _emailIdIsRequired = "* Email Id is required.";
 const String _mustBeValidEmailId = "* Must be a valid Email Id.";
 
 /// validation method for validating email id
-String? emailValidator(String _value) {
-  const Pattern _pattern =
+String? emailValidator(String value) {
+  const Pattern pattern =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
-  final RegExp _regex = RegExp(_pattern as String);
+  final RegExp regex = RegExp(pattern as String);
 
-  if (_value.isEmpty) {
+  if (value.isEmpty) {
     return _emailIdIsRequired;
-  } else if (!_regex.hasMatch(_value)) {
+  } else if (!regex.hasMatch(value)) {
     return _mustBeValidEmailId;
   }
 

@@ -16,10 +16,8 @@ showCustomDatePicker({
   Color selectedDateColor = Colors.blue,
   Color monthYearTextColor = Colors.black,
   required Function(DateTime? dateTime)? onApplyClick,
-  TextStyle applyButtonTextStyle = const TextStyle(
-      fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
-  TextStyle cancelButtonTextStyle = const TextStyle(
-      fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+  TextStyle applyButtonTextStyle = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+  TextStyle cancelButtonTextStyle = const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
   DateTime? minimumDate,
   DateTime? maximumDate,
   DateTime? initialStartDate,
@@ -69,6 +67,7 @@ class _CalendarPopupView extends StatefulWidget {
   final Color? selectedDateColor;
 
   const _CalendarPopupView({
+    Key? key,
     this.minimumDate,
     this.maximumDate,
     this.barrierDismissible,
@@ -86,22 +85,20 @@ class _CalendarPopupView extends StatefulWidget {
     this.leftArrowColor,
     this.rightArrowColor,
     this.selectedDateColor,
-  });
+  }) : super(key: key);
 
   @override
   _CalendarPopupViewState createState() => _CalendarPopupViewState();
 }
 
-class _CalendarPopupViewState extends State<_CalendarPopupView>
-    with TickerProviderStateMixin {
+class _CalendarPopupViewState extends State<_CalendarPopupView> with TickerProviderStateMixin {
   late AnimationController animationController;
   DateTime? startDate;
   DateTime? endDate;
 
   @override
   void initState() {
-    animationController = AnimationController(
-        duration: const Duration(milliseconds: 400), vsync: this);
+    animationController = AnimationController(duration: const Duration(milliseconds: 400), vsync: this);
     if (widget.initialStartDate != null) {
       endDate = widget.initialStartDate;
       startDate = widget.initialStartDate;
@@ -141,18 +138,13 @@ class _CalendarPopupViewState extends State<_CalendarPopupView>
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(24.0)),
+                        borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                         boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              offset: const Offset(4, 4),
-                              blurRadius: 8.0),
+                          BoxShadow(color: Colors.grey.withOpacity(0.2), offset: const Offset(4, 4), blurRadius: 8.0),
                         ],
                       ),
                       child: InkWell(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(24.0)),
+                        borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                         onTap: () {},
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -168,12 +160,10 @@ class _CalendarPopupViewState extends State<_CalendarPopupView>
                               weekDaysTextColor: widget.weekDaysTextColor,
                               selectedDateColor: widget.selectedDateColor,
                               monthYearTextColor: widget.monthYearTextColor,
-                              onDateChange: (DateTime? startDateData) =>
-                                  setState(() => startDate = startDateData),
+                              onDateChange: (DateTime? startDateData) => setState(() => startDate = startDateData),
                             ),
                             Container(
-                              margin: const EdgeInsets.symmetric(
-                                  vertical: 8, horizontal: 16),
+                              margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -182,15 +172,13 @@ class _CalendarPopupViewState extends State<_CalendarPopupView>
                                       text: widget.cancelButtonText,
                                       margin: const EdgeInsets.all(0),
                                       btnColor: widget.cancelButtonColor,
-                                      btnTextStyle:
-                                          widget.cancelButtonTextStyle,
+                                      btnTextStyle: widget.cancelButtonTextStyle,
                                       onPressed: () {
                                         try {
                                           widget.onCancelClick!();
                                           Navigator.pop(context);
                                         } catch (e) {
-                                          debugPrint(
-                                              'exception in on cancel click method');
+                                          debugPrint('exception in on cancel click method');
                                         }
                                       },
                                     ),
@@ -206,8 +194,7 @@ class _CalendarPopupViewState extends State<_CalendarPopupView>
                                         try {
                                           widget.onApplyClick!(startDate);
                                         } catch (e) {
-                                          debugPrint(
-                                              'exception in on apply click method');
+                                          debugPrint('exception in on apply click method');
                                         }
                                       },
                                     ),

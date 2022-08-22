@@ -256,7 +256,7 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    final _loader = Align(
+    final loader = Align(
       alignment: _progressWidgetAlignment,
       child: SizedBox(width: _size, height: _size, child: _progressWidget),
     );
@@ -296,9 +296,9 @@ class _BodyState extends State<_Body> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   const SizedBox(width: 8.0),
-                  if (_direction == TextDirection.ltr) _loader else text,
+                  if (_direction == TextDirection.ltr) loader else text,
                   const SizedBox(width: 16.0),
-                  if (_direction == TextDirection.rtl) _loader else text,
+                  if (_direction == TextDirection.rtl) loader else text,
                   const SizedBox(width: 8.0),
                 ],
               ),

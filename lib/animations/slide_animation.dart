@@ -20,22 +20,20 @@ class SlideAnimation extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _SlideAnimationState createState() => _SlideAnimationState();
+  SlideAnimationState createState() => SlideAnimationState();
 }
 
-class _SlideAnimationState extends State<SlideAnimation>
-    with SingleTickerProviderStateMixin {
+class SlideAnimationState extends State<SlideAnimation> with SingleTickerProviderStateMixin {
   /// Animates a widget to slide from either direction.
   /// Using [AnimatedBuilder] for animation
   @override
   Widget build(BuildContext context) {
-    var _yTranslation = 0.0, _xTranslation = 0.0;
+    var yTranslation = 0.0, xTranslation = 0.0;
 
-    final _slideAnimation = Tween(begin: 0.0, end: 1.0).animate(
+    final slideAnimation = Tween(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: widget.animationController,
-        curve: Interval((1 / widget.itemCount) * widget.position, 1.0,
-            curve: Curves.fastOutSlowIn),
+        curve: Interval((1 / widget.itemCount) * widget.position, 1.0, curve: Curves.fastOutSlowIn),
       ),
     );
 
@@ -45,20 +43,19 @@ class _SlideAnimationState extends State<SlideAnimation>
       animation: widget.animationController,
       builder: (context, child) {
         if (widget.slideDirection == SlideDirection.fromTop) {
-          _yTranslation = -50 * (1.0 - _slideAnimation.value);
+          yTranslation = -50 * (1.0 - slideAnimation.value);
         } else if (widget.slideDirection == SlideDirection.fromBottom) {
-          _yTranslation = 50 * (1.0 - _slideAnimation.value);
+          yTranslation = 50 * (1.0 - slideAnimation.value);
         } else if (widget.slideDirection == SlideDirection.fromRight) {
-          _xTranslation = 400 * (1.0 - _slideAnimation.value);
+          xTranslation = 400 * (1.0 - slideAnimation.value);
         } else {
-          _xTranslation = -400 * (1.0 - _slideAnimation.value);
+          xTranslation = -400 * (1.0 - slideAnimation.value);
         }
 
         return FadeTransition(
-          opacity: _slideAnimation,
+          opacity: slideAnimation,
           child: Transform(
-            transform:
-                Matrix4.translationValues(_xTranslation, _yTranslation, 0.0),
+            transform: Matrix4.translationValues(xTranslation, yTranslation, 0.0),
             child: widget.child,
           ),
         );

@@ -17,12 +17,9 @@ showCustomDialog(
   TextAlign titleTextAlign = TextAlign.center,
   Duration transitionDuration = const Duration(milliseconds: 400),
   DialogAnimationType dialogAnimationType = DialogAnimationType.grow,
-  TextStyle descStyle =
-      const TextStyle(fontSize: 16, letterSpacing: 0.27, color: Colors.black),
-  TextStyle btnStyle = const TextStyle(
-      fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
-  TextStyle titleStyle = const TextStyle(
-      fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.bold),
+  TextStyle descStyle = const TextStyle(fontSize: 16, letterSpacing: 0.27, color: Colors.black),
+  TextStyle btnStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.w400),
+  TextStyle titleStyle = const TextStyle(fontSize: 18, letterSpacing: 0.27, fontWeight: FontWeight.bold),
   required String title,
   required String description,
 }) {
@@ -91,8 +88,8 @@ class _CustomDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double _borderRadius = 20;
-    final double _width = MediaQuery.of(context).size.width;
+    const double borderRadius = 20;
+    final double width = MediaQuery.of(context).size.width;
 
     return WillPopScope(
       onWillPop: () => Future.value(false),
@@ -100,18 +97,14 @@ class _CustomDialog extends StatelessWidget {
         elevation: 0,
         clipBehavior: Clip.antiAlias,
         backgroundColor: Colors.transparent,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(_borderRadius)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius)),
         child: Stack(
           children: <Widget>[
             Container(
-              width: _width,
+              width: width,
               margin: const EdgeInsets.only(bottom: 20),
-              padding: const EdgeInsets.only(
-                  top: 24, left: 20, right: 20, bottom: 80),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(_borderRadius)),
+              padding: const EdgeInsets.only(top: 24, left: 20, right: 20, bottom: 80),
+              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(borderRadius)),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -135,8 +128,7 @@ class _CustomDialog extends StatelessWidget {
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 10),
-                    child: Text(description,
-                        style: descStyle, textAlign: descTextAlign),
+                    child: Text(description, style: descStyle, textAlign: descTextAlign),
                   ),
                 ],
               ),

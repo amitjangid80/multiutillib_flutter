@@ -21,28 +21,21 @@ class OffsetAnimation extends AnimatedWidget {
     required this.animationController,
     required this.widget,
   }) : super(
-          key: key,
-          listenable: Tween(begin: 0.0, end: end)
-              .chain(CurveTween(curve: Curves.elasticIn))
-              .animate(animationController)
-            ..addStatusListener(
-              (status) {
-                if (status == AnimationStatus.completed) {
-                  animationController.reverse();
-                }
-              },
-            ),
-        );
+            key: key,
+            listenable:
+                Tween(begin: 0.0, end: end).chain(CurveTween(curve: Curves.elasticIn)).animate(animationController)
+                  ..addStatusListener((status) {
+                    if (status == AnimationStatus.completed) animationController.reverse();
+                  }));
 
   @override
   Widget build(BuildContext context) {
-    final Animation<double> _animation = listenable as Animation<double>;
+    final Animation<double> animation = listenable as Animation<double>;
 
     return AnimatedBuilder(
-      animation: _animation,
+      animation: animation,
       builder: (context, child) => Container(
-        padding: EdgeInsets.only(
-            left: _animation.value + end, right: end - _animation.value),
+        padding: EdgeInsets.only(left: animation.value + end, right: end - animation.value),
         child: widget,
       ),
     );

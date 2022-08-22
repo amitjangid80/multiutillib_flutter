@@ -25,6 +25,7 @@ export 'validators/decimal_input_format.dart';
 //#endregion validators
 
 //#region extensions
+export 'utils/color_extensions.dart';
 export 'utils/string_extension.dart';
 export 'utils/date_time_extension.dart';
 //#region extensions
@@ -43,5 +44,4 @@ export 'widgets/dialogs/progress_dialog.dart';
 export 'widgets/dialogs/custom_confirm_dialog.dart';
 export 'widgets/custom_date_picker/date_picker_popup_view.dart';
 export 'widgets/custom_date_range_picker/date_range_picker_popup_view.dart';
-
 //#endregion widgets

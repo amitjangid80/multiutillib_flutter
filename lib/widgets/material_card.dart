@@ -27,8 +27,8 @@ class MaterialCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: margin,
+    return Padding(
+      padding: margin,
       child: InkWell(
         onTap: onTap,
         child: Material(
@@ -38,7 +38,7 @@ class MaterialCard extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           shadowColor: shadowColor ?? Colors.grey[200],
           borderRadius: borderRadius == null ? borderRadiusGeometry : BorderRadius.circular(borderRadius!),
-          child: Container(padding: padding, child: child),
+          child: Padding(padding: padding, child: child),
         ),
       ),
     );

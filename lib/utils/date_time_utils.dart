@@ -23,8 +23,7 @@ String formatDateTime(String dateTime, {String? newDateTimeFormat}) {
 
   if (dateTime.toString().isNotEmpty) {
     /// formatting date in yyyy-MM-dd HH:mm:ss format
-    dateTime = DateFormat(newDateTimeFormat ?? kDefaultDateTimeFormat)
-        .format(DateTime.parse(dateTime));
+    dateTime = DateFormat(newDateTimeFormat ?? kDefaultDateTimeFormat).format(DateTime.parse(dateTime));
   }
 
   return dateTime;
@@ -35,10 +34,8 @@ String formatDateTime(String dateTime, {String? newDateTimeFormat}) {
 @Deprecated('Use .toDisplayTime extension instead.')
 String convertTimeOfDay(TimeOfDay timeOfDay, {String? timeFormat}) {
   final now = DateTime.now();
-  final DateTime _dateTime =
-      DateTime(now.year, now.month, now.day, timeOfDay.hour, timeOfDay.minute);
+  final DateTime dateTime = DateTime(now.year, now.month, now.day, timeOfDay.hour, timeOfDay.minute);
 
   /// calling format date time method to convert time of day for display
-  return formatDateTime(_dateTime.toString(),
-      newDateTimeFormat: timeFormat ?? kTimeDisplayFormat);
+  return formatDateTime(dateTime.toString(), newDateTimeFormat: timeFormat ?? kTimeDisplayFormat);
 }

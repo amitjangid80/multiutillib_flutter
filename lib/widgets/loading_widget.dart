@@ -29,7 +29,7 @@ class LoadingWidget extends StatelessWidget {
       itemCount: itemCount,
       padding: const EdgeInsets.all(0),
       physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, _position) {
+      itemBuilder: (context, position) {
         return MaterialCard(
           borderRadius: borderRadius,
           margin: margin,
@@ -43,11 +43,7 @@ class LoadingWidget extends StatelessWidget {
                   Shimmer.fromColors(
                     baseColor: baseColor,
                     highlightColor: highlightColor,
-                    child: Container(
-                        width: 50,
-                        height: 50,
-                        color: baseColor,
-                        padding: const EdgeInsets.all(10)),
+                    child: Container(width: 50, height: 50, color: baseColor, padding: const EdgeInsets.all(10)),
                   ),
                   const SizedBox(width: 10),
                   Expanded(
@@ -58,17 +54,13 @@ class LoadingWidget extends StatelessWidget {
                         Shimmer.fromColors(
                           baseColor: baseColor,
                           highlightColor: highlightColor,
-                          child: Container(
-                              color: baseColor,
-                              padding: const EdgeInsets.all(10)),
+                          child: Container(color: baseColor, padding: const EdgeInsets.all(10)),
                         ),
                         const SizedBox(height: 10),
                         Shimmer.fromColors(
                           baseColor: baseColor,
                           highlightColor: highlightColor,
-                          child: Container(
-                              color: baseColor,
-                              padding: const EdgeInsets.all(10)),
+                          child: Container(color: baseColor, padding: const EdgeInsets.all(10)),
                         ),
                       ],
                     ),
