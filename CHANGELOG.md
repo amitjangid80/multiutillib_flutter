@@ -1,3 +1,6 @@
+# [1.2.1] 22-08-2022
+* Added String to Color conversion extension
+
 # [1.2.0] 17-06-2022
 * Added Debounce Util.
 * Changes in Progress dialog loader.
