@@ -42,8 +42,8 @@ class DefaultButton extends StatelessWidget {
         onPressed: isEnabled ? onPressed : null,
         style: ElevatedButton.styleFrom(
           shape: shape,
-          primary: btnColor,
           elevation: elevation,
+          backgroundColor: btnColor,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         child: Text(isUpperCase ? text!.toUpperCase() : text!, style: btnTextStyle),

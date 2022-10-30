@@ -1,3 +1,6 @@
+# [1.2.2] 30-10-2022
+* Updated all the dependencies to latest version.
+
 # [1.2.1] 22-08-2022
 * Added String to Color conversion extension
 

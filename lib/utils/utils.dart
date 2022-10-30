@@ -1,12 +1,12 @@
 // Created by AMIT JANGID on 26/12/20.
 
+import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
-import 'dart:convert';
 import 'dart:typed_data';
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
+
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 /// [getAppVersion] method
@@ -37,11 +37,15 @@ Future<String?> getDeviceName() async {
 /// this method will get device info like model name and device id
 Future<String> getDeviceId() async {
   String deviceId;
+  final DeviceInfoPlugin deviceInfoPlugin1 = DeviceInfoPlugin();
   final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+  final deviceInfo1 = await deviceInfoPlugin1.deviceInfo;
+  final deviceData = deviceInfo1.data;
+  debugPrint('device data is: $deviceData');
 
   if (Platform.isAndroid) {
     final AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-    deviceId = androidInfo.id!;
+    deviceId = androidInfo.id;
   } else {
     final IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
     deviceId = iosDeviceInfo.identifierForVendor!;

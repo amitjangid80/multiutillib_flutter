@@ -1,7 +1,7 @@
-import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:multiutillib/multiutillib.dart';
+import 'package:intl/intl.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:multiutillib/multiutillib.dart';
 
 void main() => runApp(const MyApp());
 
@@ -47,7 +47,7 @@ class MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMi
       }
     });
 
-    _showProgressDialog();
+    // _showProgressDialog();
   }
 
   _showProgressDialog() async {
