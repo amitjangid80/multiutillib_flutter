@@ -1,3 +1,6 @@
+# [1.3.2] 16-09-2023
+* Updated all the dependencies to latest version.
+
 # [1.2.2] 30-10-2022
 * Updated all the dependencies to latest version.
 
