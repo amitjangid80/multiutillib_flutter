@@ -6,7 +6,7 @@ import 'package:multiutillib/multiutillib.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +20,14 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key}) : super(key: key);
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   MyHomePageState createState() => MyHomePageState();
 }
 
 class MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
+  late final AnimationController _animationController;
   final TextEditingController _textEditingController = TextEditingController();
 
   String _isValid = '* Email Id is required.';
@@ -43,14 +43,14 @@ class MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMi
       final isEmailValid = emailValidator(_textEditingController.value.text);
 
       if (isEmailValid != _isValid) {
-        setState(() => _isValid = isEmailValid);
+        setState(() => _isValid = isEmailValid!);
       }
     });
 
     // _showProgressDialog();
   }
 
-  _showProgressDialog() async {
+  /*_showProgressDialog() async {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await showInkDropProgressDialog(context);
 
@@ -58,7 +58,7 @@ class MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMi
 
       await hideProgressDialog();
     });
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -195,7 +195,7 @@ class MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMi
                       debugPrint('Formatted Number is $formattedNumber');
                       debugPrint('snapshot data is: ${snapshot.data}');
 
-                      if (snapshot.hasData) return Text(snapshot.data);
+                      if (snapshot.hasData) return Text(snapshot.data!);
 
                       return const SizedBox.shrink();
                     },
@@ -206,7 +206,7 @@ class MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMi
                     builder: (context, snapshot) {
                       debugPrint('snapshot data is: ${snapshot.data}');
 
-                      if (snapshot.hasData) return Text(snapshot.data);
+                      if (snapshot.hasData) return Text(snapshot.data!);
 
                       return const SizedBox.shrink();
                     },
