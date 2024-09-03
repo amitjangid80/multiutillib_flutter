@@ -40,7 +40,7 @@ class OTPTextField extends StatefulWidget {
   OTPTextFieldState createState() => OTPTextFieldState();
 
   const OTPTextField({
-    Key? key,
+    super.key,
     required this.noOfOtpFields,
     required this.onCompleted,
     this.borderWidth = 2,
@@ -51,8 +51,7 @@ class OTPTextField extends StatefulWidget {
     this.textAlign = TextAlign.center,
     this.margin = const EdgeInsets.only(top: 15, left: 15, right: 15),
     this.textStyle = const TextStyle(fontSize: 16, letterSpacing: 0.27, color: Colors.black),
-  })  : assert(noOfOtpFields > 1),
-        super(key: key);
+  })  : assert(noOfOtpFields > 1);
 }
 
 class OTPTextFieldState extends State<OTPTextField> {

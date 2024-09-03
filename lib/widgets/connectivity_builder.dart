@@ -37,7 +37,7 @@ class ConnectivityBuilder extends StatelessWidget {
   final Widget Function(bool isConnected) builder;
 
   const ConnectivityBuilder({
-    Key? key,
+    super.key,
     required this.builder,
     this.gradient,
     this.offlineWidget,
@@ -47,46 +47,50 @@ class ConnectivityBuilder extends StatelessWidget {
     this.alignment = Alignment.center,
     this.message = kInternetNotAvailable,
     this.textStyle = const TextStyle(fontSize: 14, color: Colors.white),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<ConnectivityResult>(
+    return StreamBuilder<List<ConnectivityResult>>(
       stream: Connectivity().onConnectivityChanged,
       builder: (context, snapshot) {
-        switch (snapshot.data) {
-          case ConnectivityResult.wifi:
-          case ConnectivityResult.mobile:
-            return builder(true);
+        print("snapshot data value is: $snapshot");
 
-          case ConnectivityResult.none:
-          default:
-            return Stack(
-              children: [
-                builder(false),
-                disableInteraction
-                    ? Column(
-                        children: <Widget>[
-                          Flexible(child: Container(decoration: const BoxDecoration(color: Colors.black38))),
-                        ],
-                      )
-                    : const SizedBox.shrink(),
-                offlineWidget ??
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      top: position == Position.top ? 0 : null,
-                      bottom: position == Position.bottom ? 0 : null,
-                      child: Container(
-                        alignment: alignment,
-                        padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(color: bgColor, gradient: gradient),
-                        child: Text(message, style: textStyle),
-                      ),
-                    ),
-              ],
-            );
-        }
+        return builder(true);
+        
+        // switch (snapshot.data) {
+        //   case ConnectivityResult.wifi:
+        //   case ConnectivityResult.mobile:
+        //     return builder(true);
+
+        //   case ConnectivityResult.none:
+        //   default:
+        //     return Stack(
+        //       children: [
+        //         builder(false),
+        //         disableInteraction
+        //             ? Column(
+        //                 children: <Widget>[
+        //                   Flexible(child: Container(decoration: const BoxDecoration(color: Colors.black38))),
+        //                 ],
+        //               )
+        //             : const SizedBox.shrink(),
+        //         offlineWidget ??
+        //             Positioned(
+        //               left: 0,
+        //               right: 0,
+        //               top: position == Position.top ? 0 : null,
+        //               bottom: position == Position.bottom ? 0 : null,
+        //               child: Container(
+        //                 alignment: alignment,
+        //                 padding: const EdgeInsets.all(12),
+        //                 decoration: BoxDecoration(color: bgColor, gradient: gradient),
+        //                 child: Text(message, style: textStyle),
+        //               ),
+        //             ),
+        //       ],
+        //     );
+        // }
       },
     );
   }

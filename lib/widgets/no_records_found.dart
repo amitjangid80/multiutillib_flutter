@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 class NoRecordsFound extends StatelessWidget {
-  const NoRecordsFound({Key? key}) : super(key: key);
+  const NoRecordsFound({super.key});
 
   @override
   Widget build(BuildContext context) {

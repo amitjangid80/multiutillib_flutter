@@ -14,7 +14,7 @@ class CustomCalendarView extends StatefulWidget {
   final Function(DateTime?, DateTime?)? startEndDateChange;
 
   const CustomCalendarView({
-    Key? key,
+    super.key,
     this.minimumDate,
     this.maximumDate,
     this.initialEndDate,
@@ -25,7 +25,7 @@ class CustomCalendarView extends StatefulWidget {
     this.monthYearTextColor,
     this.startEndDateChange,
     this.selectedRangeColor,
-  }) : super(key: key);
+  });
 
   @override
   CustomCalendarViewState createState() => CustomCalendarViewState();

@@ -11,13 +11,13 @@ class SlideAnimation extends StatefulWidget {
   final AnimationController animationController;
 
   const SlideAnimation({
-    Key? key,
+    super.key,
     required this.position,
     required this.itemCount,
     required this.animationController,
     required this.child,
     this.slideDirection = SlideDirection.fromRight,
-  }) : super(key: key);
+  });
 
   @override
   SlideAnimationState createState() => SlideAnimationState();

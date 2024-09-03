@@ -67,7 +67,6 @@ class _CalendarPopupView extends StatefulWidget {
   final Color? selectedDateColor;
 
   const _CalendarPopupView({
-    Key? key,
     this.minimumDate,
     this.maximumDate,
     this.barrierDismissible,
@@ -85,7 +84,7 @@ class _CalendarPopupView extends StatefulWidget {
     this.leftArrowColor,
     this.rightArrowColor,
     this.selectedDateColor,
-  }) : super(key: key);
+  });
 
   @override
   _CalendarPopupViewState createState() => _CalendarPopupViewState();

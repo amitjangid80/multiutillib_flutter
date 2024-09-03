@@ -14,13 +14,13 @@ class LoadingWidget extends StatelessWidget {
   final Color baseColor, highlightColor;
 
   const LoadingWidget({
-    Key? key,
+    super.key,
     this.itemCount = 4,
     this.borderRadius = 12,
     this.highlightColor = Colors.white,
     this.baseColor = const Color(0xFFE0E0E0),
     this.margin = const EdgeInsets.only(top: 12, left: 12, right: 12),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

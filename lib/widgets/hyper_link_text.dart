@@ -10,8 +10,7 @@ class HyperLinkText extends StatelessWidget {
   final String url, text;
   final EdgeInsetsGeometry padding;
 
-  const HyperLinkText({Key? key, this.padding = const EdgeInsets.all(12), required this.url, required this.text})
-      : super(key: key);
+  const HyperLinkText({super.key, this.padding = const EdgeInsets.all(12), required this.url, required this.text});
 
   @override
   Widget build(BuildContext context) {

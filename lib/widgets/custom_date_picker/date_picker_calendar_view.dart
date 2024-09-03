@@ -13,7 +13,7 @@ class CustomCalendarView extends StatefulWidget {
   final Function(DateTime?)? onDateChange;
 
   const CustomCalendarView({
-    Key? key,
+    super.key,
     this.minimumDate,
     this.maximumDate,
     this.onDateChange,
@@ -23,7 +23,7 @@ class CustomCalendarView extends StatefulWidget {
     this.weekDaysTextColor,
     this.monthYearTextColor,
     this.selectedDateColor,
-  }) : super(key: key);
+  });
 
   @override
   CustomCalendarViewState createState() => CustomCalendarViewState();

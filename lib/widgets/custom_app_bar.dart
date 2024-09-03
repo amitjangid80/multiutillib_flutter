@@ -14,7 +14,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onBackButtonPressed;
 
   const CustomAppBar({
-    Key? key,
+    super.key,
     required this.title,
     this.centerTitle,
     this.elevation = 4,
@@ -22,7 +22,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.onBackButtonPressed,
     this.isHomeScreen = false,
     this.titleStyle = const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

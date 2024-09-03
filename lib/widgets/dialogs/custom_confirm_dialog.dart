@@ -105,8 +105,9 @@ class _CustomConfirmDialog extends StatelessWidget {
     const double borderRadius = 20;
     final double width = MediaQuery.of(context).size.width;
 
-    return WillPopScope(
-      onWillPop: () => Future.value(false),
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) => Future.value(false),
       child: Dialog(
         elevation: 0,
         clipBehavior: Clip.antiAlias,
